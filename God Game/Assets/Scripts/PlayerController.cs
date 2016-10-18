@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 100;
     private Rigidbody _rigidbody;
 	void Start ()
     {
@@ -17,6 +16,6 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, _rigidbody.velocity.y, moveVertical);
-        _rigidbody.velocity = movement;
+        _rigidbody.MovePosition(transform.position + movement);
     }
 }
