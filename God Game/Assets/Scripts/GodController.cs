@@ -1,24 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class GodController : MonoBehaviour
 {
+
     public float Speed;
     private Rigidbody _rigidbody;
-    private bool _jumping;
-
-    public float JumpingForce;
-
-    void Start ()
+    void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-	}
-	
-	void FixedUpdate()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+    }
 
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal_2");
+        float moveVertical = Input.GetAxis("Vertical_2");
+        
         Vector3 movement = new Vector3(moveHorizontal, _rigidbody.velocity.y, moveVertical);
         _rigidbody.MovePosition(transform.position + movement * Speed);
     }
