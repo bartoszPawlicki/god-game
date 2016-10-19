@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rigidbody;
     private GameObject[] _players;
-    private Dictionary<GameObject, float> _playersMasses = new Dictionary<GameObject, float>();
+    private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
         
     public float JumpingForce;
     public int PlayerNumber;
@@ -16,10 +16,15 @@ public class PlayerController : MonoBehaviour
     public float Diameter;
     public float ThrowStrength;
 
+    //All players had to be on scene or had to be add to players in some way
     void Start ()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var item in _players)
+        {
+            _playerColliding.Add(item, false);
+        }
 	}
 	
 	void FixedUpdate()
@@ -38,7 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             foreach (GameObject player in _players)
             {
-                if (player != gameObject && Vector3.Distance(gameObject.transform.position, player.transform.position) < 1)
+                if (player != gameObject && _playerColliding[player])
                 {
                     float forceHorizontal = player.transform.position.x - transform.position.x;
                     float forceVertical = player.transform.position.z - transform.position.z;
@@ -67,6 +72,17 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        _playerColliding[collision.gameObject] = true;
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        _playerColliding[collision.gameObject] = false;
+    }
+
     //private void move()
     //{
 
