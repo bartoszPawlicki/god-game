@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
         _players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var item in _players)
         {
-            _playerColliding.Add(item, false);
+            if(item != gameObject)
+                _playerColliding.Add(item, false);
         }
 	}
 	
@@ -32,8 +33,6 @@ public class PlayerController : MonoBehaviour
         move();
         throwCompanion();
     }
-
-    bool IsUsed;
 
     private void throwCompanion()
     {
@@ -47,11 +46,7 @@ public class PlayerController : MonoBehaviour
                 {
                     float forceHorizontal = player.transform.position.x - transform.position.x;
                     float forceVertical = player.transform.position.z - transform.position.z;
-
                     Vector3 movement = new Vector3(forceHorizontal, 0, forceVertical).normalized;
-
-                    Debug.Log(movement * ThrowStrength);
-
                     player.GetComponent<Rigidbody>().AddForce(movement * ThrowStrength);
                 }
             }
@@ -66,10 +61,8 @@ public class PlayerController : MonoBehaviour
 
         if (moveHorizontal != 0 | moveVertical != 0)
         {
-
             Vector3 movement = transform.position + new Vector3(moveHorizontal, _rigidbody.velocity.y, moveVertical) * Speed;
             _rigidbody.MovePosition(movement);
-
         }
     }
 
