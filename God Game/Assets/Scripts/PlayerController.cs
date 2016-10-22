@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
         
     public float JumpingForce;
     public int PlayerNumber;
-    public float Speed;
     public float Diameter;
     public float ThrowStrength;
+
+    private float Speed;
+    public float StartingSpeed;
+    public float SlowDuration = 0F;
 
     //All players had to be on scene or had to be add to players in some way
     void Start ()
@@ -26,8 +29,20 @@ public class PlayerController : MonoBehaviour
             if(item != gameObject)
                 _playerColliding.Add(item, false);
         }
+        Speed = StartingSpeed;
 	}
 	
+    public void ApplySlow(float SlowPower, float SlowDuration)
+    {
+        this.SlowDuration = SlowDuration;
+        Speed = StartingSpeed * (1 - SlowPower);
+    }
+
+    void Update()
+    {
+        SlowDuration -= Time.deltaTime;
+        if (SlowDuration < 0) Speed = StartingSpeed; 
+    }
 	void FixedUpdate()
     {
         move();
