@@ -19,14 +19,14 @@ public class GodController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxis("Horizontal_God");
+        float moveVertical = Input.GetAxis("Vertical_God");
         
         //Vector3 movement = new Vector3(moveHorizontal, _rigidbody.velocity.y, moveVertical);
         gameObject.transform.Translate(new Vector3(moveHorizontal, 0, moveVertical) * Speed * Time.deltaTime, Space.Self);
 
         ThunderCooldown -= Time.deltaTime;
-        if (Input.GetAxis("FireThunder") == 1)
+        if (Input.GetAxis("Fire_Thunder") == 1)
         {
             if (ThunderCooldown < 0)
             {

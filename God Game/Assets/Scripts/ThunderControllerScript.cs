@@ -53,8 +53,8 @@ public class ThunderControllerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxis("Horizontal_God");
+        float moveVertical = Input.GetAxis("Vertical_God");
 
         //thunder's diminishing over time
         gameObject.transform.localScale = new Vector3(initialXScale * ThunderLifeTime / 3F, 5, initialZScale * ThunderLifeTime / 3F);

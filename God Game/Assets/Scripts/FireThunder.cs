@@ -20,7 +20,7 @@ public class FireThunder : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetAxisRaw("ConfirmTarget") == 1)
+        if (Input.GetAxisRaw("Confirm_Target") == 1)
         {
             if (!axisInUse)
             {
@@ -30,7 +30,7 @@ public class FireThunder : MonoBehaviour {
             }
             
         }
-        if (Input.GetAxisRaw("ConfirmTarget") == 1)
+        if (Input.GetAxisRaw("Confirm_Target") == 1)
         {
             axisInUse = false;
         }
