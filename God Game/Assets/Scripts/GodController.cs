@@ -13,7 +13,7 @@ public class GodController : MonoBehaviour
     }
     void UseThunderSkill()
     {
-        Instantiate(ThunderIndicatorPrefab, new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z), Quaternion.identity);
+        Instantiate(ThunderIndicatorPrefab, new Vector3(gameObject.transform.position.x, 0.01F, gameObject.transform.position.z), Quaternion.identity);
     }
 
     // Update is called once per frame

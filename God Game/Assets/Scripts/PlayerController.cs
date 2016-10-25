@@ -90,40 +90,4 @@ public class PlayerController : MonoBehaviour
     {
         _playerColliding[collision.gameObject] = false;
     }
-
-    //private void move()
-    //{
-
-    //    foreach (var item in _playersMasses)
-    //    {
-    //        item.Key.GetComponent<Rigidbody>().mass = item.Value;
-    //    }
-
-    //    _playersMasses.Clear();
-
-    //    float moveHorizontal = Input.GetAxis("Horizontal_" + PlayerNumber);
-    //    float moveVertical = Input.GetAxis("Vertical_" + PlayerNumber);
-
-    //    if(moveHorizontal != 0 | moveVertical != 0)
-    //    {
-
-    //        Vector3 movement = transform.position + new Vector3(moveHorizontal, _rigidbody.velocity.y, moveVertical) * Speed;
-
-    //        foreach (GameObject player in _players)
-    //        {
-    //            if (player != gameObject)
-    //            {
-    //                if (Vector3.Distance(movement, player.transform.position) < 1)
-    //                {
-    //                    _rigidbody.mass = 100;
-    //                    _playersMasses.Add(player, player.GetComponent<Rigidbody>().mass);
-    //                    player.GetComponent<Rigidbody>().mass = float.MaxValue;
-    //                }
-    //            }
-    //        }
-
-    //        _rigidbody.MovePosition(movement);
-
-    //    }
-    //}
 }
