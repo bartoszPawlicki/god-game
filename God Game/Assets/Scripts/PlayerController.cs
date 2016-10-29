@@ -51,9 +51,10 @@ public class PlayerController : MonoBehaviour
 
     private void throwCompanion()
     {
-        float throwCompanion = Input.GetAxis("Throw_" + PlayerNumber);
+        float throwCompanion1 = Input.GetAxis("Throw_1");
+        float throwCompanion2 = Input.GetAxis("Throw_2");
 
-        if (throwCompanion == 1)
+        if (throwCompanion1 == 1 && throwCompanion2 == 1)
         {
             foreach (GameObject player in _players)
             {
