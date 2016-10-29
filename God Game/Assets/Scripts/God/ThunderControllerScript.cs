@@ -48,7 +48,7 @@ public class ThunderControllerScript : MonoBehaviour
         if (ThunderLifeTime < 0) gameObject.SetActive(false);
 
         //thunder's falling
-        if (transform.position.y > transform.localScale.y / 2 + 1) gameObject.transform.Translate(new Vector3(0, -25F * Time.deltaTime, 0), Space.Self);
+        if (transform.position.y > transform.localScale.y / 2 + 1) gameObject.transform.Translate(new Vector3(0, -15F * Time.deltaTime, 0), Space.Self);
     }
 
     void FixedUpdate()

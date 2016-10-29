@@ -10,6 +10,7 @@ public class ThunderIndicator : MonoBehaviour
 	void Start ()
     {
         IndicatorLifeTime = 5F;
+
     }
 	
 	// Update is called once per frame
