@@ -7,8 +7,7 @@ public class CameraController : MonoBehaviour
     public GameObject Player1;
     public GameObject Player2;
     public float Distance;
-
-    private float _playersDistance;
+    
     Vector3 _worldPosition;
     Vector3 _offset;
 	// Use this for initialization
