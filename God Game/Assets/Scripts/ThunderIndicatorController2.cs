@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ThunderIndicator : MonoBehaviour
+public class ThunderIndicatorController2 : MonoBehaviour
 {
     private float IndicatorLifeTime;
     public float Speed;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         IndicatorLifeTime = 5F;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         IndicatorLifeTime -= Time.deltaTime;
         if (IndicatorLifeTime < 0) gameObject.SetActive(false);
-        
+
     }
 
     void FixedUpdate()
@@ -27,3 +27,4 @@ public class ThunderIndicator : MonoBehaviour
         gameObject.transform.Translate(new Vector3(moveHorizontal, 0, moveVertical) * Speed * Time.deltaTime, Space.Self);
     }
 }
+
