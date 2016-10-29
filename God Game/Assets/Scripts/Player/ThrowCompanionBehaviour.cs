@@ -21,9 +21,6 @@ public class ThrowCompanionBehaviour : MonoBehaviour
         float throwCompanion1 = Input.GetAxis("Throw_1");
         float throwCompanion2 = Input.GetAxis("Throw_2");
 
-        Debug.Log(throwCompanion1);
-        Debug.Log(throwCompanion2);
-
         if (throwCompanion1 == 1 && throwCompanion2 == 1)
         {
             foreach (var item in _playerColliding)
