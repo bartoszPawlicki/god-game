@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using Assets.Scripts;
 
-public class GameOverController : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
 
     public GameEndEventHandler OnGameEnd;

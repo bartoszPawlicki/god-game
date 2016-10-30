@@ -51,8 +51,9 @@ public class GameTime : MonoBehaviour
 	void Update()
     {
         TimeLeft = TimeLeft.Subtract(TimeSpan.FromSeconds(Time.deltaTime));
-        if(TimeLeft.CompareTo(TimeSpan.Zero) < 0)
+        if(TimeLeft.CompareTo(TimeSpan.Zero) <= 0)
         {
+            TimeLeft = TimeSpan.Zero;
             var players = GameObject.FindGameObjectsWithTag("Player");
             var god = GameObject.FindGameObjectWithTag("God");
 
