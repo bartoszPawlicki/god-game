@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TotemActivator : MonoBehaviour
 {
     private GameObject[] _players;
-    public float captureSpeed = 1.0f;
+    public float captureSpeed = 0.2f;
     private float totemRange = 4.0f;
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
 
@@ -32,7 +32,7 @@ public class TotemActivator : MonoBehaviour
                 {
                     if(transform.rotation.eulerAngles.x > 270 || transform.rotation.eulerAngles.x == 0)
                     {
-                        transform.Rotate(Vector3.right * captureSpeed);
+                        transform.Rotate(Vector3.down * captureSpeed);
                         //Debug.Log(transform.rotation.eulerAngles.x);
                     }
                 }
