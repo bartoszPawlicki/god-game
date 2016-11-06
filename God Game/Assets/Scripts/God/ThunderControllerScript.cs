@@ -3,15 +3,17 @@ using System.Collections;
 
 public class ThunderControllerScript : MonoBehaviour
 {
-    float ThunderLifeTime;
+    public float ThunderLifeTime;
     float initialXScale;
     float initialZScale;
 
     private float SlowDuration = 2F;
     private float SlowPower = 0.3F;
+    private float TimeBeforeHit = 1F;
     private Rigidbody _rigidbody;
+    private GodController godController;
     
-    public float Speed;
+    
     // Use this for initialization
     void Start ()
     {
@@ -19,6 +21,10 @@ public class ThunderControllerScript : MonoBehaviour
         initialXScale = gameObject.transform.localScale.x;
         initialZScale = gameObject.transform.localScale.z;
         _rigidbody = GetComponent<Rigidbody>();
+
+        godController = GameObject.FindGameObjectWithTag("God").GetComponent<GodController>();
+        godController.GodSpeed = godController.ThunderSpeed;
+
     }
 	
     void OnTriggerEnter(Collider collider)
@@ -45,10 +51,20 @@ public class ThunderControllerScript : MonoBehaviour
 	void Update ()
     {
         ThunderLifeTime -= Time.deltaTime;
-        if (ThunderLifeTime < 0) gameObject.SetActive(false);
+        if (ThunderLifeTime < 0)
+        {
+            gameObject.SetActive(false);
+            godController.GodSpeed = godController.GodStartingSpeed;
+            Debug.Log("Speed startowy");
+        }
+        if (TimeBeforeHit >= 0) TimeBeforeHit -= Time.deltaTime;
 
+        if (TimeBeforeHit < 0)
+        {
+            if (transform.position.y > transform.localScale.y / 2 + 1) gameObject.transform.Translate(new Vector3(0, -100F * Time.deltaTime, 0), Space.Self);
+        }
         //thunder's falling
-        if (transform.position.y > transform.localScale.y / 2 + 1) gameObject.transform.Translate(new Vector3(0, -15F * Time.deltaTime, 0), Space.Self);
+        
     }
 
     void FixedUpdate()
@@ -59,7 +75,7 @@ public class ThunderControllerScript : MonoBehaviour
         //thunder's diminishing over time
         gameObject.transform.localScale = new Vector3(initialXScale * ThunderLifeTime / 3F, 5, initialZScale * ThunderLifeTime / 3F);
 
-        Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * Speed * Time.deltaTime;
+        Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * godController.ThunderSpeed * Time.deltaTime;
         _rigidbody.MovePosition(movement);
         
     }

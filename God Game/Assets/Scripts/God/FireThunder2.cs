@@ -6,20 +6,32 @@ public class FireThunder2 : MonoBehaviour
 
     public GameObject thunderPrefab;
 
+    private GodController godController;
+
     private bool axisInUse;
     private bool thunderCreated;
-    private float indicatorTimer;
+    private float TimeBeforeThunderFallsTimer;
+    private float TimeBeforeThunderFalls;
+
     // Use this for initialization
     void Start()
     {
+        godController = GameObject.FindGameObjectWithTag("God").GetComponent<GodController>();
         axisInUse = false;
         thunderCreated = false;
-        indicatorTimer = 1F;
+        TimeBeforeThunderFallsTimer = 1F;
+        TimeBeforeThunderFalls = 1F;
     }
 
     void CreateThunder()
     {
         Instantiate(thunderPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 20, gameObject.transform.position.z), Quaternion.identity);
+
+        TimeBeforeThunderFallsTimer = TimeBeforeThunderFalls;
+        thunderCreated = true;
+        axisInUse = true;
+        
+        Debug.Log("Zmniejszam Speed");
     }
 
     // Update is called once per frame
@@ -31,10 +43,8 @@ public class FireThunder2 : MonoBehaviour
             {
                 if (!axisInUse)
                 {
-
+                    
                     CreateThunder();
-                    thunderCreated = true;
-                    axisInUse = true;
                 }
 
             }
@@ -44,13 +54,19 @@ public class FireThunder2 : MonoBehaviour
         {
             axisInUse = false;
         }
+
         if (thunderCreated)
         {
-            indicatorTimer -= Time.deltaTime;
-            if (indicatorTimer < 0)
+            godController.GodSpeed = 0F;
+            TimeBeforeThunderFallsTimer -= Time.deltaTime;
+            if (TimeBeforeThunderFallsTimer < 0)
             {
+                godController.GodSpeed = godController.ThunderSpeed;
+                Debug.Log("Zwiększam Speed");
                 gameObject.SetActive(false);
-            }
+                thunderCreated = false;
+                TimeBeforeThunderFallsTimer = TimeBeforeThunderFalls;
+            }      
         }
     }
 }
