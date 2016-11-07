@@ -7,11 +7,15 @@ public class TotemActivator : MonoBehaviour
     private GameObject[] _players;
     public float captureSpeed = 0.2f;
     private float totemRange = 4.0f;
+    private float messageDisplayTime = 6f;
+    public bool totemCapturedFlag { get; set; }
+    public bool totemCapturedFlagTimeImpact { get; set; }
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
 
     void Start()
     {
-
+        totemCapturedFlag = false;
+        totemCapturedFlagTimeImpact = false;
         _players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var player in _players)
         {
@@ -28,16 +32,34 @@ public class TotemActivator : MonoBehaviour
         {
             foreach (GameObject player in _players)
             {
-                if (Vector3.Distance(player.transform.position, gameObject.transform.position) < totemRange)
+                if (Vector3.Distance(player.transform.position, gameObject.transform.position) < totemRange && gameObject.transform.position.y - player.transform.position.y < 0.5f)
                 {
                     if(transform.rotation.eulerAngles.x > 270 || transform.rotation.eulerAngles.x == 0)
                     {
                         transform.Rotate(Vector3.down * captureSpeed);
-                        //Debug.Log(transform.rotation.eulerAngles.x);
+                        if(transform.rotation.eulerAngles.x == 270)
+                        {
+                            totemCapturedFlag = true;
+                            totemCapturedFlagTimeImpact = true;
+                        }
                     }
                 }
             }
         }
+        messageDisplayTime -= Time.deltaTime;
+        if(messageDisplayTime <= 0)
+        {
+            totemCapturedFlag = false;
+        }
+    }
+    void OnGUI()
+    {
+        GUI.skin.label.fontSize = 70;
+        if (totemCapturedFlag == true)
+        {
+            GUI.Label(new Rect(Screen.width/2, Screen.height / 2, 500f, 500f), "Totem Captured");
+        }
+        
     }
 
 }

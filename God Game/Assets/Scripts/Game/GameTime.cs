@@ -10,6 +10,8 @@ public class GameTime : MonoBehaviour
     /// <summary>
     /// Game Time in seconds
     /// </summary>
+
+  //  public GameObject totem;
     public double TotalGameTimeSeconds;
     public bool IsGameStarted = false;
     public event EventHandler OnTimeElapsed;
@@ -70,8 +72,18 @@ public class GameTime : MonoBehaviour
             if(OnTimeElapsed != null)
                 OnTimeElapsed.Invoke(this, null);
         }
-	}
-
+        var totems = GameObject.FindGameObjectsWithTag("Totem");
+        foreach (var totem in totems)
+        {
+            if (totem.GetComponentInChildren<TotemActivator>().totemCapturedFlagTimeImpact == true)
+            {
+                TimeLeft += TimeSpan.FromSeconds(30);
+                TimeLeftSeconds += 30.0f;
+                totem.GetComponentInChildren<TotemActivator>().totemCapturedFlagTimeImpact = false;
+            }
+        }
+        
+    }
     private TimeSpan _totalGameTime;
     private TimeSpan _timeleft;
 }
