@@ -7,7 +7,7 @@ public class TotemActivator : MonoBehaviour
     private GameObject[] _players;
     public float captureSpeed = 0.2f;
     private float totemRange = 4.0f;
-    private float messageDisplayTime = 6f;
+    private float messageDisplayTime = 0f;
     public bool totemCapturedFlag { get; set; }
     public bool totemCapturedFlagTimeImpact { get; set; }
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
@@ -41,6 +41,7 @@ public class TotemActivator : MonoBehaviour
                         {
                             totemCapturedFlag = true;
                             totemCapturedFlagTimeImpact = true;
+                            messageDisplayTime = 4f;
                         }
                     }
                 }
@@ -57,7 +58,7 @@ public class TotemActivator : MonoBehaviour
         GUI.skin.label.fontSize = 70;
         if (totemCapturedFlag == true)
         {
-            GUI.Label(new Rect(Screen.width/2, Screen.height / 2, 500f, 500f), "Totem Captured");
+            GUI.Label(new Rect(Screen.width/2, Screen.height /3, 500f, 500f), "Totem Captured");
         }
         
     }
