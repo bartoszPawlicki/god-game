@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ThunderCollision : MonoBehaviour {
 
+    private float SlowDuration = 2F;
+    private float SlowPower = 0.3F;
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player") Debug.Log("Thunder struck player");
@@ -14,7 +16,7 @@ public class ThunderCollision : MonoBehaviour {
         {
             Debug.Log("Thunder colliding with player");
             PlayerController slow = collider.GetComponent<PlayerController>();
-            //slow.ApplySlow(SlowPower, SlowDuration);
+            slow.ApplySlow(SlowPower, SlowDuration);
         }
     }
 

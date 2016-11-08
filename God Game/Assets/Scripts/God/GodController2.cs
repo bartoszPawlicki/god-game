@@ -39,7 +39,7 @@ public class GodController2 : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        GodStartingSpeed = 15F;
+        GodStartingSpeed = 10F;
         GodSpeed = GodStartingSpeed;
 
         ThunderIndicator = (GameObject)Instantiate(ThunderIndicatorPrefab, new Vector3(gameObject.transform.position.x, 0.01F, gameObject.transform.position.z), Quaternion.identity);
