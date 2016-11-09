@@ -36,6 +36,7 @@ public class GameOver : MonoBehaviour
             if (!item.Value)
                 return;   
         }
+        //TODO: Not always work properly
         //rely unity uses C# 4 ... lol a cant use "?" before invoke ... strange
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameTime>().enabled = false;
         if(OnGameEnd != null)

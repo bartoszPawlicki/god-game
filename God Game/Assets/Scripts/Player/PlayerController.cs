@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start ()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _rope = GetComponentInChildren<RopeController>();
 
         _speed = StartingSpeed;
 	}
@@ -41,6 +42,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        foreach (var contact in collision.contacts)
+        {
+            if(contact.thisCollider.gameObject == _rope.gameObject)
+            {
+                _rope.Collision(collision);
+                break;
+            }
+        }
+    }
+
     private float _speed;
     private Rigidbody _rigidbody;
+    private RopeController _rope;
 }

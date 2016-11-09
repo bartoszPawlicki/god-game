@@ -9,6 +9,10 @@ public class RopeController : MonoBehaviour
     public bool IsReturning { get; private set; }
     public bool IsMoving { get; private set; }
 
+    public void Collision(Collision collision)
+    {
+        revertDirection();
+    }
     void Start ()
     {
         var players = GameObject.FindGameObjectsWithTag("Player");
@@ -36,17 +40,9 @@ public class RopeController : MonoBehaviour
         }
 	}
 
-
-
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == _player.gameObject)
-            revertDirection();
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-
+        Debug.Log("Sth");
     }
 
     void FireRope()
