@@ -3,56 +3,59 @@ using System.Collections;
 
 public class GodController : MonoBehaviour
 {
-
-    public float GodSpeed;
-    public float GodStartingSpeed;
-
-    public GameObject ThunderIndicatorPrefab;
-
-    public GameObject ThunderIndicator { get; set; }
-    public float ThunderCooldownTimer = -1F;
-    public float ThunderCooldown = 5F;
+    public float GodInitialSpeed;
     public float ThunderSpeed;
-    public float ThunderStartingSpeed;
-
-    public float ThunderIndicatorLifetimeTimer { get; set; }
-    public float ThunderIndicatorLifeTime { get; set; }
-    void Start()
+    
+    // Use this for initialization
+    void Start ()
     {
-        ThunderIndicator = (GameObject)Instantiate(ThunderIndicatorPrefab, new Vector3(gameObject.transform.position.x, 0.01F, gameObject.transform.position.z), Quaternion.identity);
-        ThunderIndicator.transform.SetParent(gameObject.transform);
-        ThunderIndicator.SetActive(false);
+        _thunderIndicator = transform.FindChild("ThunderIndicator").gameObject;
+        _indicatorLight = _thunderIndicator.GetComponent<Light>();
 
-        GodStartingSpeed = 15;
-        GodSpeed = GodStartingSpeed;
-
-        ThunderIndicatorLifeTime = 5F;
-        ThunderStartingSpeed = 8f;
-        ThunderSpeed = ThunderStartingSpeed;
+        _thunder = transform.FindChild("Thunder").gameObject;
+        
+        _thunderController = _thunder.GetComponent<ThunderController>();
+        _thunderController.OnThunderStruck += _thunderController_OnThunderStruck;
+        _thunderController.OnThunderExpired += _thunderController_OnThunderExpired;
+        
+        _godSpeed = GodInitialSpeed;
     }
-    void UseThunderSkill()
+    
+    void Update ()
     {
-        ThunderIndicator.SetActive(true);
+        if (Input.GetAxis("Fire_Thunder") == 1 && !_thunderController.isActiveAndEnabled)
+        {
+            _thunderController.Strike();
+            _godSpeed = 0;
+            _indicatorLight.range *= _lightRange;
+        }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         //god movement
         float moveHorizontal = Input.GetAxis("Horizontal_God");
         float moveVertical = Input.GetAxis("Vertical_God");
-        gameObject.transform.Translate(new Vector3(moveHorizontal, 0, moveVertical) * GodSpeed * Time.deltaTime);
-
-        ThunderCooldownTimer -= Time.deltaTime;
-        if (Input.GetAxis("Fire_Thunder") == 1)
-        {
-            if (ThunderCooldownTimer < 0)
-            {
-                UseThunderSkill();
-                ThunderCooldownTimer = ThunderCooldown;
-            }
-        }
-         
+        gameObject.transform.Translate(new Vector3(moveHorizontal, 0, moveVertical) * _godSpeed * Time.deltaTime);
     }
-    
+    private void _thunderController_OnThunderExpired(object sender, System.EventArgs e)
+    {
+        _godSpeed = GodInitialSpeed;
+        _thunderIndicator.SetActive(true);
+    }
+
+    private void _thunderController_OnThunderStruck(object sender, System.EventArgs e)
+    {
+        _indicatorLight.range /= _lightRange;
+        _godSpeed = ThunderSpeed;
+        _thunderIndicator.SetActive(false);
+    }
+
+    private float _lightRange = 1.5f;
+    private float _godSpeed;
+
+    private Light _indicatorLight;
+    private GameObject _thunder;
+    private GameObject _thunderIndicator;
+    private ThunderController _thunderController;
 }

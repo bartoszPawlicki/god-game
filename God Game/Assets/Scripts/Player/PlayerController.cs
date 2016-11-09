@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditorInternal;
+using System;
 
 public class PlayerController : MonoBehaviour
 { 
