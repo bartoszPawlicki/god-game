@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 { 
     public int PlayerNumber;
     public float StartingSpeed;
-    public float SlowDuration;
 
     //All players had to be on scene or had to be add to players in some way
     void Start ()
@@ -18,16 +17,16 @@ public class PlayerController : MonoBehaviour
         _speed = StartingSpeed;
 	}
 	
-    public void ApplySlow(float SlowPower, float SlowDuration)
+    public void ApplySlow(float slowPower, float slowDuration)
     {
-        this.SlowDuration = SlowDuration;
-        _speed = StartingSpeed * (1 - SlowPower);
+        _slowDuration = slowDuration;
+        _speed = StartingSpeed * (1 - slowPower);
     }
 
     void Update()
     {
-        SlowDuration -= Time.deltaTime;
-        if (SlowDuration < 0) _speed = StartingSpeed;
+        _slowDuration -= Time.deltaTime;
+        if (_slowDuration < 0) _speed = StartingSpeed;
     }
 	void FixedUpdate()
     {
@@ -41,6 +40,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private float _slowDuration;
     private float _speed;
     private Rigidbody _rigidbody;
 }

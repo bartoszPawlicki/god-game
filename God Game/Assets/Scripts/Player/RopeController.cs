@@ -17,8 +17,6 @@ public class RopeController : MonoBehaviour
             if (player != transform.parent.gameObject)
                 _player = player;
         }
-
-        FireRope();
     }
 	
 	void Update ()
