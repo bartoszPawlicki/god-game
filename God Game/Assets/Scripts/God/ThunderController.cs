@@ -68,6 +68,7 @@ public class ThunderController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+
     }
 
     void OnTriggerStay(Collider collider)
@@ -81,6 +82,7 @@ public class ThunderController : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
+
     }
 
     private bool _isFalling;
