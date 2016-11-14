@@ -28,8 +28,6 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-
-
         //it have to be in the end of function becouse of return in foreach
         foreach (var item in _playerColliding)
         {
@@ -51,8 +49,6 @@ public class GameOver : MonoBehaviour
             _playerColliding[collision.gameObject] = true;
             collision.gameObject.SetActive(false);
         }
-       
     }
-    
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
 }

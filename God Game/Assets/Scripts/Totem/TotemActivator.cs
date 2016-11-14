@@ -34,15 +34,15 @@ public class TotemActivator : MonoBehaviour
             {
                 if (Vector3.Distance(player.transform.position, gameObject.transform.position) < totemRange && gameObject.transform.position.y - player.transform.position.y < 0.5f)
                 {
-                    if(transform.rotation.eulerAngles.x > 270 || transform.rotation.eulerAngles.x == 0)
+                    if(transform.rotation.eulerAngles.z > 0 )
                     {
-                        transform.Rotate(Vector3.down * captureSpeed);
-                        if(transform.rotation.eulerAngles.x == 270)
-                        {
-                            totemCapturedFlag = true;
-                            totemCapturedFlagTimeImpact = true;
-                            messageDisplayTime = 4f;
-                        }
+                        transform.Rotate(Vector3.forward * captureSpeed);                
+                    }
+                    else
+                    {
+                        totemCapturedFlag = true;
+                        totemCapturedFlagTimeImpact = true;
+                        messageDisplayTime = 4f;
                     }
                 }
             }
