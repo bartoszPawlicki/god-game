@@ -22,7 +22,7 @@ public class RopeController : MonoBehaviour
                 _player = player;
         }
 
-        FireRope();
+        //FireRope();
     }
 	
 	void Update ()

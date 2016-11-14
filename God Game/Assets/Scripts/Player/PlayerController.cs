@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal_" + PlayerNumber);
         float moveVertical = Input.GetAxis("Vertical_" + PlayerNumber);
 
+        Debug.Log(moveHorizontal);
+        Debug.Log(moveVertical);
+
         if (moveHorizontal != 0 | moveVertical != 0)
         {
             Vector3 movement = transform.position + new Vector3(moveHorizontal, _rigidbody.velocity.y, moveVertical) * _speed;
