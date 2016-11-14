@@ -39,12 +39,7 @@ public class RopeController : MonoBehaviour
             enabled = false;
         }
 	}
-
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Sth");
-    }
-
+    
     void FireRope()
     {
         IsMoving = true;
