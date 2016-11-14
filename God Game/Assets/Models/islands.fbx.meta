@@ -12,6 +12,10 @@ ModelImporter:
     100008: island5_detail
     100010: island6_detail
     100012: //RootNode
+    100014: island10_detail
+    100016: island7_detail
+    100018: island8_detail
+    100020: island9_detail
     400000: island1_detail
     400002: island2_detail
     400004: island3_detail
@@ -19,24 +23,40 @@ ModelImporter:
     400008: island5_detail
     400010: island6_detail
     400012: //RootNode
+    400014: island10_detail
+    400016: island7_detail
+    400018: island8_detail
+    400020: island9_detail
     2300000: island1_detail
     2300002: island2_detail
     2300004: island3_detail
     2300006: island4_detail
     2300008: island5_detail
     2300010: island6_detail
+    2300012: island10_detail
+    2300014: island7_detail
+    2300016: island8_detail
+    2300018: island9_detail
     3300000: island1_detail
     3300002: island2_detail
     3300004: island3_detail
     3300006: island4_detail
     3300008: island5_detail
     3300010: island6_detail
+    3300012: island10_detail
+    3300014: island7_detail
+    3300016: island8_detail
+    3300018: island9_detail
     4300000: island1_detail
     4300002: island2_detail
     4300004: island4_detail
     4300006: island5_detail
     4300008: island6_detail
     4300010: island3_detail
+    4300012: island7_detail
+    4300014: island10_detail
+    4300016: island8_detail
+    4300018: island9_detail
   materials:
     importMaterials: 1
     materialName: 0
