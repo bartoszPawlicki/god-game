@@ -4,6 +4,7 @@ public class UV_Scroll : MonoBehaviour
 {
     private Material mat;
     private float scroll;
+    public float speed;
 	// Use this for initialization
 	void Start ()
     {
@@ -13,7 +14,7 @@ public class UV_Scroll : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        scroll = (scroll - Time.deltaTime * 0.4f) % 1.0f;
+        scroll = (scroll - Time.deltaTime * speed) % 1.0f;
         mat.mainTextureOffset = new Vector2(scroll, 0);
 	}
 }

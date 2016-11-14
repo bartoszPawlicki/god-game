@@ -10,4 +10,11 @@ namespace Assets.Scripts
         God,
         Players
     }
+
+    public enum Skill
+    {
+        Thunder,
+        WindGust,
+        None
+    }
 }
