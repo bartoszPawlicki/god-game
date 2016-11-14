@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using System;
+using System.Timers;
 
 public class PlayerController : MonoBehaviour
 { 
+    /// <summary>
+    /// Player name has to end with player number
+    /// </summary>
     public float StartingSpeed;
-    public float SlowDuration;
 
     //All players had to be on scene or had to be add to players in some way
     void Start ()
@@ -16,19 +19,27 @@ public class PlayerController : MonoBehaviour
         _rope = GetComponentInChildren<RopeController>();
         _speed = StartingSpeed;
         _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
-	}
+        _slowTimer = new Timer() { AutoReset = false };
+        _slowTimer.Elapsed += Timer_Elapsed;
+    }
 	
-    public void ApplySlow(float SlowPower, float SlowDuration)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="slowPower">0.3f = 30%</param>
+    /// <param name="slowDuration">In miliseconds</param>
+    public void ApplySlow(float slowPower, float slowDuration)
     {
-        this.SlowDuration = SlowDuration;
-        _speed = StartingSpeed * (1 - SlowPower);
+        _speed *= (1 - slowPower);
+        _slowTimer.Interval = slowDuration;
+        _slowTimer.Start();
     }
 
-    void Update()
+    private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
-        SlowDuration -= Time.deltaTime;
-        if (SlowDuration < 0) _speed = StartingSpeed;
+        _speed = StartingSpeed;
     }
+    
 	void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal_" + _playerNumber);
@@ -53,6 +64,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private Timer _slowTimer;
     private int _playerNumber;
     private float _speed;
     private Rigidbody _rigidbody;
