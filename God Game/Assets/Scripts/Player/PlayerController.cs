@@ -6,7 +6,6 @@ using System;
 
 public class PlayerController : MonoBehaviour
 { 
-    public int PlayerNumber;
     public float StartingSpeed;
     public float SlowDuration;
 
@@ -15,8 +14,8 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _rope = GetComponentInChildren<RopeController>();
-
         _speed = StartingSpeed;
+        _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
 	}
 	
     public void ApplySlow(float SlowPower, float SlowDuration)
@@ -32,8 +31,8 @@ public class PlayerController : MonoBehaviour
     }
 	void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal_" + PlayerNumber);
-        float moveVertical = Input.GetAxis("Vertical_" + PlayerNumber);
+        float moveHorizontal = Input.GetAxis("Horizontal_" + _playerNumber);
+        float moveVertical = Input.GetAxis("Vertical_" + _playerNumber);
 
         if (moveHorizontal != 0 | moveVertical != 0)
         {
@@ -54,6 +53,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private int _playerNumber;
     private float _speed;
     private Rigidbody _rigidbody;
     private RopeController _rope;
