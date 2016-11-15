@@ -24,6 +24,11 @@ public class GodController : MonoBehaviour
 
         _windController = _wind.GetComponent<WindController>();
         _windController.OnWindGustExpired += _windController_OnWindGustExpired;
+
+        _globalWind = transform.FindChild("GlobalWind").gameObject;
+
+        _globalWindController = _globalWind.GetComponent<GlobalWindController>();
+        _globalWindController.OnGlobalWindExpired += _globalWindController_OnGlobalWindExpired;
         
         _godSpeed = GodInitialSpeed;
 
@@ -44,6 +49,11 @@ public class GodController : MonoBehaviour
             _skillChosen = Skill.WindGust;
         }
 
+        if (Input.GetAxis("Fire_Global_Wind") == 1)
+        {
+            _skillChosen = Skill.GlobalWind;
+        }
+
 
         if (Input.GetAxis("Confirm_Target") == 1 && _skillChosen != Skill.None)
         {
@@ -58,6 +68,12 @@ public class GodController : MonoBehaviour
             {
                 _windController.Strike();
             }
+
+            if (_skillChosen == Skill.GlobalWind && !_globalWindController.isActiveAndEnabled)
+            {
+                _globalWindController.Strike();
+            }
+
         }
     }
 
@@ -87,14 +103,21 @@ public class GodController : MonoBehaviour
         _skillChosen = Skill.None;
     }
 
+    private void _globalWindController_OnGlobalWindExpired(object sender, System.EventArgs e)
+    {
+        _skillChosen = Skill.None;
+    }
+
     private float _lightRange = 1.5f;
     private float _godSpeed;
 
     private Light _indicatorLight;
     private GameObject _thunder;
     private GameObject _wind;
+    private GameObject _globalWind;
     private GameObject _thunderIndicator;
     private ThunderController _thunderController;
     private WindController _windController;
+    private GlobalWindController _globalWindController;
     private Skill _skillChosen;
 }

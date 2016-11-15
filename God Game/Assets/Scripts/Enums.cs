@@ -15,6 +15,7 @@ namespace Assets.Scripts
     {
         Thunder,
         WindGust,
+        GlobalWind,
         None
     }
 }
