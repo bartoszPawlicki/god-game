@@ -13,6 +13,16 @@ public class RopeController : MonoBehaviour
     {
         revertDirection();
     }
+
+    public void FireRope()
+    {
+        if(!IsMoving && !IsReturning)
+        {
+            IsMoving = true;
+            enabled = true;
+        }
+    }
+
     void Start ()
     {
         var players = GameObject.FindGameObjectsWithTag("Player");
@@ -22,7 +32,7 @@ public class RopeController : MonoBehaviour
                 _player = player;
         }
 
-        //FireRope();
+        enabled = false;
     }
 	
 	void Update ()
@@ -35,19 +45,20 @@ public class RopeController : MonoBehaviour
             revertDirection();
         else if (IsReturning)
         {
+            transform.localScale = new Vector3(transform.localScale.x, 0, transform.localScale.z);
+            transform.localRotation = new Quaternion(0, 0, -90, 0);
+            transform.localPosition = Vector3.zero;
             IsReturning = false;
+            IsMoving = false;
             enabled = false;
         }
 	}
-    
-    void FireRope()
-    {
-        IsMoving = true;
-    }
+
     
     private void moveScaleAndRotate()
     {
         int direction = 0;
+
         if (IsMoving)
             direction = 1;
         else if (IsReturning)
@@ -56,7 +67,9 @@ public class RopeController : MonoBehaviour
         transform.localScale += new Vector3(0, ThrowSpeed, 0) * direction;
         transform.LookAt(_player.transform);
         transform.Rotate(new Vector3(0, 90, -90));
-        transform.localPosition += (_player.transform.position - transform.parent.position).normalized * ThrowSpeed * direction;
+
+        transform.localPosition = Vector3.zero;      
+        transform.localPosition += (_player.transform.position - transform.parent.position).normalized * transform.localScale.y;
     }
     private void revertDirection()
     {

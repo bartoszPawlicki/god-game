@@ -40,6 +40,14 @@ public class PlayerController : MonoBehaviour
         _speed = StartingSpeed;
     }
     
+    void Update()
+    {
+        Debug.Log(Input.GetAxis("FireRope_" + _playerNumber));
+        if (Input.GetAxis("FireRope_" + _playerNumber) == 1)
+            if(!_collidingWithAnotherPlayer)
+                _rope.FireRope();
+    }
+
 	void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal_" + _playerNumber);
@@ -54,6 +62,9 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Player")
+            _collidingWithAnotherPlayer = true;
+
         foreach (var contact in collision.contacts)
         {
             if(contact.thisCollider.gameObject == _rope.gameObject)
@@ -64,6 +75,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            _collidingWithAnotherPlayer = false;
+    }
+
+    private bool _collidingWithAnotherPlayer;
     private Timer _slowTimer;
     private int _playerNumber;
     private float _speed;
