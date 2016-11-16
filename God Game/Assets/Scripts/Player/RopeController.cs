@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class RopeController : MonoBehaviour
 {
@@ -11,11 +12,6 @@ public class RopeController : MonoBehaviour
     public bool IsMoving { get; private set; }
     public bool IsPullingPlayer { get; set; }
 
-    public void Collision(Collision collision)
-    {
-        revertDirection(collision.gameObject);
-    }
-
     public void FireRope()
     {
         if(!IsMoving && !IsReturning)
@@ -26,9 +22,9 @@ public class RopeController : MonoBehaviour
     }
     public void EndPulling()
     {
-        Debug.Log("End");
         IsPullingPlayer = false;
         _player.GetComponent<ConstantForce>().force = Vector3.zero;
+        transform.localScale = new Vector3(0.05f, 0, 0.05f);
     }
     void Start ()
     {
@@ -49,24 +45,35 @@ public class RopeController : MonoBehaviour
             float forceHorizontal = transform.parent.position.x - _player.transform.position.x;
             float forceVertical = transform.parent.position.z - _player.transform.position.z;
             Vector3 movement = new Vector3(forceHorizontal, 0, forceVertical).normalized;
-            //_player.GetComponent<Rigidbody>().AddForce(movement * ThrowStrength);
-            Debug.Log(movement * ThrowStrength);
             _player.GetComponent<ConstantForce>().force = movement * ThrowStrength;
-        }
 
-        if ((transform.localScale.y <= Lenght && IsMoving) || (transform.localScale.y >= 0 && IsReturning))
-        {
-            moveScaleAndRotate();
+            Vector3 firstPoint = transform.parent.position;
+            Vector3 secondPoint = _player.transform.position;
+
+            transform.parent.LookAt(_player.transform);
+            transform.localEulerAngles = new Vector3(0, -90, -90);
+            transform.localScale = new Vector3(0.05f, Vector3.Distance(firstPoint, secondPoint) / 2, 0.05f);
+            transform.localPosition = new Vector3(0, 0, transform.localScale.y);
         }
-        else if (IsMoving)
-            revertDirection(null);
-        else if (IsReturning)
+        else
         {
-            IsReturning = false;
-            IsMoving = false;
+            if ((transform.localScale.y <= Lenght && IsMoving) || (transform.localScale.y >= 0 && IsReturning))
+            {
+                moveScaleAndRotate();
+            }
+            else if (IsMoving)
+                revertDirection(null);
+            else if (IsReturning)
+            {
+                IsReturning = false;
+                IsMoving = false;
+            }
         }
     }
-
+    void OnTriggerEnter(Collider other)
+    {
+        revertDirection(other.gameObject);
+    }
     private void moveScaleAndRotate()
     {
         int direction = 0;
@@ -86,11 +93,14 @@ public class RopeController : MonoBehaviour
     private void revertDirection(GameObject gameObject)
     {
         if (gameObject == _player)
+        {
             IsPullingPlayer = true;
-        IsMoving = false;
-        IsReturning = true;
-    }
+        }
+        else
+            IsReturning = true;
 
+        IsMoving = false;
+    }
 
     private GameObject _player;
 }

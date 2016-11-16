@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
                 
         }
     }
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -73,14 +72,14 @@ public class PlayerController : MonoBehaviour
                 _rope.EndPulling();
         }
 
-        foreach (var contact in collision.contacts)
-        {
-            if(contact.thisCollider.gameObject == _rope.gameObject)
-            {
-                _rope.Collision(collision);
-                break;
-            }
-        }
+        //foreach (var contact in collision.contacts)
+        //{
+        //    if(contact.thisCollider.gameObject == _rope.gameObject)
+        //    {
+        //        _rope.Collision(collision);
+        //        break;
+        //    }
+        //}
     }
 
     void OnCollisionExit(Collision collision)
