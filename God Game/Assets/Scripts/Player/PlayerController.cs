@@ -67,7 +67,11 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
+        {
             _collidingWithAnotherPlayer = true;
+            if (_rope.IsPullingPlayer)
+                _rope.EndPulling();
+        }
 
         foreach (var contact in collision.contacts)
         {
