@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 movement = transform.position + new Vector3(moveHorizontal, _rigidbody.velocity.y, moveVertical) * _speed;
             _rigidbody.MovePosition(movement);
+            if (!_rope.IsMoving && !_rope.IsReturning)
+            {
+                transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal,moveVertical) * 180 / Math.PI), 0);
+            }
+                
         }
     }
 
