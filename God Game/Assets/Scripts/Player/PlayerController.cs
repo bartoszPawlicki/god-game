@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(Input.GetAxis("FireRope_" + _playerNumber));
         if (Input.GetAxis("FireRope_" + _playerNumber) == 1)
             if(!_collidingWithAnotherPlayer)
                 _rope.FireRope();

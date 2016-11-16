@@ -45,14 +45,11 @@ public class RopeController : MonoBehaviour
             revertDirection();
         else if (IsReturning)
         {
-            transform.localScale = new Vector3(transform.localScale.x, 0, transform.localScale.z);
-            transform.localRotation = new Quaternion(0, 0, -90, 0);
-            transform.localPosition = Vector3.zero;
             IsReturning = false;
             IsMoving = false;
             enabled = false;
         }
-	}
+    }
 
     
     private void moveScaleAndRotate()
@@ -64,12 +61,10 @@ public class RopeController : MonoBehaviour
         else if (IsReturning)
             direction = -1;
 
-        transform.localScale += new Vector3(0, ThrowSpeed, 0) * direction;
-        transform.LookAt(_player.transform);
-        transform.Rotate(new Vector3(0, 90, -90));
-
-        transform.localPosition = Vector3.zero;      
-        transform.localPosition += (_player.transform.position - transform.parent.position).normalized * transform.localScale.y;
+        transform.parent.LookAt(_player.transform);
+        transform.localEulerAngles = new Vector3(0, -90, -90);
+        transform.localScale += new Vector3(0, direction, 0) * ThrowSpeed;
+        transform.localPosition = new Vector3(0,0, transform.localScale.y);
     }
     private void revertDirection()
     {
