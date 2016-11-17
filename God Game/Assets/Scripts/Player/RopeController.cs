@@ -19,6 +19,12 @@ public class RopeController : MonoBehaviour
             IsMoving = true;
             enabled = true;
         }
+        else
+        {
+            IsMoving = false;
+            IsReturning = false;
+            EndPulling();
+        }
     }
     public void EndPulling()
     {

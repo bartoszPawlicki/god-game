@@ -42,9 +42,14 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetAxis("FireRope_" + _playerNumber) == 1)
-            if(!_collidingWithAnotherPlayer)
-                _rope.FireRope();
+        if (Input.GetAxis("FireRope_" + _playerNumber) != _fireRopeAxisValue)
+        {
+            _fireRopeAxisValue = Input.GetAxis("FireRope_" + _playerNumber);
+            if(_fireRopeAxisValue == 1)
+                if (!_collidingWithAnotherPlayer)
+                    _rope.FireRope();
+        }
+            
     }
 
 	void FixedUpdate()
@@ -88,6 +93,7 @@ public class PlayerController : MonoBehaviour
             _collidingWithAnotherPlayer = false;
     }
 
+    private float _fireRopeAxisValue = -1;
     private bool _collidingWithAnotherPlayer;
     private Timer _slowTimer;
     private int _playerNumber;
