@@ -6,7 +6,8 @@ public class GlobalWindController : MonoBehaviour
 {
     public float GlobalWindStrength;
     public float TotalLifeTime;
-
+    public float AimHorizontal { get; set; }
+    public float AimVertical { get; set; }
     public bool IsDirectionChosen
     {
         get { return _isDirectionChosen; }
@@ -42,26 +43,26 @@ public class GlobalWindController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_isDirectionChosen)
-        {
-            if (Input.GetAxisRaw("Horizontal_God_Aim") != 0)
-            {
-                _moveHorizontal = Input.GetAxis("Horizontal_God_Aim");
-            }
+        //if (!_isDirectionChosen)
+        //{
+        //    if (Input.GetAxisRaw("Horizontal_God_Aim") != 0)
+        //    {
+        //        _moveHorizontal = Input.GetAxis("Horizontal_God_Aim");
+        //    }
 
-            if (Input.GetAxisRaw("Vertical_God_Aim") != 0)
-            {
-                _moveVertical = Input.GetAxis("Vertical_God_Aim");
-            }
-        }
+        //    if (Input.GetAxisRaw("Vertical_God_Aim") != 0)
+        //    {
+        //        _moveVertical = Input.GetAxis("Vertical_God_Aim");
+        //    }
+        //}
 
-        if (_moveHorizontal != 0 || _moveVertical != 0)
-        {
-            if (Input.GetAxis("Confirm_Target") < -0.5)
-            {
-                IsDirectionChosen = true;
-            }
-        }
+        //if (_moveHorizontal != 0 || _moveVertical != 0)
+        //{
+        //    if (Input.GetAxis("Confirm_Target") < -0.5)
+        //    {
+        //        IsDirectionChosen = true;
+        //    }
+        //}
     }
 
     void FixedUpdate()
@@ -71,7 +72,7 @@ public class GlobalWindController : MonoBehaviour
             _lifeTime -= Time.deltaTime;
             foreach (var player in _players)
             {
-                player.GetComponent<Rigidbody>().AddForce((new Vector3(_moveHorizontal, 0, _moveVertical).normalized * GlobalWindStrength));
+                player.GetComponent<Rigidbody>().AddForce((new Vector3(AimHorizontal, 0, AimVertical).normalized * GlobalWindStrength));
             }
         }
 
@@ -88,17 +89,14 @@ public class GlobalWindController : MonoBehaviour
     {
         enabled = true;
         gameObject.SetActive(true);
-        IsDirectionChosen = false;
-        _moveHorizontal = 0;
-        _moveVertical = 0;
-        _lifeTime = 30F;
+        IsDirectionChosen = true;
 
+        _lifeTime = TotalLifeTime;
     }
 
     private float _lifeTime;
     private float _moveHorizontal;
     private float _moveVertical;
     private GameObject[] _players;
-
     private bool _isDirectionChosen;
 }

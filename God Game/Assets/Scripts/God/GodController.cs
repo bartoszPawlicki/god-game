@@ -61,8 +61,20 @@ public class GodController : MonoBehaviour
 
         }
 
+        if(_skillChosen == Skill.GlobalWind)
+        {
+                if (Input.GetAxisRaw("Horizontal_God_Aim") != 0)
+                {
+                    _globalWindController.AimHorizontal = Input.GetAxis("Horizontal_God_Aim");
+                }
 
-        if (Input.GetAxis("Confirm_Target") < -0.5 && _skillChosen != Skill.None)
+                if (Input.GetAxisRaw("Vertical_God_Aim") != 0)
+                {
+                    _globalWindController.AimVertical = Input.GetAxis("Vertical_God_Aim");
+                }
+        }
+
+        if (Input.GetAxis("Confirm_Target") == 1 || (Input.GetAxis("Confirm_Target") < -0.5) && _skillChosen != Skill.None)
         {
             if (_skillChosen == Skill.Thunder && !_thunderController.isActiveAndEnabled)
             {
@@ -76,7 +88,7 @@ public class GodController : MonoBehaviour
                 _windController.Strike();
             }
 
-            if (_skillChosen == Skill.GlobalWind && !_globalWindController.isActiveAndEnabled)
+            if (_skillChosen == Skill.GlobalWind && !_globalWindController.isActiveAndEnabled && (_globalWindController.AimVertical != 0 || _globalWindController.AimHorizontal != 0))
             {
                 _globalWindController.Strike();
             }
