@@ -40,6 +40,7 @@ public class GodController : MonoBehaviour
 
     void Update ()
     {
+        Debug.Log(Input.GetAxis("Confirm_Target"));
         if (Input.GetAxis("Fire_Thunder") == 1)
         {
             _skillChosen = Skill.Thunder;
@@ -61,7 +62,7 @@ public class GodController : MonoBehaviour
         }
 
 
-        if (Input.GetAxis("Confirm_Target") == 1 && _skillChosen != Skill.None)
+        if (Input.GetAxis("Confirm_Target") < -0.5 && _skillChosen != Skill.None)
         {
             if (_skillChosen == Skill.Thunder && !_thunderController.isActiveAndEnabled)
             {

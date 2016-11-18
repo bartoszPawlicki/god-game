@@ -44,20 +44,20 @@ public class GlobalWindController : MonoBehaviour
     {
         if (!_isDirectionChosen)
         {
-            if (Input.GetAxisRaw("Horizontal_God") != 0)
+            if (Input.GetAxisRaw("Horizontal_God_Aim") != 0)
             {
-                _moveHorizontal = Input.GetAxisRaw("Horizontal_God");
+                _moveHorizontal = Input.GetAxis("Horizontal_God_Aim");
             }
 
-            if (Input.GetAxisRaw("Vertical_God") != 0)
+            if (Input.GetAxisRaw("Vertical_God_Aim") != 0)
             {
-                _moveVertical = Input.GetAxisRaw("Vertical_God");
+                _moveVertical = Input.GetAxis("Vertical_God_Aim");
             }
         }
 
         if (_moveHorizontal != 0 || _moveVertical != 0)
         {
-            if (Input.GetAxis("Confirm_Target") == 1)
+            if (Input.GetAxis("Confirm_Target") < -0.5)
             {
                 IsDirectionChosen = true;
             }
@@ -71,7 +71,7 @@ public class GlobalWindController : MonoBehaviour
             _lifeTime -= Time.deltaTime;
             foreach (var player in _players)
             {
-                player.GetComponent<Rigidbody>().AddForce(new Vector3(_moveHorizontal, 0, _moveVertical) * GlobalWindStrength);
+                player.GetComponent<Rigidbody>().AddForce((new Vector3(_moveHorizontal, 0, _moveVertical).normalized * GlobalWindStrength));
             }
         }
 
