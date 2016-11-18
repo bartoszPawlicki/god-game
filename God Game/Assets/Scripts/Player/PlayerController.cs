@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveHorizontal != 0 | moveVertical != 0)
         {
-            Vector3 movement = transform.position + new Vector3(moveHorizontal, _rigidbody.velocity.y, moveVertical) * _speed;
+            Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * _speed;
             _rigidbody.MovePosition(movement);
             if (!_rope.IsMoving && !_rope.IsReturning)
             {

@@ -24,7 +24,6 @@ public class GameTime : MonoBehaviour
         {
             if (value != _totalGameTime)
             {
-
                 _totalGameTime = value;
                 TotalGameTimeSeconds = _totalGameTime.TotalSeconds;
             }
@@ -49,7 +48,14 @@ public class GameTime : MonoBehaviour
         TotalGameTime = TimeSpan.FromSeconds(TotalGameTimeSeconds);
         IsGameStarted = true;
         TimeLeft = TotalGameTime;
+        GetComponent<RespawnManager>().OnLastPlayerFall += GameTime_OnLastPlayerFall;
 	}
+
+    private void GameTime_OnLastPlayerFall(object sender, EventArgs e)
+    {
+        Debug.Log("wszyscy spadli");
+        //Send when every player fall from island
+    }
 
     // Update is called once per frame
     void Update()

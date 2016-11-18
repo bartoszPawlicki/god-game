@@ -21,8 +21,15 @@ public class CameraController : MonoBehaviour
     {
         float distance = (float)(Distance / Math.Sqrt(2));
         distance += (float)Math.Sqrt(Vector3.Distance(Player1.transform.position, Player2.transform.position));
-        _offset = new Vector3(0, distance, -distance);
-        _worldPosition = Vector3.Lerp(Player1.transform.position, Player2.transform.position, 0.5f);
+        _offset = new Vector3(0, distance, -distance * 1.5f);
+        if (Player1.GetComponent<PlayerController>().isActiveAndEnabled && Player2.GetComponent<PlayerController>().isActiveAndEnabled)
+            _worldPosition = Vector3.Lerp(Player1.transform.position, Player2.transform.position, 0.5f);
+        else if (Player1.GetComponent<PlayerController>().isActiveAndEnabled)
+            _worldPosition = Player1.transform.position;
+        else if (Player2.GetComponent<PlayerController>().isActiveAndEnabled)
+            _worldPosition = Player2.transform.position;
+        else
+            _worldPosition = Vector3.zero;
         transform.position = _worldPosition + _offset;
         transform.LookAt(_worldPosition);
     }
