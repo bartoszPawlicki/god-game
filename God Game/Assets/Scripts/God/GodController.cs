@@ -11,8 +11,8 @@ public class GodController : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        _thunderIndicator = transform.FindChild("ThunderIndicator").gameObject;
-        _indicatorLight = _thunderIndicator.GetComponent<Light>();
+        _godSkillIndicator = transform.FindChild("ThunderIndicator").gameObject;
+        _indicatorLight = _godSkillIndicator.GetComponent<Light>();
 
         _thunder = transform.FindChild("Thunder").gameObject;
         
@@ -33,6 +33,7 @@ public class GodController : MonoBehaviour
         _godSpeed = GodInitialSpeed;
 
         _skillChosen = Skill.None;
+        _startingIndicatorColor = _indicatorLight.color;
     }
 
     
@@ -42,16 +43,21 @@ public class GodController : MonoBehaviour
         if (Input.GetAxis("Fire_Thunder") == 1)
         {
             _skillChosen = Skill.Thunder;
+            _indicatorLight.color = _startingIndicatorColor;
         }
 
         if (Input.GetAxis("Fire_Wind") == 1)
         {
             _skillChosen = Skill.WindGust;
+            _indicatorLight.color = new Color(1F, 0.15F, 0.6F, 1F);
+            
         }
 
         if (Input.GetAxis("Fire_Global_Wind") == 1)
         {
             _skillChosen = Skill.GlobalWind;
+            _indicatorLight.color = new Color(0F, 0.4F, 1F, 1F);
+
         }
 
 
@@ -73,8 +79,9 @@ public class GodController : MonoBehaviour
             {
                 _globalWindController.Strike();
             }
-
         }
+
+        indicatorRaycastFunc();
     }
 
     void FixedUpdate()
@@ -87,7 +94,7 @@ public class GodController : MonoBehaviour
     private void _thunderController_OnThunderExpired(object sender, System.EventArgs e)
     {
         _godSpeed = GodInitialSpeed;
-        _thunderIndicator.SetActive(true);
+        _godSkillIndicator.SetActive(true);
         _skillChosen = Skill.None;
     }
 
@@ -95,7 +102,7 @@ public class GodController : MonoBehaviour
     {
         _indicatorLight.range /= _lightRange;
         _godSpeed = ThunderSpeed;
-        _thunderIndicator.SetActive(false);
+        _godSkillIndicator.SetActive(false);
     }
 
     private void _windController_OnWindGustExpired(object sender, System.EventArgs e)
@@ -108,16 +115,36 @@ public class GodController : MonoBehaviour
         _skillChosen = Skill.None;
     }
 
+    private void indicatorRaycastFunc()
+    {
+        Vector3 _rayOrigin = gameObject.transform.position;
+        if (Physics.Raycast(_rayOrigin, Vector3.down, out _indicatorRaycastHit, 20))
+        {
+            if (!_indicatorRaycastHit.collider.gameObject.CompareTag("Player"))
+            {
+                if (_godSkillIndicator.transform.position.y != _indicatorRaycastHit.point.y + 0.5F)
+                {
+                    _godSkillIndicator.transform.Translate(0, _indicatorRaycastHit.point.y + 0.5F - _godSkillIndicator.transform.position.y, 0);  
+                }
+                
+                
+            }
+        }
+    }
+
     private float _lightRange = 1.5f;
     private float _godSpeed;
 
     private Light _indicatorLight;
+    private Color _startingIndicatorColor;
     private GameObject _thunder;
     private GameObject _wind;
     private GameObject _globalWind;
-    private GameObject _thunderIndicator;
+    private GameObject _godSkillIndicator;
     private ThunderController _thunderController;
     private WindController _windController;
     private GlobalWindController _globalWindController;
     private Skill _skillChosen;
+
+    private RaycastHit _indicatorRaycastHit;
 }

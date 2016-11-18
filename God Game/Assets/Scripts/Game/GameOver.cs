@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Assets.Scripts;
+using System.Linq;
 
 public class GameOver : MonoBehaviour
 {
-
+    public Vector3 FinalIslandPosition { get; set; }
     public GameEndEventHandler OnGameEnd;
 	// Use this for initialization
 	void Start ()
     {
+        FinalIslandPosition = new Vector3(-20, 41, -100);
         var players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var item in players)
         {
@@ -29,18 +31,10 @@ public class GameOver : MonoBehaviour
     void Update ()
     {
         //it have to be in the end of function becouse of return in foreach
-        foreach (var item in _playerColliding)
-        {
-            if (!item.Value)
-                return;   
-        }
-        //TODO: Not always work properly
-        //rely unity uses C# 4 ... lol a cant use "?" before invoke ... strange
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameTime>().enabled = false;
-        if(OnGameEnd != null)
-            OnGameEnd.Invoke(this, Winner.Players);
-        Debug.Log("Players Winns");
-        enabled = false;
+
+        teleport();
+        //had to be add in 
+        //playersWin();
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -49,6 +43,37 @@ public class GameOver : MonoBehaviour
             _playerColliding[collision.gameObject] = true;
             collision.gameObject.SetActive(false);
         }
+    }
+    private void teleport()
+    {
+
+        bool teleport = true;
+        foreach (var item in _playerColliding.Values)
+        {
+            if (!item)
+                teleport = false;
+        }
+
+        if (teleport)
+        {
+            foreach (var item in _playerColliding.Keys.ToList())
+            {
+                item.SetActive(true);
+                item.transform.position = FinalIslandPosition;
+                
+                _playerColliding[item] = false;
+            }
+            GetComponent<Collider>().enabled = false;
+        }
+
+    }
+    private void playersWin()
+    {
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameTime>().enabled = false;
+        if (OnGameEnd != null)
+            OnGameEnd.Invoke(this, Winner.Players);
+        Debug.Log("Players Winns");
+        enabled = false;
     }
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
 }
