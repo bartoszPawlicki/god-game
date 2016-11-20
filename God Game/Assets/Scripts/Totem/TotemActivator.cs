@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class TotemActivator : MonoBehaviour
 {
@@ -9,13 +10,14 @@ public class TotemActivator : MonoBehaviour
     private float totemRange = 4.0f;
     private float messageDisplayTime = 0f;
     public bool totemCapturedFlag { get; set; }
-    public bool totemCapturedFlagTimeImpact { get; set; }
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
+    private bool _totemOfEagleCaptured = false;
 
+
+    public event EventHandler OnTotemCapured;
     void Start()
     {
         totemCapturedFlag = false;
-        totemCapturedFlagTimeImpact = false;
         _players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var player in _players)
         {
@@ -32,17 +34,19 @@ public class TotemActivator : MonoBehaviour
         {
             foreach (GameObject player in _players)
             {
-                if (Vector3.Distance(player.transform.position, gameObject.transform.position) < totemRange && gameObject.transform.position.y - player.transform.position.y < 0.5f)
+                if (Vector3.Distance(player.transform.position, gameObject.transform.position) < totemRange && gameObject.transform.position.y - player.transform.position.y < 0.5f && _totemOfEagleCaptured == false)
                 {
-                    if(transform.rotation.eulerAngles.z > 0 )
+                    if(transform.rotation.eulerAngles.z < 359)
                     {
                         transform.Rotate(Vector3.forward * captureSpeed);                
                     }
                     else
                     {
+                        _totemOfEagleCaptured = true;
                         totemCapturedFlag = true;
-                        totemCapturedFlagTimeImpact = true;
                         messageDisplayTime = 4f;
+                        if (OnTotemCapured != null)
+                            OnTotemCapured.Invoke(this, null);
                     }
                 }
             }
@@ -52,6 +56,10 @@ public class TotemActivator : MonoBehaviour
         {
             totemCapturedFlag = false;
         }
+    }
+    public void msg()
+    {
+        Debug.Log("totem captured");
     }
     void OnGUI()
     {

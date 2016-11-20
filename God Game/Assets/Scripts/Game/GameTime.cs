@@ -10,10 +10,7 @@ public class GameTime : MonoBehaviour
     /// <summary>
     /// Game Time in seconds
     /// </summary>
-
-  //  public GameObject totem;
     public double TotalGameTimeSeconds;
-    public double TimePerRound = 120f;
     public bool IsGameStarted = false;
     private bool gameOverflag = false;
     public event EventHandler OnTimeElapsed;
@@ -48,13 +45,24 @@ public class GameTime : MonoBehaviour
         TotalGameTime = TimeSpan.FromSeconds(TotalGameTimeSeconds);
         IsGameStarted = true;
         TimeLeft = TotalGameTime;
-        GetComponent<RespawnManager>().OnLastPlayerFall += GameTime_OnLastPlayerFall;
-	}
+
+        _totem = transform.FindChild("TotemOfTheEagle").gameObject;
+        _totemActivator = _totem.GetComponent<TotemActivator>();
+        _totemActivator.OnTotemCapured += GameTime_OnTotemCapturd;
+
+        GetComponent<RespawnManager>().OnLastPlayerFall += GameTime_OnLastPlayerFall;  
+    }
 
     private void GameTime_OnLastPlayerFall(object sender, EventArgs e)
     {
         Debug.Log("wszyscy spadli");
         //Send when every player fall from island
+    }
+    private void GameTime_OnTotemCapturd(object sender, EventArgs e)
+    {
+        Debug.Log("totem przejety xDD");
+
+       // _totemActivator.msg();
     }
 
     // Update is called once per frame
@@ -70,24 +78,13 @@ public class GameTime : MonoBehaviour
                 foreach (var gc in gameController)
                 {
                     gc.GetComponentInChildren<RoundManager>().newRound = true;
-                    TimeLeft += TimeSpan.FromSeconds(TimePerRound);
-                    TimeLeftSeconds += TimePerRound;
+                    TimeLeft += TimeSpan.FromSeconds(TotalGameTimeSeconds);
                     if (gc.GetComponentInChildren<RoundManager>().roundNumber > 5)
                     {
                         gameOverflag = true;
                         gc.GetComponentInChildren<RoundManager>().message = "Game Over";
                         GameOver();
                     }
-                }
-            }
-            var totems = GameObject.FindGameObjectsWithTag("Totem");
-            foreach (var totem in totems)
-            {
-                if (totem.GetComponentInChildren<TotemActivator>().totemCapturedFlagTimeImpact == true)
-                {
-                    TimeLeft += TimeSpan.FromSeconds(30);
-                    TimeLeftSeconds += 30.0f;
-                    totem.GetComponentInChildren<TotemActivator>().totemCapturedFlagTimeImpact = false;
                 }
             }
         }
@@ -114,4 +111,6 @@ public class GameTime : MonoBehaviour
     
     private TimeSpan _totalGameTime;
     private TimeSpan _timeleft;
+    private TotemActivator _totemActivator;
+    private GameObject _totem;
 }
