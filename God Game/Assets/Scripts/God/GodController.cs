@@ -13,6 +13,7 @@ public class GodController : MonoBehaviour
     {
         _godSkillIndicator = transform.FindChild("ThunderIndicator").gameObject;
         _indicatorLight = _godSkillIndicator.GetComponent<Light>();
+        _indicatorLightParticles = _godSkillIndicator.GetComponent<ParticleSystem>();
 
         _thunder = transform.FindChild("Thunder").gameObject;
         
@@ -20,10 +21,10 @@ public class GodController : MonoBehaviour
         _thunderController.OnThunderStruck += _thunderController_OnThunderStruck;
         _thunderController.OnThunderExpired += _thunderController_OnThunderExpired;
 
-        _wind = transform.FindChild("Wind").gameObject;
+        _wind = transform.FindChild("WaterGeyser").gameObject;
 
-        _windController = _wind.GetComponent<WindController>();
-        _windController.OnWindGustExpired += _windController_OnWindGustExpired;
+        _waterGeyserController = _wind.GetComponent<WaterGeyserController>();
+        _waterGeyserController.OnWaterGeyserExpired += _windController_OnWindGustExpired;
 
         _globalWind = transform.FindChild("GlobalWind").gameObject;
 
@@ -32,37 +33,72 @@ public class GodController : MonoBehaviour
         
         _godSpeed = GodInitialSpeed;
 
-        _skillChosen = Skill.None;
         _startingIndicatorColor = _indicatorLight.color;
+        SkillChosen = Skill.None;
+        
     }
 
-    
+    public Skill SkillChosen
+    {
+        get { return _skillChosen; }
+        private set
+        {
+            if (value != _skillChosen)
+            {
+                _skillChosen = value;
+                switch (value)
+                {
+                    case Skill.None:
+                        _indicatorLight.color = new Color(1F, 1F, 1F, 1F);
+                        _indicatorLightParticles.startColor = new Color(1F, 1F, 1F, 1F);
+                        break;
+                    case Skill.Thunder:
+
+                        _indicatorLight.color = new Color(1F, 0.15F, 0.6F, 1F);
+                        _indicatorLightParticles.startColor = new Color(1F, 0.15F, 0.6F, 1F);
+                        break;
+
+                    case Skill.WaterGeyser:
+
+                        _indicatorLight.color = new Color(0F, 0.4F, 1F, 1F);
+                        _indicatorLightParticles.startColor = new Color(0F, 0.4F, 1F, 1F);
+                        break;
+
+                    case Skill.GlobalWind:
+
+                        _indicatorLight.color = _startingIndicatorColor;
+                        _indicatorLightParticles.startColor = _startingIndicatorColor;
+                        break;
+                }
+            }
+        }
+    }
 
     void Update ()
     {
-      //  Debug.Log(Input.GetAxis("Confirm_Target"));
         if (Input.GetAxis("Fire_Thunder") == 1)
         {
-            _skillChosen = Skill.Thunder;
-            _indicatorLight.color = _startingIndicatorColor;
+            SkillChosen = Skill.Thunder;
+            
         }
 
         if (Input.GetAxis("Fire_Wind") == 1)
         {
-            _skillChosen = Skill.WindGust;
-            _indicatorLight.color = new Color(1F, 0.15F, 0.6F, 1F);
+            SkillChosen = Skill.WaterGeyser;
+            
             
         }
 
         if (Input.GetAxis("Fire_Global_Wind") == 1)
         {
-            _skillChosen = Skill.GlobalWind;
-            _indicatorLight.color = new Color(0F, 0.4F, 1F, 1F);
+            SkillChosen = Skill.GlobalWind;
 
         }
 
-        if(_skillChosen == Skill.GlobalWind)
+        if(SkillChosen == Skill.GlobalWind)
         {
+            if (!_globalWindController.isActiveAndEnabled)
+            {
                 if (Input.GetAxisRaw("Horizontal_God_Aim") != 0)
                 {
                     _globalWindController.AimHorizontal = Input.GetAxis("Horizontal_God_Aim");
@@ -72,25 +108,29 @@ public class GodController : MonoBehaviour
                 {
                     _globalWindController.AimVertical = Input.GetAxis("Vertical_God_Aim");
                 }
+            }
+                
         }
 
-        if (Input.GetAxis("Confirm_Target") == 1 || (Input.GetAxis("Confirm_Target") < -0.5) && _skillChosen != Skill.None)
+        if (Input.GetAxis("Confirm_Target") == 1 || (Input.GetAxis("Confirm_Target") < -0.5) && SkillChosen != Skill.None)
         {
-            if (_skillChosen == Skill.Thunder && !_thunderController.isActiveAndEnabled)
+            if (SkillChosen == Skill.Thunder && !_thunderController.isActiveAndEnabled)
             {
                 _thunderController.Strike();
                 _godSpeed = 0;
                 _indicatorLight.range *= _lightRange;
             }
 
-            if (_skillChosen == Skill.WindGust && !_windController.isActiveAndEnabled)
+            if (SkillChosen == Skill.WaterGeyser && !_waterGeyserController.isActiveAndEnabled)
             {
-                _windController.Strike();
+                _waterGeyserController.Strike();
+                _indicatorLight.range *= _lightRange;
             }
 
-            if (_skillChosen == Skill.GlobalWind && !_globalWindController.isActiveAndEnabled && (_globalWindController.AimVertical != 0 || _globalWindController.AimHorizontal != 0))
+            if (SkillChosen == Skill.GlobalWind && !_globalWindController.isActiveAndEnabled && (_globalWindController.AimVertical != 0 || _globalWindController.AimHorizontal != 0))
             {
                 _globalWindController.Strike();
+                _indicatorLight.range *= _lightRange;
             }
         }
 
@@ -107,25 +147,27 @@ public class GodController : MonoBehaviour
     private void _thunderController_OnThunderExpired(object sender, System.EventArgs e)
     {
         _godSpeed = GodInitialSpeed;
-        _godSkillIndicator.SetActive(true);
-        _skillChosen = Skill.None;
+        SkillChosen = Skill.None;
     }
 
     private void _thunderController_OnThunderStruck(object sender, System.EventArgs e)
     {
         _indicatorLight.range /= _lightRange;
         _godSpeed = ThunderSpeed;
-        _godSkillIndicator.SetActive(false);
     }
 
     private void _windController_OnWindGustExpired(object sender, System.EventArgs e)
     {
-        _skillChosen = Skill.None;
+        SkillChosen = Skill.None;
+        _indicatorLight.range /= _lightRange;
     }
 
     private void _globalWindController_OnGlobalWindExpired(object sender, System.EventArgs e)
     {
-        _skillChosen = Skill.None;
+        SkillChosen = Skill.None;
+        _globalWindController.AimHorizontal = 0;
+        _globalWindController.AimVertical = 0;
+        _indicatorLight.range /= _lightRange;
     }
 
     private void indicatorRaycastFunc()
@@ -149,13 +191,14 @@ public class GodController : MonoBehaviour
     private float _godSpeed;
 
     private Light _indicatorLight;
+    private ParticleSystem _indicatorLightParticles;
     private Color _startingIndicatorColor;
     private GameObject _thunder;
     private GameObject _wind;
     private GameObject _globalWind;
     private GameObject _godSkillIndicator;
     private ThunderController _thunderController;
-    private WindController _windController;
+    private WaterGeyserController _waterGeyserController;
     private GlobalWindController _globalWindController;
     private Skill _skillChosen;
 

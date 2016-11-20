@@ -14,7 +14,7 @@ namespace Assets.Scripts
     public enum Skill
     {
         Thunder,
-        WindGust,
+        WaterGeyser,
         GlobalWind,
         None
     }
