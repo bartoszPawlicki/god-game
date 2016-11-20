@@ -57,10 +57,6 @@ public class TotemActivator : MonoBehaviour
             totemCapturedFlag = false;
         }
     }
-    public void msg()
-    {
-        Debug.Log("totem captured");
-    }
     void OnGUI()
     {
         GUI.skin.label.fontSize = 70;

@@ -11,6 +11,7 @@ public class GameTime : MonoBehaviour
     /// Game Time in seconds
     /// </summary>
     public double TotalGameTimeSeconds;
+    public double bonusTimeOnCapture = 30d;
     public bool IsGameStarted = false;
     private bool gameOverflag = false;
     public event EventHandler OnTimeElapsed;
@@ -45,11 +46,20 @@ public class GameTime : MonoBehaviour
         TotalGameTime = TimeSpan.FromSeconds(TotalGameTimeSeconds);
         IsGameStarted = true;
         TimeLeft = TotalGameTime;
+        //totem1
+        _totem1 = transform.FindChild("TotemOfTheEagle").gameObject;
+        _totemActivator1 = _totem1.GetComponent<TotemActivator>();
+        _totemActivator1.OnTotemCapured += GameTime_OnTotemCapturd;
+        //totem2
+        _totem2 = transform.FindChild("TotemOfTheBear").gameObject;
+        _totemActivator2 = _totem2.GetComponent<TotemActivator>();
+        _totemActivator2.OnTotemCapured += GameTime_OnTotemCapturd;
+        //totem3
+        _totem3 = transform.FindChild("TotemOfThePhoenix").gameObject;
+        _totemActivator3 = _totem3.GetComponent<TotemActivator>();
+        _totemActivator3.OnTotemCapured += GameTime_OnTotemCapturd;
 
-        _totem = transform.FindChild("TotemOfTheEagle").gameObject;
-        _totemActivator = _totem.GetComponent<TotemActivator>();
-        _totemActivator.OnTotemCapured += GameTime_OnTotemCapturd;
-
+    //wiem ze brzydko to jest zrobione, ale w przyszlosci nie bede 3 totemy, tylko 3 rozne skrypty :D
         GetComponent<RespawnManager>().OnLastPlayerFall += GameTime_OnLastPlayerFall;  
     }
 
@@ -60,9 +70,9 @@ public class GameTime : MonoBehaviour
     }
     private void GameTime_OnTotemCapturd(object sender, EventArgs e)
     {
-        Debug.Log("totem przejety xDD");
-
-       // _totemActivator.msg();
+        TimeLeft += TimeSpan.FromSeconds(bonusTimeOnCapture);
+        Debug.Log("totemCaptured");
+        //add additional time in case of capturing any totem
     }
 
     // Update is called once per frame
@@ -111,6 +121,10 @@ public class GameTime : MonoBehaviour
     
     private TimeSpan _totalGameTime;
     private TimeSpan _timeleft;
-    private TotemActivator _totemActivator;
-    private GameObject _totem;
+    private TotemActivator _totemActivator1;
+    private GameObject _totem1;
+    private TotemActivator _totemActivator2;
+    private GameObject _totem2;
+    private TotemActivator _totemActivator3;
+    private GameObject _totem3;
 }

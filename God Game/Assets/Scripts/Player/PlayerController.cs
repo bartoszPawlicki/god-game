@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     /// Player name has to end with player number
     /// </summary>
     public float StartingSpeed;
-
+    public event EventHandler OnInflictDamage;
     //All players had to be on scene or had to be add to players in some way
     void Start ()
     {
@@ -21,6 +21,21 @@ public class PlayerController : MonoBehaviour
         _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
         _slowTimer = new Timer() { AutoReset = false };
         _slowTimer.Elapsed += Timer_Elapsed;
+        _damage = 1;
+
+        //totem1
+        _totem1 = transform.parent.FindChild("TotemOfTheEagle").gameObject;
+        _totemActivator1 = _totem1.GetComponent<TotemActivator>();
+        _totemActivator1.OnTotemCapured += PlayerControler_OnTotemCaptured;
+        //totem2
+        _totem1 = transform.parent.FindChild("TotemOfTheBear").gameObject;
+        _totemActivator2 = _totem2.GetComponent<TotemActivator>();
+        _totemActivator2.OnTotemCapured += PlayerControler_OnTotemCaptured;
+        //totem3
+        _totem1 = transform.parent.FindChild("TotemOfThePhoenix").gameObject;
+        _totemActivator3 = _totem3.GetComponent<TotemActivator>();
+        _totemActivator3.OnTotemCapured += PlayerControler_OnTotemCaptured;
+
     }
 	
     /// <summary>
@@ -92,6 +107,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
             _collidingWithAnotherPlayer = false;
     }
+    private void PlayerControler_OnTotemCaptured(object sender, EventArgs e)
+    {
+        _damage += 2;
+        Debug.Log("damage++, now equls: " + _damage);
+    }
 
     private float _fireRopeAxisValue = -1;
     private bool _collidingWithAnotherPlayer;
@@ -100,4 +120,13 @@ public class PlayerController : MonoBehaviour
     private float _speed;
     private Rigidbody _rigidbody;
     private RopeController _rope;
+    private int _damage;
+
+    // wymyslic czy nie da sie lepiej bez robienia niepotrzebnego syfu
+    private TotemActivator _totemActivator1;
+    private GameObject _totem1;
+    private TotemActivator _totemActivator2;
+    private GameObject _totem2;
+    private TotemActivator _totemActivator3;
+    private GameObject _totem3;
 }
