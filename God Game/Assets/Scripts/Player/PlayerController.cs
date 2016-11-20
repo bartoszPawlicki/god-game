@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using System;
 using System.Timers;
+using Assets.Scripts;
 
 public class PlayerController : MonoBehaviour
 { 
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
     /// Player name has to end with player number
     /// </summary>
     public float StartingSpeed;
-    public event EventHandler OnInflictDamage;
+    public event DealDamageEventHandler OnInflictDamage;
     //All players had to be on scene or had to be add to players in some way
     void Start ()
     {
@@ -28,14 +29,15 @@ public class PlayerController : MonoBehaviour
         _totemActivator1 = _totem1.GetComponent<TotemActivator>();
         _totemActivator1.OnTotemCapured += PlayerControler_OnTotemCaptured;
         //totem2
-        _totem1 = transform.parent.FindChild("TotemOfTheBear").gameObject;
+        _totem2 = transform.parent.FindChild("TotemOfTheBear").gameObject;
         _totemActivator2 = _totem2.GetComponent<TotemActivator>();
         _totemActivator2.OnTotemCapured += PlayerControler_OnTotemCaptured;
         //totem3
-        _totem1 = transform.parent.FindChild("TotemOfThePhoenix").gameObject;
+        _totem3 = transform.parent.FindChild("TotemOfThePhoenix").gameObject;
         _totemActivator3 = _totem3.GetComponent<TotemActivator>();
         _totemActivator3.OnTotemCapured += PlayerControler_OnTotemCaptured;
 
+         InvokeRepeating("InflictDamageOnGod", 3.0f,1.0f);
     }
 	
     /// <summary>
@@ -49,7 +51,6 @@ public class PlayerController : MonoBehaviour
         _slowTimer.Interval = slowDuration;
         _slowTimer.Start();
     }
-
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
         _speed = StartingSpeed;
@@ -64,7 +65,6 @@ public class PlayerController : MonoBehaviour
                 if (!_collidingWithAnotherPlayer)
                     _rope.FireRope();
         }
-            
     }
 
 	void FixedUpdate()
@@ -111,6 +111,14 @@ public class PlayerController : MonoBehaviour
     {
         _damage += 2;
         Debug.Log("damage++, now equls: " + _damage);
+    }
+    private void InflictDamageOnGod()
+    {
+        if (gameObject.transform.position.y > 30)
+        {
+            if (OnInflictDamage != null)
+                OnInflictDamage.Invoke(this, _damage);
+        }
     }
 
     private float _fireRopeAxisValue = -1;
