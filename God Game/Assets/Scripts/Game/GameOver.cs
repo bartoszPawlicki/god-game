@@ -19,6 +19,13 @@ public class GameOver : MonoBehaviour
             _playerColliding.Add(item, false);
         }
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameTime>().OnTimeElapsed += GameOverController_OnTimeElapsed;
+
+        GetComponent<RoundManager>().OnNewRoundStarted += GameOver_OnNewRoundStarted;
+    }
+
+    private void GameOver_OnNewRoundStarted(object sender, EventArgs e)
+    {
+        GetComponent<Collider>().enabled = true;
     }
 
     private void GameOverController_OnTimeElapsed(object sender, EventArgs e)
@@ -63,6 +70,7 @@ public class GameOver : MonoBehaviour
                 
                 _playerColliding[item] = false;
             }
+            GameObject.FindGameObjectWithTag("God").transform.position = FinalIslandPosition + new Vector3(0, 1.5f, 0);
             GetComponent<Collider>().enabled = false;
         }
 
@@ -74,6 +82,7 @@ public class GameOver : MonoBehaviour
             OnGameEnd.Invoke(this, Winner.Players);
         Debug.Log("Players Winns");
         enabled = false;
+
     }
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
 }

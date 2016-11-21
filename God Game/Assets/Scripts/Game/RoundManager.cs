@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class RoundManager : MonoBehaviour {
-
-
+public class RoundManager : MonoBehaviour
+{
+    public event EventHandler OnNewRoundStarted;
     private GameObject[] _players;
     private GameObject _god;
     public bool newRound { get; set; }
@@ -30,6 +31,9 @@ public class RoundManager : MonoBehaviour {
             messageDisplayTime = 4f;
             messageflag = true;
             newRound = false;
+
+            if (OnNewRoundStarted != null)
+                OnNewRoundStarted.Invoke(this, null);
         }
         messageDisplayTime -= Time.deltaTime;
         if (messageDisplayTime <= 0)
