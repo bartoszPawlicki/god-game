@@ -13,6 +13,10 @@ public class GodController : MonoBehaviour
     public float WaterGeyserCooldown;
     public float GlobalWindCooldown;
 
+    public SkillIcon ThunderIcon;
+    public SkillIcon WaterIcon;
+    public SkillIcon WindIcon;
+
     // Use this for initialization
     void Start ()
     {
@@ -53,23 +57,34 @@ public class GodController : MonoBehaviour
         _canFireThunder = true;
         _canFireWaterGeyser = true;
         _canFireGlobalWind = true;
-        
-    }
+
+        _thunderCD = ThunderCooldown/1000;
+        _waterCD = WaterGeyserCooldown / 1000;
+        _windCD = GlobalWindCooldown / 1000;
+
+        thunderBool = false;
+        waterBool = false;
+        windBool = false;
+
+}
 
     private void _thunderCooldownTimer_Elapsed(object sender, ElapsedEventArgs e)
     {
         _canFireThunder = true;
+        thunderBool = false;
     }
 
     private void _waterGeyserCooldownTimer_Elapsed(object sender, ElapsedEventArgs e)
     {
         _canFireWaterGeyser = true;
+        waterBool = false;
     }
     
 
     private void _globalWindCooldownTimer_Elapsed(object sender, ElapsedEventArgs e)
     {
         _canFireGlobalWind = true;
+        windBool = false;
     }
 
     public Skill SkillChosen
@@ -113,19 +128,28 @@ public class GodController : MonoBehaviour
         if (Input.GetAxis("Fire_Thunder") == 1)
         {
             SkillChosen = Skill.Thunder;
+            ThunderIcon.SetSelected(true);
+            WaterIcon.SetSelected(false);
+            WindIcon.SetSelected(false);
             
         }
 
         if (Input.GetAxis("Fire_Wind") == 1)
         {
             SkillChosen = Skill.WaterGeyser;
-            
-            
+            ThunderIcon.SetSelected(false);
+            WaterIcon.SetSelected(true);
+            WindIcon.SetSelected(false);
+
+
         }
 
         if (Input.GetAxis("Fire_Global_Wind") == 1)
         {
             SkillChosen = Skill.GlobalWind;
+            ThunderIcon.SetSelected(false);
+            WaterIcon.SetSelected(false);
+            WindIcon.SetSelected(true);
 
         }
 
@@ -154,7 +178,9 @@ public class GodController : MonoBehaviour
                 _thunderController.Strike();
                 _godSpeed = 0;
                 _indicatorLight.range *= _lightRange;
-                
+                _thunderCD = ThunderCooldown / 1000;
+
+
             }
 
             if (SkillChosen == Skill.WaterGeyser && !_waterGeyserController.isActiveAndEnabled && _canFireWaterGeyser)
@@ -162,6 +188,7 @@ public class GodController : MonoBehaviour
                 _canFireWaterGeyser = false;
                 _waterGeyserController.Strike();
                 _indicatorLight.range *= _lightRange;
+                _waterCD = WaterGeyserCooldown / 1000;
             }
 
             if (SkillChosen == Skill.GlobalWind && !_globalWindController.isActiveAndEnabled && (_globalWindController.AimVertical != 0 || _globalWindController.AimHorizontal != 0) && _canFireGlobalWind)
@@ -169,8 +196,31 @@ public class GodController : MonoBehaviour
                 _canFireGlobalWind = false;
                 _globalWindController.Strike();
                 _indicatorLight.range *= _lightRange;
+                _windCD = GlobalWindCooldown / 1000;
             }
         }
+
+        if (thunderBool)
+        {
+            _thunderCD -= Time.deltaTime;
+            ThunderIcon.SetCooldownPercent((_thunderCD / (ThunderCooldown/1000))*100);
+        }
+
+        if (waterBool)
+        {
+            _waterCD -= Time.deltaTime;
+            WaterIcon.SetCooldownPercent((_waterCD / (WaterGeyserCooldown / 1000)) * 100);
+        }
+
+        if (windBool)
+        {
+            _windCD -= Time.deltaTime;
+            WindIcon.SetCooldownPercent((_windCD / (GlobalWindCooldown / 1000)) * 100);
+        }
+
+
+
+
 
         indicatorRaycastFunc();
     }
@@ -188,6 +238,8 @@ public class GodController : MonoBehaviour
         SkillChosen = Skill.None;
         _thunderCooldownTimer.Interval = ThunderCooldown;
         _thunderCooldownTimer.Start();
+
+        thunderBool = true;
     }
 
     private void _thunderController_OnThunderStruck(object sender, System.EventArgs e)
@@ -202,6 +254,8 @@ public class GodController : MonoBehaviour
         _indicatorLight.range /= _lightRange;
         _waterGeyserCooldownTimer.Interval = WaterGeyserCooldown;
         _waterGeyserCooldownTimer.Start();
+
+        waterBool = true;
     }
 
     private void _globalWindController_OnGlobalWindExpired(object sender, System.EventArgs e)
@@ -213,6 +267,8 @@ public class GodController : MonoBehaviour
 
         _globalWindCooldownTimer.Interval = GlobalWindCooldown;
         _globalWindCooldownTimer.Start();
+
+        windBool = true;
     }
 
     private void indicatorRaycastFunc()
@@ -252,6 +308,16 @@ public class GodController : MonoBehaviour
     private Timer _thunderCooldownTimer;
     private Timer _waterGeyserCooldownTimer;
     private Timer _globalWindCooldownTimer;
+
+    private float _thunderCD;
+    private float _waterCD;
+    private float _windCD;
+
+    private bool thunderBool;
+    private bool waterBool;
+    private bool windBool;
+    
+    
 
     private bool _canFireThunder;
     private bool _canFireWaterGeyser;
