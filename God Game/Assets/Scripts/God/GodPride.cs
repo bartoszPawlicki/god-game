@@ -4,8 +4,10 @@ using System;
 
 public class GodPride : MonoBehaviour
 {
+    public float godPride = 200;
+    private float maxPride = 200;
+    private ProgressBar progressBar;
 
-    public int godPride = 200;
     // Use this for initialization
     void Start()
     {
@@ -16,6 +18,10 @@ public class GodPride : MonoBehaviour
         _player2 = transform.parent.FindChild("Player2").gameObject;
         _playerControler2 = _player1.GetComponent<PlayerController>();
         _playerControler2.OnInflictDamage += GodPride_OnInflictDamage;
+
+        progressBar = GuiControler.pBar;
+        maxPride = godPride;
+        progressBar.SetProgress(1);
     }
     // Update is called once per frame
     public void GodPride_OnInflictDamage(object sender, int dmg)
@@ -24,12 +30,15 @@ public class GodPride : MonoBehaviour
         {
             godPride -= dmg;
             Debug.Log("god pride = " + godPride);
+
+            progressBar.SetProgress(godPride / maxPride);
         }
         else
         {
             Debug.Log("gameOver");
         }
     }
+
     private PlayerController _playerControler1;
     private GameObject _player1;
     private PlayerController _playerControler2;

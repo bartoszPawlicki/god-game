@@ -19,8 +19,7 @@ public class GameOver : MonoBehaviour
             _playerColliding.Add(item, false);
         }
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameTime>().OnTimeElapsed += GameOverController_OnTimeElapsed;
-
-        GetComponent<RoundManager>().OnNewRoundStarted += GameOver_OnNewRoundStarted;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<RoundManager>().OnNewRoundStarted += GameOver_OnNewRoundStarted;
     }
 
     private void GameOver_OnNewRoundStarted(object sender, EventArgs e)
