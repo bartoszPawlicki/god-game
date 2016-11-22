@@ -14,7 +14,7 @@ public class ThrowCompanionBehaviour : MonoBehaviour
     {
         get
         {
-            return (float)(_cooldownStopwatch.ElapsedMilliseconds / _cooldownTimer.Interval * 100);
+            return (float)((_cooldownStopwatch.ElapsedMilliseconds + 10) / _cooldownTimer.Interval * 100);
         }
     }
     public int Cooldown
@@ -51,7 +51,7 @@ public class ThrowCompanionBehaviour : MonoBehaviour
         float throwCompanion1 = Input.GetAxis("Throw_1");
         float throwCompanion2 = Input.GetAxis("Throw_2");
 
-        if (throwCompanion1 == 1 && throwCompanion2 == 1 && RemainingCooldown == 100)
+        if (throwCompanion1 == 1 && throwCompanion2 == 1 && RemainingCooldown >= 100)
         {
             foreach (var item in _playerColliding)
             {

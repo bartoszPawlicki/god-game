@@ -14,7 +14,7 @@ public class RopeController : MonoBehaviour
     {
         get
         {
-            return (float)(_cooldownStopwatch.ElapsedMilliseconds / _cooldownTimer.Interval * 100);
+            return (float)((_cooldownStopwatch.ElapsedMilliseconds + 10) / _cooldownTimer.Interval * 100.0f);
         }
     }
     public int Cooldown
@@ -30,13 +30,13 @@ public class RopeController : MonoBehaviour
 
     public void FireRope()
     {
-        if (!IsMoving && !IsReturning && RemainingCooldown == 100)
+        if (!IsMoving && !IsReturning && RemainingCooldown >= 100)
         {
             IsMoving = true;
             enabled = true;
             startCooldown();
         }
-        else
+        else if (IsMoving || IsReturning)
         {
             IsMoving = false;
             IsReturning = false;
@@ -77,8 +77,9 @@ public class RopeController : MonoBehaviour
         if (IsPullingPlayer)
         {
             float forceHorizontal = transform.parent.position.x - _player.transform.position.x;
+            float forceUp = transform.parent.position.y - _player.transform.position.y;
             float forceVertical = transform.parent.position.z - _player.transform.position.z;
-            Vector3 movement = new Vector3(forceHorizontal, 0, forceVertical).normalized;
+            Vector3 movement = new Vector3(forceHorizontal, forceUp, forceVertical).normalized;
             _player.GetComponent<ConstantForce>().force = movement * ThrowStrength;
 
             Vector3 firstPoint = transform.parent.position;
@@ -137,9 +138,9 @@ public class RopeController : MonoBehaviour
     }
     private void startCooldown()
     {
-        _cooldownTimer.Start();
         _cooldownStopwatch.Reset();
         _cooldownStopwatch.Start();
+        _cooldownTimer.Start();
     }
 
     private GameObject _player;

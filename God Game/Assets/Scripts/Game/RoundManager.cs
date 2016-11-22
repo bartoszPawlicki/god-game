@@ -20,7 +20,6 @@ public class RoundManager : MonoBehaviour
         roundNumber = 1;
         setAllPlayersOnStartingPosition();
     }
-	
 	void Update ()
     {
 	    if(newRound == true)

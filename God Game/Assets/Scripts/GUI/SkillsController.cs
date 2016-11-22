@@ -9,6 +9,10 @@ public class SkillsController : MonoBehaviour
         {
             if (value >= 0 && value <= 100)
                 _throwSkill.SetCooldownPercent(value);
+            else if (value > 100)
+                _throwSkill.SetCooldownPercent(100);
+            else
+                _throwSkill.SetCooldownPercent(0);
         }
     }
     public float RopeCooldown
@@ -17,6 +21,10 @@ public class SkillsController : MonoBehaviour
         {
             if (value >= 0 && value <= 100)
                 _ropeSkill.SetCooldownPercent(value);
+            else if (value > 100)
+                _ropeSkill.SetCooldownPercent(100);
+            else
+                _ropeSkill.SetCooldownPercent(0);
         }
     }
     void Start ()
