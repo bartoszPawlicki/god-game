@@ -37,14 +37,12 @@ public class PlayerController : MonoBehaviour
         _rope = GetComponentInChildren<RopeController>();
         if(RopeCooldown != 0)
         { 
-            _rope.Cooldown = RopeCooldown;
-            _rope.InitializeCooldown();
+            _rope.InitializeCooldown(RopeCooldown);
         }
         _throw = GetComponent<ThrowCompanionBehaviour>();
         if(ThrowCooldown != 0)
         {
-            _throw.Cooldown = ThrowCooldown;
-            _throw.InitializeCooldown();
+            _throw.InitializeCooldown(ThrowCooldown);
         }
         
         _speed = StartingSpeed;
@@ -53,7 +51,7 @@ public class PlayerController : MonoBehaviour
         _slowTimer.Elapsed += Timer_Elapsed;
         _damage = 1;
         
-
+        //Niech to już zniknie xD bo patrzeć nie moge
         //totem1
         _totem1 = transform.parent.FindChild("TotemOfTheEagle").gameObject;
         _totemActivator1 = _totem1.GetComponent<TotemActivator>();

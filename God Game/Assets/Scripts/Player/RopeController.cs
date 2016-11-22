@@ -3,27 +3,14 @@ using System.Collections;
 using System;
 using System.Timers;
 using System.Diagnostics;
+using Assets.Scripts.Utils;
 
-public class RopeController : MonoBehaviour
+public class RopeController : CooldownBehaviour
 {
     public float Lenght;
     public float ThrowSpeed;
     public float ThrowStrength;
 
-    public float RemainingCooldown
-    {
-        get
-        {
-            return (float)((_cooldownStopwatch.ElapsedMilliseconds + 10) / _cooldownTimer.Interval * 100.0f);
-        }
-    }
-    public int Cooldown
-    {
-        set
-        {
-            _cooldownTimer.Interval = value;
-        }
-    }
     public bool IsReturning { get; private set; }
     public bool IsMoving { get; private set; }
     public bool IsPullingPlayer { get; set; }
@@ -34,7 +21,7 @@ public class RopeController : MonoBehaviour
         {
             IsMoving = true;
             enabled = true;
-            startCooldown();
+            StartCooldown();
         }
         else if (IsMoving || IsReturning)
         {
@@ -46,21 +33,10 @@ public class RopeController : MonoBehaviour
     public void EndPulling()
     {
         IsPullingPlayer = false;
-        _player.GetComponent<ConstantForce>().force = Vector3.zero;
+        _player.GetComponent<ConstantForce>().force -= _constantForce;
         transform.localScale = new Vector3(0.05f, 0, 0.05f);
     }
-    public void InitializeCooldown()
-    {
-        _cooldownTimer.Elapsed += _cooldownTimer_Elapsed;
-        startCooldown();
-    }
-
-    private void _cooldownTimer_Elapsed(object sender, ElapsedEventArgs e)
-    {
-        _cooldownStopwatch.Stop();
-    }
-
-    void Start ()
+    void Start()
     {
         var players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var player in players)
@@ -71,8 +47,8 @@ public class RopeController : MonoBehaviour
 
         enabled = false;
     }
-	
-	void FixedUpdate ()
+
+    void FixedUpdate()
     {
         if (IsPullingPlayer)
         {
@@ -80,6 +56,7 @@ public class RopeController : MonoBehaviour
             float forceUp = transform.parent.position.y - _player.transform.position.y;
             float forceVertical = transform.parent.position.z - _player.transform.position.z;
             Vector3 movement = new Vector3(forceHorizontal, forceUp, forceVertical).normalized;
+            _constantForce = movement * ThrowStrength;
             _player.GetComponent<ConstantForce>().force = movement * ThrowStrength;
 
             Vector3 firstPoint = transform.parent.position;
@@ -121,7 +98,7 @@ public class RopeController : MonoBehaviour
         transform.parent.LookAt(_player.transform);
         transform.localEulerAngles = new Vector3(0, -90, -90);
         transform.localScale += new Vector3(0, direction, 0) * ThrowSpeed;
-        transform.localPosition = new Vector3(0,0, transform.localScale.y);
+        transform.localPosition = new Vector3(0, 0, transform.localScale.y);
 
     }
 
@@ -136,15 +113,7 @@ public class RopeController : MonoBehaviour
 
         IsMoving = false;
     }
-    private void startCooldown()
-    {
-        _cooldownStopwatch.Reset();
-        _cooldownStopwatch.Start();
-        _cooldownTimer.Start();
-    }
 
+    private Vector3 _constantForce;
     private GameObject _player;
-
-    private Timer _cooldownTimer = new Timer() { AutoReset = false };
-    private Stopwatch _cooldownStopwatch = new Stopwatch();
 }

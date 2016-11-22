@@ -4,33 +4,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Timers;
 using System;
+using Assets.Scripts.Utils;
 
-public class ThrowCompanionBehaviour : MonoBehaviour
+public class ThrowCompanionBehaviour : CooldownBehaviour
 {
     /// <summary>
     /// Renaining skill cooldown in percentages
     /// </summary>
-    public float RemainingCooldown
-    {
-        get
-        {
-            return (float)((_cooldownStopwatch.ElapsedMilliseconds + 10) / _cooldownTimer.Interval * 100);
-        }
-    }
-    public int Cooldown
-    {
-        set
-        {
-            _cooldownTimer.Interval = value;
-        }
-    }
     public float ThrowStrength;
-
-    public void InitializeCooldown()
-    {
-        _cooldownTimer.Elapsed += _cooldownTimer_Elapsed;
-        startCooldown();
-    }
+    
     void Start()
     {
         GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
@@ -39,11 +21,6 @@ public class ThrowCompanionBehaviour : MonoBehaviour
             if (item != gameObject)
                 _playerColliding.Add(item, false);
         }
-    }
-
-    private void _cooldownTimer_Elapsed(object sender, ElapsedEventArgs e)
-    {
-        _cooldownStopwatch.Stop();
     }
 
     void Update ()
@@ -61,7 +38,7 @@ public class ThrowCompanionBehaviour : MonoBehaviour
                     float forceVertical = item.Key.transform.position.z - transform.position.z;
                     Vector3 movement = new Vector3(forceHorizontal, 0, forceVertical).normalized;
                     item.Key.GetComponent<Rigidbody>().AddForce(movement * ThrowStrength);
-                    startCooldown();
+                    StartCooldown();
                 }
             }
         }
@@ -78,15 +55,6 @@ public class ThrowCompanionBehaviour : MonoBehaviour
         if (_playerColliding.ContainsKey(collision.gameObject))
             _playerColliding[collision.gameObject] = false;
     }
-    private void startCooldown()
-    {
-        _cooldownTimer.Start();
-        _cooldownStopwatch.Reset();
-        _cooldownStopwatch.Start();
-    }
 
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
-
-    private Timer _cooldownTimer = new Timer() { AutoReset = false };
-    private Stopwatch _cooldownStopwatch = new Stopwatch();
 }
