@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GuiControler : MonoBehaviour {
+public class GuiControler : MonoBehaviour
+{
     public ProgressBar progressBar;
     public static ProgressBar pBar;
 	// Use this for initialization
@@ -11,7 +12,8 @@ public class GuiControler : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
 }

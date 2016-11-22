@@ -5,12 +5,29 @@ using UnityEditorInternal;
 using System;
 using System.Timers;
 using Assets.Scripts;
+using System.Diagnostics;
 
 public class PlayerController : MonoBehaviour
-{ 
+{
+    public float ThrowCooldownValue
+    {
+        get
+        {
+            return _throw.RemainingCooldown;
+        }
+    }
+    public float RopeCooldownValue
+    {
+        get
+        {
+            return _rope.RemainingCooldown;
+        }
+    }
     /// <summary>
     /// Player name has to end with player number
     /// </summary>
+    public int ThrowCooldown;
+    public int RopeCooldown;
     public float StartingSpeed;
     public event DealDamageEventHandler OnInflictDamage;
     //All players had to be on scene or had to be add to players in some way
@@ -18,11 +35,24 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _rope = GetComponentInChildren<RopeController>();
+        if(RopeCooldown != 0)
+        { 
+            _rope.Cooldown = RopeCooldown;
+            _rope.InitializeCooldown();
+        }
+        _throw = GetComponent<ThrowCompanionBehaviour>();
+        if(ThrowCooldown != 0)
+        {
+            _throw.Cooldown = ThrowCooldown;
+            _throw.InitializeCooldown();
+        }
+        
         _speed = StartingSpeed;
         _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
         _slowTimer = new Timer() { AutoReset = false };
         _slowTimer.Elapsed += Timer_Elapsed;
         _damage = 1;
+        
 
         //totem1
         _totem1 = transform.parent.FindChild("TotemOfTheEagle").gameObject;
@@ -91,15 +121,6 @@ public class PlayerController : MonoBehaviour
             if (_rope.IsPullingPlayer)
                 _rope.EndPulling();
         }
-
-        //foreach (var contact in collision.contacts)
-        //{
-        //    if(contact.thisCollider.gameObject == _rope.gameObject)
-        //    {
-        //        _rope.Collision(collision);
-        //        break;
-        //    }
-        //}
     }
 
     void OnCollisionExit(Collision collision)
@@ -110,7 +131,7 @@ public class PlayerController : MonoBehaviour
     private void PlayerControler_OnTotemCaptured(object sender, EventArgs e)
     {
         _damage += 2;
-        Debug.Log("damage++, now equls: " + _damage);
+        UnityEngine.Debug.Log("damage++, now equls: " + _damage);
     }
     private void InflictDamageOnGod()
     {
@@ -128,6 +149,7 @@ public class PlayerController : MonoBehaviour
     private float _speed;
     private Rigidbody _rigidbody;
     private RopeController _rope;
+    private ThrowCompanionBehaviour _throw;
     private int _damage;
 
     // wymyslic czy nie da sie lepiej bez robienia niepotrzebnego syfu

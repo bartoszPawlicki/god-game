@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Timers;
+using System.Diagnostics;
 
 public class RopeController : MonoBehaviour
 {
@@ -8,16 +10,31 @@ public class RopeController : MonoBehaviour
     public float ThrowSpeed;
     public float ThrowStrength;
 
+    public float RemainingCooldown
+    {
+        get
+        {
+            return (float)(_cooldownStopwatch.ElapsedMilliseconds / _cooldownTimer.Interval * 100);
+        }
+    }
+    public int Cooldown
+    {
+        set
+        {
+            _cooldownTimer.Interval = value;
+        }
+    }
     public bool IsReturning { get; private set; }
     public bool IsMoving { get; private set; }
     public bool IsPullingPlayer { get; set; }
 
     public void FireRope()
     {
-        if(!IsMoving && !IsReturning)
+        if (!IsMoving && !IsReturning && RemainingCooldown == 100)
         {
             IsMoving = true;
             enabled = true;
+            startCooldown();
         }
         else
         {
@@ -32,6 +49,17 @@ public class RopeController : MonoBehaviour
         _player.GetComponent<ConstantForce>().force = Vector3.zero;
         transform.localScale = new Vector3(0.05f, 0, 0.05f);
     }
+    public void InitializeCooldown()
+    {
+        _cooldownTimer.Elapsed += _cooldownTimer_Elapsed;
+        startCooldown();
+    }
+
+    private void _cooldownTimer_Elapsed(object sender, ElapsedEventArgs e)
+    {
+        _cooldownStopwatch.Stop();
+    }
+
     void Start ()
     {
         var players = GameObject.FindGameObjectsWithTag("Player");
@@ -107,6 +135,15 @@ public class RopeController : MonoBehaviour
 
         IsMoving = false;
     }
+    private void startCooldown()
+    {
+        _cooldownTimer.Start();
+        _cooldownStopwatch.Reset();
+        _cooldownStopwatch.Start();
+    }
 
     private GameObject _player;
+
+    private Timer _cooldownTimer = new Timer() { AutoReset = false };
+    private Stopwatch _cooldownStopwatch = new Stopwatch();
 }
