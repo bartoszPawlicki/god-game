@@ -18,8 +18,8 @@ public class GodPride : MonoBehaviour
         _player2 = transform.parent.FindChild("Player2").gameObject;
         _playerControler2 = _player1.GetComponent<PlayerController>();
         _playerControler2.OnInflictDamage += GodPride_OnInflictDamage;
-
-        progressBar = GuiControler.pBar;
+        
+        progressBar = GUIController.pBar;
         maxPride = godPride;
         progressBar.SetProgress(1);
     }
@@ -29,7 +29,6 @@ public class GodPride : MonoBehaviour
         if(godPride > 0)
         {
             godPride -= dmg;
-            Debug.Log("god pride = " + godPride);
 
             progressBar.SetProgress(godPride / maxPride);
         }

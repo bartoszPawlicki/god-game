@@ -65,8 +65,7 @@ public class GameTime : MonoBehaviour
 
     private void GameTime_OnLastPlayerFall(object sender, EventArgs e)
     {
-        Debug.Log("wszyscy spadli");
-        //Send when every player fall from island
+        gameObject.GetComponent<RoundManager>().newRound = true;
     }
     private void GameTime_OnTotemCapturd(object sender, EventArgs e)
     {

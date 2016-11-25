@@ -14,8 +14,21 @@ public class ThrowCompanionBehaviour : MonoBehaviour
     public float ThrowStrength;
     public int ThrowCooldown;
     public float Loading { get { return _cooldown.Loading; } }
+    void Awake()
+    {
+        _playerColliding = new Dictionary<GameObject, bool>();
+        GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var item in _players)
+        {
+            if (item != gameObject)
+                _playerColliding.Add(item, false);
+        }
+
+        _cooldown = new CooldownProvider(ThrowCooldown);
+    }
     void Start()
     {
+        _playerColliding = new Dictionary<GameObject, bool>();
         GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var item in _players)
         {
@@ -60,6 +73,6 @@ public class ThrowCompanionBehaviour : MonoBehaviour
             _playerColliding[collision.gameObject] = false;
     }
 
-    private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
+    private Dictionary<GameObject, bool> _playerColliding;
     private CooldownProvider _cooldown;
 }

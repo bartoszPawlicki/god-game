@@ -3,7 +3,13 @@ using System.Collections;
 
 public class GUIController : MonoBehaviour
 {
-    
+    public ProgressBar progressBar;
+    public static ProgressBar pBar;
+    // Use this for initialization
+    void Awake()
+    {
+        pBar = progressBar;
+    }
     // Use this for initialization
     void Start ()
     {

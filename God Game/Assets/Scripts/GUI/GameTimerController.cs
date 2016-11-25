@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
-public class GameTimerTextController : MonoBehaviour
+public class GameTimerController : MonoBehaviour
 {
     private GameTime _gameTime;
 	// Use this for initialization

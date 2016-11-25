@@ -83,7 +83,6 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        UnityEngine.Debug.Log(RopeCooldownValue);
         if(Input.GetButtonDown("FireRope_" + _playerNumber))
         {
             if (!_collidingWithAnotherPlayer)
