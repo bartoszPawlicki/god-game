@@ -35,16 +35,16 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _rope = GetComponentInChildren<RopeController>();
-        if(RopeCooldown != 0)
-        { 
+        if (RopeCooldown != 0)
+        {
             _rope.InitializeCooldown(RopeCooldown);
         }
         _throw = GetComponent<ThrowCompanionBehaviour>();
-        if(ThrowCooldown != 0)
+        if (ThrowCooldown != 0)
         {
             _throw.InitializeCooldown(ThrowCooldown);
         }
-        
+
         _speed = StartingSpeed;
         _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
         _slowTimer = new Timer() { AutoReset = false };
@@ -86,13 +86,20 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetAxis("FireRope_" + _playerNumber) != _fireRopeAxisValue)
+        if(Input.GetButtonDown("FireRope_" + _playerNumber))
         {
-            _fireRopeAxisValue = Input.GetAxis("FireRope_" + _playerNumber);
-            if(_fireRopeAxisValue == 1)
-                if (!_collidingWithAnotherPlayer)
+            if (!_collidingWithAnotherPlayer)
+            {
+                if (!_rope.isActiveAndEnabled)
+                {
                     _rope.FireRope();
-        }
+                }
+                else
+                {
+                    _rope.EndPulling();
+                }
+            }
+        }   
     }
 
 	void FixedUpdate()
@@ -100,24 +107,23 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal_" + _playerNumber);
         float moveVertical = Input.GetAxis("Vertical_" + _playerNumber);
 
-        if (moveHorizontal != 0 | moveVertical != 0)
+        if (moveHorizontal != 0 || moveVertical != 0)
         {
             Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * _speed;
             _rigidbody.MovePosition(movement);
-            if (!_rope.IsMoving && !_rope.IsReturning)
-            {
-                transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal,moveVertical) * 180 / Math.PI), 0);
-            }
-                
+            if (!_rope.isActiveAndEnabled)
+                transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal, moveVertical) * 180 / Math.PI), 0);
         }
+
+        if (_rope.isActiveAndEnabled)
+            transform.eulerAngles = new Vector3(0, _rope.transform.eulerAngles.y, 0);
     }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             _collidingWithAnotherPlayer = true;
-            if (_rope.IsPullingPlayer)
-                _rope.EndPulling();
+            _rope.EndPulling();
         }
     }
 
@@ -139,8 +145,7 @@ public class PlayerController : MonoBehaviour
                 OnInflictDamage.Invoke(this, _damage);
         }
     }
-
-    private float _fireRopeAxisValue = -1;
+    
     private bool _collidingWithAnotherPlayer;
     private Timer _slowTimer;
     private int _playerNumber;

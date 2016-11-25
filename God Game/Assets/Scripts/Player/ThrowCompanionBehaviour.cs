@@ -28,8 +28,9 @@ public class ThrowCompanionBehaviour : CooldownBehaviour
         float throwCompanion1 = Input.GetAxis("Throw_1");
         float throwCompanion2 = Input.GetAxis("Throw_2");
 
-        if (throwCompanion1 == 1 && throwCompanion2 == 1 && RemainingCooldown >= 100)
+        if (throwCompanion1 == 1 && throwCompanion2 == 1)
         {
+            
             foreach (var item in _playerColliding)
             {
                 if (item.Value)
