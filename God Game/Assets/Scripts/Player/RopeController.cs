@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Utils;
+using System;
 
-public class RopeController : CooldownBehaviour
+public class RopeController : MonoBehaviour
 {
     public float Lenght;
     public float ThrowSpeed;
     public float ThrowStrength;
 
+    public event EventHandler OnRopeReturned;
     public int Direction { get; private set; }
 
     public void FireRope()
     {
-        StartCooldown();
         enabled = true;
         Direction = 1;
     }
@@ -57,6 +58,8 @@ public class RopeController : CooldownBehaviour
             if (transform.localScale.y <= 0)
             {
                 transform.localScale = _originScale;
+                if (OnRopeReturned != null)
+                    OnRopeReturned.Invoke(this, null);
                 enabled = false;
             }
         }

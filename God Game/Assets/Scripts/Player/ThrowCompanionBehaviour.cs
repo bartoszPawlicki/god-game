@@ -6,13 +6,14 @@ using System.Timers;
 using System;
 using Assets.Scripts.Utils;
 
-public class ThrowCompanionBehaviour : CooldownBehaviour
+public class ThrowCompanionBehaviour : MonoBehaviour
 {
     /// <summary>
     /// Renaining skill cooldown in percentages
     /// </summary>
     public float ThrowStrength;
-    
+    public int ThrowCooldown;
+    public float Loading { get { return _cooldown.Loading; } }
     void Start()
     {
         GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
@@ -21,6 +22,8 @@ public class ThrowCompanionBehaviour : CooldownBehaviour
             if (item != gameObject)
                 _playerColliding.Add(item, false);
         }
+
+        _cooldown = new CooldownProvider(ThrowCooldown);
     }
 
     void Update ()
@@ -30,7 +33,6 @@ public class ThrowCompanionBehaviour : CooldownBehaviour
 
         if (throwCompanion1 == 1 && throwCompanion2 == 1)
         {
-            
             foreach (var item in _playerColliding)
             {
                 if (item.Value)
@@ -39,7 +41,8 @@ public class ThrowCompanionBehaviour : CooldownBehaviour
                     float forceVertical = item.Key.transform.position.z - transform.position.z;
                     Vector3 movement = new Vector3(forceHorizontal, 0, forceVertical).normalized;
                     item.Key.GetComponent<Rigidbody>().AddForce(movement * ThrowStrength);
-                    StartCooldown();
+                    _cooldown.Use();
+                    _cooldown.Start();
                 }
             }
         }
@@ -58,4 +61,5 @@ public class ThrowCompanionBehaviour : CooldownBehaviour
     }
 
     private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
+    private CooldownProvider _cooldown;
 }

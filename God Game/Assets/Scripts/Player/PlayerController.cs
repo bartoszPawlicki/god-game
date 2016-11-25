@@ -6,6 +6,7 @@ using System;
 using System.Timers;
 using Assets.Scripts;
 using System.Diagnostics;
+using Assets.Scripts.Utils;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,20 +14,19 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return _throw.RemainingCooldown;
+            return _throw.Loading;
         }
     }
     public float RopeCooldownValue
     {
         get
         {
-            return _rope.RemainingCooldown;
+            return _ropeCooldown.Loading;
         }
     }
     /// <summary>
     /// Player name has to end with player number
     /// </summary>
-    public int ThrowCooldown;
     public int RopeCooldown;
     public float StartingSpeed;
     public event DealDamageEventHandler OnInflictDamage;
@@ -35,15 +35,12 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _rope = GetComponentInChildren<RopeController>();
-        if (RopeCooldown != 0)
-        {
-            _rope.InitializeCooldown(RopeCooldown);
-        }
+        _rope.OnRopeReturned += _rope_OnRopeReturned;
+        _ropeCooldown = new CooldownProvider(RopeCooldown);
+
         _throw = GetComponent<ThrowCompanionBehaviour>();
-        if (ThrowCooldown != 0)
-        {
-            _throw.InitializeCooldown(ThrowCooldown);
-        }
+
+
 
         _speed = StartingSpeed;
         _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
@@ -67,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
          InvokeRepeating("InflictDamageOnGod", 3.0f,1.0f);
     }
-	
+
     /// <summary>
     /// 
     /// </summary>
@@ -86,12 +83,14 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        UnityEngine.Debug.Log(RopeCooldownValue);
         if(Input.GetButtonDown("FireRope_" + _playerNumber))
         {
             if (!_collidingWithAnotherPlayer)
             {
-                if (!_rope.isActiveAndEnabled)
+                if (!_rope.isActiveAndEnabled && RopeCooldownValue == 100)
                 {
+                    _ropeCooldown.Use();
                     _rope.FireRope();
                 }
                 else
@@ -132,6 +131,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
             _collidingWithAnotherPlayer = false;
     }
+    private void _rope_OnRopeReturned(object sender, EventArgs e)
+    {
+        _ropeCooldown.Start();
+    }
     private void PlayerControler_OnTotemCaptured(object sender, EventArgs e)
     {
         _damage += 2;
@@ -154,6 +157,7 @@ public class PlayerController : MonoBehaviour
     private RopeController _rope;
     private ThrowCompanionBehaviour _throw;
     private int _damage;
+    private CooldownProvider _ropeCooldown; 
 
     // wymyslic czy nie da sie lepiej bez robienia niepotrzebnego syfu
     private TotemActivator _totemActivator1;
