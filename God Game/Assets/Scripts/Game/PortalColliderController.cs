@@ -10,7 +10,7 @@ public class PortalColliderController : MonoBehaviour
     public Collider Collider { get; private set; }
     void Start ()
     {
-        foreach (var player in GameContener.Players)
+        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             _playerColliding.Add(player, false);
         }

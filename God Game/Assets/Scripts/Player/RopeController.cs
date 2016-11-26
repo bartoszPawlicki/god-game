@@ -28,8 +28,7 @@ public class RopeController : MonoBehaviour
     }
     void Start()
     {
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var player in players)
+        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player != transform.parent.gameObject)
                 _player = player;

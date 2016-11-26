@@ -17,8 +17,7 @@ public class ThrowCompanionBehaviour : MonoBehaviour
     void Awake()
     {
         _playerColliding = new Dictionary<GameObject, bool>();
-        GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var item in _players)
+        foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (item != gameObject)
                 _playerColliding.Add(item, false);
@@ -29,8 +28,7 @@ public class ThrowCompanionBehaviour : MonoBehaviour
     void Start()
     {
         _playerColliding = new Dictionary<GameObject, bool>();
-        GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var item in _players)
+        foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (item != gameObject)
                 _playerColliding.Add(item, false);

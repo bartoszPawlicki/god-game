@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour
     private void Start ()
     {
         GameContener.Initialize();
-
         _roundManager = gameObject.GetComponent<RoundManager>();
         _roundManager.OnLastRoundEnded += _roundManager_OnLastRoundEnded;
         _roundManager.OnNewRoundStarted += _roundManager_OnNewRoundStarted;

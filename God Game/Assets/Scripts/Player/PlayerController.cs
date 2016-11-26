@@ -39,13 +39,12 @@ public class PlayerController : MonoBehaviour
         _ropeCooldown = new CooldownProvider(RopeCooldown);
 
         _throw = GetComponent<ThrowCompanionBehaviour>();
-
-
-
+        
         _speed = StartingSpeed;
         _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
         _slowTimer = new Timer() { AutoReset = false };
         _slowTimer.Elapsed += Timer_Elapsed;
+
         _damage = 1;
         
         //Niech to już zniknie xD bo patrzeć nie moge

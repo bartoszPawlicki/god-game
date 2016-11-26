@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Can be used only outside start/awake
+/// </summary>
 public static class GameContener
 {
     public static GameObject Player1;
@@ -16,6 +19,7 @@ public static class GameContener
 
         God.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
     }
+
     public static void UnfreezePlayers()
     {
         foreach (var player in Players)
