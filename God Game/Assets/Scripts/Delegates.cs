@@ -7,4 +7,5 @@ namespace Assets.Scripts
 {
     public delegate void GameEndEventHandler(object sender, Winner w);
     public delegate void DealDamageEventHandler(object sender, int damage);
+    public delegate void NewRoundEventHandler(object sender, short roundNumber);
 }

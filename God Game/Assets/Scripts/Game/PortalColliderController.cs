@@ -1,35 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-public class PortalColliderController : MonoBehaviour {
-
-	// Use this for initialization
-	void Start ()
+public class PortalColliderController : MonoBehaviour
+{
+    public event EventHandler OnPlayersPassed;
+    public Collider Collider { get; private set; }
+    void Start ()
     {
-        _gameOver = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameOver>();
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<RoundManager>().OnNewRoundStarted += GameOver_OnNewRoundStarted;
+        foreach (var player in GameContener.Players)
+        {
+            _playerColliding.Add(player, false);
+        }
+
+        Collider = GetComponent<Collider>();
     }
 
-    private void GameOver_OnNewRoundStarted(object sender, EventArgs e)
-    {
-        GetComponent<Collider>().enabled = true;
-    }
-    // Update is called once per frame
     void Update ()
     {
-	
-	}
+        bool passed = true;
+        foreach (var item in _playerColliding.Values)
+        {
+            if (!item)
+                passed = false;
+        }
+
+        if(passed)
+        {
+            foreach (var item in _playerColliding.Keys.ToList())
+            {
+                _playerColliding[item] = false;
+            }
+            
+            if (OnPlayersPassed != null)
+                OnPlayersPassed.Invoke(this, null);
+        }
+    }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-
-            _gameOver.PlayerColliding[collision.gameObject] = true;
+            _playerColliding[collision.gameObject] = true;
             collision.gameObject.SetActive(false);
         }
     }
 
-    private GameOver _gameOver; 
+    private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
 }

@@ -5,16 +5,16 @@ using System;
 /// <summary>
 /// GameTime has to be enabled when reuse
 /// </summary>
-public class GameTime : MonoBehaviour
+public class TimeManager : MonoBehaviour
 {
+    
+    public double bonusTimeOnCapture = 30d;
+
+    public event EventHandler OnTimeElapsed;
     /// <summary>
     /// Game Time in seconds
     /// </summary>
     public double TotalGameTimeSeconds;
-    public double bonusTimeOnCapture = 30d;
-    public bool IsGameStarted = false;
-    private bool gameOverflag = false;
-    public event EventHandler OnTimeElapsed;
     public TimeSpan TotalGameTime
     {
         get { return _totalGameTime; }
@@ -44,8 +44,8 @@ public class GameTime : MonoBehaviour
     void Start ()
     {
         TotalGameTime = TimeSpan.FromSeconds(TotalGameTimeSeconds);
-        IsGameStarted = true;
         TimeLeft = TotalGameTime;
+
         //totem1
         _totem1 = transform.FindChild("TotemOfTheEagle").gameObject;
         _totemActivator1 = _totem1.GetComponent<TotemActivator>();
@@ -60,12 +60,6 @@ public class GameTime : MonoBehaviour
         _totemActivator3.OnTotemCapured += GameTime_OnTotemCapturd;
 
     //wiem ze brzydko to jest zrobione, ale w przyszlosci nie bede 3 totemy, tylko 3 rozne skrypty :D
-        GetComponent<RespawnManager>().OnLastPlayerFall += GameTime_OnLastPlayerFall;  
-    }
-
-    private void GameTime_OnLastPlayerFall(object sender, EventArgs e)
-    {
-        gameObject.GetComponent<RoundManager>().newRound = true;
     }
     private void GameTime_OnTotemCapturd(object sender, EventArgs e)
     {
@@ -78,48 +72,19 @@ public class GameTime : MonoBehaviour
     void Update()
     {
         TimeLeft = TimeLeft.Subtract(TimeSpan.FromSeconds(Time.deltaTime));
-
-        if (TimeLeft.CompareTo(TimeSpan.Zero) <= 0 )
+        if (TimeLeft.CompareTo(TimeSpan.Zero) <= 0)
         {
-            if (gameOverflag == false)
-            {
-                var gameController = GameObject.FindGameObjectsWithTag("GameController");
-                foreach (var gc in gameController)
-                {
-                    gc.GetComponentInChildren<RoundManager>().newRound = true;
-                    TimeLeft += TimeSpan.FromSeconds(TotalGameTimeSeconds);
-                    if (gc.GetComponentInChildren<RoundManager>().roundNumber > 5)
-                    {
-                        gameOverflag = true;
-                        gc.GetComponentInChildren<RoundManager>().message = "Game Over";
-                        GameOver();
-                    }
-                }
-            }
+            TimeLeft = TimeSpan.Zero;
+            enabled = false;
+            if (OnTimeElapsed != null)
+                OnTimeElapsed.Invoke(this, null);
         }
     }
-    void GameOver()
-    {
-        TimeLeft = TimeSpan.Zero;
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        var god = GameObject.FindGameObjectWithTag("God");
 
-        foreach (var item in players)
-        {
-            var rigidbodyPlayer = item.GetComponent<Rigidbody>();
-            rigidbodyPlayer.constraints = RigidbodyConstraints.FreezePosition;
-        }
 
-        var rigidbodyGod = god.GetComponent<Rigidbody>();
-        rigidbodyGod.constraints = RigidbodyConstraints.FreezePosition;
-
-        enabled = false;
-        if (OnTimeElapsed != null)
-            OnTimeElapsed.Invoke(this, null);
-    }    
-    
     private TimeSpan _totalGameTime;
     private TimeSpan _timeleft;
+
     private TotemActivator _totemActivator1;
     private GameObject _totem1;
     private TotemActivator _totemActivator2;
