@@ -11,6 +11,25 @@ public class RespawnManager : MonoBehaviour
     /// </summary>
     public float RespawnTime;
     public event EventHandler OnLastPlayerFall;
+
+    public void StartRespawn(GameObject gameObject)
+    {
+        foreach (var item in _playerTuples)
+        {
+            if(item.GameObject == gameObject)
+            {
+                StartRespawn(item);
+                break;
+            }
+        }
+    }
+
+    public void StartRespawn(Tuple tuple)
+    {
+        tuple.GameObject.SetActive(false);
+        tuple.Timer.Start();
+        _playersInGame--;
+    }
     void Start ()
     {
         var players = GameObject.FindGameObjectsWithTag("Player");
@@ -44,9 +63,7 @@ public class RespawnManager : MonoBehaviour
             // -15 is the best, since player is in fog but when is falling to slow -5 is better
             if (item.GameObject.transform.position.y < -5 && item.GameObject.GetComponent<PlayerController>().isActiveAndEnabled)
             {
-                item.GameObject.SetActive(false);
-                item.Timer.Start();
-                _playersInGame--;
+                StartRespawn(item);
             }
         }
 
@@ -71,7 +88,6 @@ public class RespawnManager : MonoBehaviour
             _objectToSetActive.transform.position = _livingPlayerPosition + new Vector3(5, 0, 0);
             _objectToSetActive.SetActive(true);
             _objectToSetActive = null;
-            Debug.Log("setactive");
         }
 	}
 
