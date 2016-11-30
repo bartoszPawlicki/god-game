@@ -6,16 +6,12 @@ using Assets.Scripts.Utils;
 
 public class GodController : MonoBehaviour
 {
-    
     public float GodInitialSpeed;
     public float ThunderSpeed;
     public int ThunderCooldown;
     public int WaterGeyserCooldown;
     public int GlobalWindCooldown;
-
-    //private CooldownManager _cooldownManager;
-
-    // Use this for initialization
+    
     void Start ()
     {
         _godSkillIndicator = transform.FindChild("ThunderIndicator").gameObject;
@@ -23,18 +19,15 @@ public class GodController : MonoBehaviour
         _indicatorLightParticles = _godSkillIndicator.GetComponent<ParticleSystem>();
 
         _thunder = transform.FindChild("Thunder").gameObject;
-        
         _thunderController = _thunder.GetComponent<ThunderController>();
         _thunderController.OnThunderStruck += _thunderController_OnThunderStruck;
         _thunderController.OnThunderExpired += _thunderController_OnThunderExpired;
 
-        _wind = transform.FindChild("WaterGeyser").gameObject;
-
-        _waterGeyserController = _wind.GetComponent<WaterGeyserController>();
+        _waterGeyser = transform.FindChild("WaterGeyser").gameObject;
+        _waterGeyserController = _waterGeyser.GetComponent<WaterGeyserController>();
         _waterGeyserController.OnWaterGeyserExpired += _waterGeyserController_OnWaterGeyserExpired;
 
         _globalWind = transform.FindChild("GlobalWind").gameObject;
-
         _globalWindController = _globalWind.GetComponent<GlobalWindController>();
         _globalWindController.OnGlobalWindExpired += _globalWindController_OnGlobalWindExpired;
         
@@ -42,10 +35,7 @@ public class GodController : MonoBehaviour
 
         _startingIndicatorColor = _indicatorLight.color;
         SkillChosen = Skill.None;
-        
-
-        //_cooldownManager = GetComponent<CooldownManager>();
-
+       
         _thunderCooldown = new CooldownProvider(ThunderCooldown);
         _waterGeyserCooldown = new CooldownProvider(WaterGeyserCooldown);
         _globalWindCooldown = new CooldownProvider(GlobalWindCooldown);
@@ -245,7 +235,7 @@ public class GodController : MonoBehaviour
     private ParticleSystem _indicatorLightParticles;
     private Color _startingIndicatorColor;
     private GameObject _thunder;
-    private GameObject _wind;
+    private GameObject _waterGeyser;
     private GameObject _globalWind;
     private GameObject _godSkillIndicator;
     private ThunderController _thunderController;
