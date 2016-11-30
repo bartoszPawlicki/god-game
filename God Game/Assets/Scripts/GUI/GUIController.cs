@@ -33,7 +33,34 @@ public class GUIController : MonoBehaviour
 
         _roundText = GameObject.Find("Round").GetComponent<Text>();
         _roundText.gameObject.SetActive(false);
+
+        _god.OnThunderSkillChosen += _god_OnThunderSkillChosen;
+        _god.OnWaterGeyserSkillChosen += _god_OnWaterGeyserSkillChosen;
+        _god.OnGlobalWindSKillChosen += _god_OnGlobalWindSKillChosen;
     }
+
+    private void _god_OnThunderSkillChosen(object sender, System.EventArgs e)
+    {
+        _godSkills.ThunderSkill.SetSelected(true);
+        _godSkills.WaterGeyserSkill.SetSelected(false);
+        _godSkills.GlobalWindSkill.SetSelected(false);
+    }
+    private void _god_OnWaterGeyserSkillChosen(object sender, System.EventArgs e)
+    {
+        _godSkills.ThunderSkill.SetSelected(false);
+        _godSkills.WaterGeyserSkill.SetSelected(true);
+        _godSkills.GlobalWindSkill.SetSelected(false);
+    }
+    private void _god_OnGlobalWindSKillChosen(object sender, System.EventArgs e)
+    {
+        _godSkills.ThunderSkill.SetSelected(false);
+        _godSkills.WaterGeyserSkill.SetSelected(false);
+        _godSkills.GlobalWindSkill.SetSelected(true);
+    }
+
+    
+
+    
 
     //Temporarty Start, I hope that Adrian will create powerfull control for text messages so ...
     private void RoundManager_OnNewRoundStarted(object sender, short roundNumber)

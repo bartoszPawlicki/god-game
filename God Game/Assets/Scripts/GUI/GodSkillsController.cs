@@ -55,6 +55,13 @@ public class GodSkillsController : MonoBehaviour
 	
 	}
 
+    public SkillIcon ThunderSkill
+    { get { return _thunderSkill; } }
+    public SkillIcon WaterGeyserSkill
+    { get { return _waterGeyserSkill; } }
+    public SkillIcon GlobalWindSkill
+    { get { return _globalWindSkill; } }
+
     private SkillIcon _thunderSkill;
     private SkillIcon _waterGeyserSkill;
     private SkillIcon _globalWindSkill;
