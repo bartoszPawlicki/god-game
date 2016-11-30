@@ -17,9 +17,11 @@ public class GUIController : MonoBehaviour
     {
         _player1 = GameObject.Find("Player1").GetComponent<PlayerController>();
         _player2 = GameObject.Find("Player2").GetComponent<PlayerController>();
+        _god = GameObject.Find("God").GetComponent<GodController>();
 
         _player1Skills = GameObject.Find("Skills Player1").GetComponent<SkillsController>();
         _player2Skills = GameObject.Find("Skills Player2").GetComponent<SkillsController>();
+        _godSkills = GameObject.Find("skills_god").GetComponent<GodSkillsController>();
 
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         _gameTime = gameController.GetComponent<TimeManager>();
@@ -62,6 +64,10 @@ public class GUIController : MonoBehaviour
         _player2Skills.ThrowCooldown = _player2.ThrowCooldownValue;
         _player2Skills.RopeCooldown = _player2.RopeCooldownValue;
 
+        _godSkills.ThunderCooldown = _god.ThunderCooldownValue;
+        _godSkills.WaterGeyserCooldown = _god.WaterGeyserCooldownValue;
+        _godSkills.GlobalWindCooldown = _god.GlobalWindCooldownValue;
+
         _gameTimeText.text = string.Format("{0:00}:{1:00}:{2:00}", _gameTime.TimeLeft.Minutes, _gameTime.TimeLeft.Seconds, _gameTime.TimeLeft.Milliseconds / 10);
 
         _roundText.gameObject.SetActive(_isRoundTextAsctive);
@@ -69,9 +75,11 @@ public class GUIController : MonoBehaviour
 
     private PlayerController _player1;
     private PlayerController _player2;
+    private GodController _god;
 
     private SkillsController _player1Skills;
     private SkillsController _player2Skills;
+    private GodSkillsController _godSkills;
 
     private bool _isRoundTextAsctive = true;
     private Text _roundText;
