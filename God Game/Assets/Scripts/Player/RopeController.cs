@@ -75,7 +75,6 @@ public class RopeController : MonoBehaviour
             transform.localScale = new Vector3(_originScale.x, Vector3.Distance(_parent.transform.position, _player.transform.position) / 2, _originScale.z);
             DrawRopeBetween(_parent.transform.position, _player.transform.position);
         }
-        
     }
 
     void DrawRopeBetween(Vector3 startPoint, Vector3 endPoint)
