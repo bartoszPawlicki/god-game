@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Player name has to end with player number
     /// </summary>
+    public float GravityStrenght;
     public int RopeCooldown;
     public float StartingSpeed;
     public event DealDamageEventHandler OnInflictDamage;
@@ -101,6 +102,9 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
     {
+        if (_rigidbody.velocity.y < -1)
+            _rigidbody.AddForce(new Vector3(0, -GravityStrenght, 0));
+
         float moveHorizontal = Input.GetAxis("Horizontal_" + _playerNumber);
         float moveVertical = Input.GetAxis("Vertical_" + _playerNumber);
 
