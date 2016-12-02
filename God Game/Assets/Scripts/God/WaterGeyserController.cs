@@ -4,7 +4,7 @@ using System;
 
 public class WaterGeyserController : MonoBehaviour
 {
-    public float WindStrength;
+    public float WaterGeyserKnockUpStrength;
     public float TotalLifeTime;
     public float WaterGeyserChargingTime;
     public float GushingSpeed;
@@ -36,23 +36,20 @@ public class WaterGeyserController : MonoBehaviour
 
     public void Strike()
     {
-        
         _chargingTime = WaterGeyserChargingTime;
         IsCharged = false;
         enabled = true;
         gameObject.SetActive(true);
         _lifeTime = TotalLifeTime;
-
+        waterGeyserRaycastFunc();
         gameObject.transform.SetParent(null);
-        //waterGeyserRaycastFunc();
-
     }
     void Start ()
     {
-        //gameObject.GetComponent<MeshRenderer>().enabled = false;
         OnWaterGeyserCharged += WaterGeyserController_OnWaterGeyserCharged;
         OnWaterGeyserExpired += WaterGeyserController_OnWaterGeyserExpired;
         _parent = gameObject.transform.parent;
+        //_waterBubbles = transform.FindChild("Bubbles").gameObject;
         _isCharged = false;
         enabled = false;
         gameObject.SetActive(false);
@@ -62,13 +59,13 @@ public class WaterGeyserController : MonoBehaviour
 
     private void WaterGeyserController_OnWaterGeyserCharged(object sender, EventArgs e)
     {
-        
+        //_waterBubbles.SetActive(false);
     }
 
     private void WaterGeyserController_OnWaterGeyserExpired(object sender, EventArgs e)
     {
         gameObject.transform.SetParent(_parent);
-        gameObject.transform.position = new Vector3(gameObject.transform.parent.transform.position.x, -6, gameObject.transform.parent.transform.position.z);
+        gameObject.transform.position = new Vector3(gameObject.transform.parent.transform.position.x, -20, gameObject.transform.parent.transform.position.z);
     }
 
     private void waterGeyserRaycastFunc()
@@ -76,18 +73,18 @@ public class WaterGeyserController : MonoBehaviour
         Vector3 _rayOrigin = gameObject.transform.position + new Vector3 (0, 30, 0);
         if (Physics.Raycast(_rayOrigin, Vector3.down, out _waterGeyserRaycastHit, 50))
         {
-            if (!_waterGeyserRaycastHit.collider.gameObject.CompareTag("God"))
+            if (!_waterGeyserRaycastHit.collider.gameObject.CompareTag("Player"))
             {
-                
-                if (gameObject.transform.localPosition.y - gameObject.transform.localScale.y / 2 != _waterGeyserRaycastHit.point.y )
-                {
-                    Debug.Log(gameObject.transform.localPosition.y + "  " + _waterGeyserRaycastHit.point.y);
-                    gameObject.transform.Translate(0, _waterGeyserRaycastHit.point.y - gameObject.transform.localPosition.y - gameObject.transform.localScale.y / 2, 0);
-                }
-
+                gameObject.transform.position = new Vector3 (gameObject.transform.parent.transform.position.x, _waterGeyserRaycastHit.point.y - gameObject.transform.localScale.y/2 -0.5f, gameObject.transform.parent.transform.position.z);
+                //_waterBubbles.transform.position = new Vector3(gameObject.transform.parent.transform.position.x, _waterGeyserRaycastHit.point.y - _waterBubbles.transform.localScale.y / 2 - 0.5f, gameObject.transform.parent.transform.position.z);
 
             }
         }
+    }
+
+    void Update()
+    {
+        transform.localScale = transform.localScale;
     }
 
     void FixedUpdate ()
@@ -123,13 +120,9 @@ public class WaterGeyserController : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Debug.Log("Gracz trafiony");
-            //float forceHorizontal = collider.transform.position.x - gameObject.transform.position.x;
-            //float forceVertical = collider.transform.position.z - gameObject.transform.position.z;
-            //Vector3 movement = new Vector3(forceHorizontal, 0, forceVertical).normalized;
             if (_isCharged)
             {
-                collider.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, WindStrength, 0));
+                collider.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, WaterGeyserKnockUpStrength, 0));
 
                 PlayerController slow = collider.GetComponent<PlayerController>();
                 slow.ApplySlow(SlowPower, SlowDuration);
@@ -138,20 +131,11 @@ public class WaterGeyserController : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider collider)
-    {
-        
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-
-    }
-
     private float _lifeTime;
     private float _chargingTime;
     private bool _isCharged;
     private Transform _parent;
     private RaycastHit _waterGeyserRaycastHit;
+    //private GameObject _waterBubbles;
 
 }
