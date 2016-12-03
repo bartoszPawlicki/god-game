@@ -20,6 +20,17 @@ public class GameController : MonoBehaviour
 
         _portalCollider = GameObject.Find("PortalCollider").GetComponent<PortalColliderController>();
         _portalCollider.OnPlayersPassed += GameController_OnPlayersPassed;
+
+        _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        _cameraController.OnCameraStopMoving += _cameraController_OnCameraStopMoving;
+    }
+
+    private void _cameraController_OnCameraStopMoving(object sender, System.EventArgs e)
+    {
+        _timeManager.enabled = true;
+        _portalCollider.Collider.enabled = true;
+        _respawnManager.enabled = true;
+        GameContener.UnfreezePlayers();
     }
 
     private void GameController_OnPlayersPassed(object sender, System.EventArgs e)
@@ -37,10 +48,12 @@ public class GameController : MonoBehaviour
 
     private void _roundManager_OnNewRoundStarted(object sender, short roundNumber)
     {
-        _timeManager.enabled = true;
-        _timeManager.TimeLeft = _timeManager.TotalGameTime;
-        _portalCollider.Collider.enabled = true;
+        //New round starts when camera stop moving, check _cameraController_OnCameraStopMoving method
+        _timeManager.enabled = false;
+        GameContener.FreezePlayers();
         GameContener.MovePlayersToPosition(_startPostion);
+        _timeManager.TimeLeft = _timeManager.TotalGameTime;
+        _cameraController.IsInitialMoving = true;
     }
 
     private void _respawnManager_OnLastPlayerFall(object sender, System.EventArgs e)
@@ -66,4 +79,5 @@ public class GameController : MonoBehaviour
     private TimeManager _timeManager;
     private RespawnManager _respawnManager;
     private PortalColliderController _portalCollider;
+    private CameraController _cameraController;
 }

@@ -45,12 +45,15 @@ public class RespawnManager : MonoBehaviour
 
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
-        foreach (var item in _playerTuples)
+        if(_playersInGame < _playerTuples.Count)
         {
-            if(item.Timer == (Timer)sender)
+            foreach (var item in _playerTuples)
             {
-                _objectToSetActive = item.GameObject;
-                _playersInGame++;
+                if (item.Timer == (Timer)sender)
+                {
+                    _objectToSetActive = item.GameObject;
+                    _playersInGame++;
+                }
             }
         }
     }
@@ -72,6 +75,7 @@ public class RespawnManager : MonoBehaviour
             if (OnLastPlayerFall != null)
                 OnLastPlayerFall.Invoke(this, null);
             enabled = false;
+            _playersInGame = 2;
         }
 
         foreach (var item in _playerTuples)

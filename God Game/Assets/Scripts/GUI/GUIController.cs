@@ -37,6 +37,11 @@ public class GUIController : MonoBehaviour
         _god.OnThunderSkillChosen += _god_OnThunderSkillChosen;
         _god.OnWaterGeyserSkillChosen += _god_OnWaterGeyserSkillChosen;
         _god.OnGlobalWindSKillChosen += _god_OnGlobalWindSKillChosen;
+
+        _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        _cameraController.OnCameraStopMoving += _cameraController_OnCameraStopMoving;
+
+        _godPride = GameObject.FindGameObjectWithTag("God").GetComponent<GodPride>();
     }
 
     private void _god_OnThunderSkillChosen(object sender, System.EventArgs e)
@@ -58,30 +63,34 @@ public class GUIController : MonoBehaviour
         _godSkills.GlobalWindSkill.SetSelected(true);
     }
 
-    
-
-    
-
     //Temporarty Start, I hope that Adrian will create powerfull control for text messages so ...
+    private void _cameraController_OnCameraStopMoving(object sender, System.EventArgs e)
+    {
+        var timer = new Timer(1500) { AutoReset = false };
+        timer.Elapsed += GUIController_Elapsed;
+        timer.Start();
+    }
+
     private void RoundManager_OnNewRoundStarted(object sender, short roundNumber)
     {
         _isRoundTextAsctive = true;
         _roundText.text = "Round " + roundNumber;
-        var timer = new Timer(1500);
-        timer.Elapsed += GUIController_Elapsed;
-        timer.Start();
     }
 
     private void GUIController_Elapsed(object sender, ElapsedEventArgs e)
     {
         _isRoundTextAsctive = false;
     }
-
     
     private void RoundManager_OnLastRoundEnded(object sender, System.EventArgs e)
     {
         _isRoundTextAsctive = true;
-        _roundText.text = "Game Over";
+        _roundText.text = "Game Over \n";
+        if (_godPride.godPride > 0)
+            _roundText.text += "God Wins!";
+        else
+            _roundText.text += "Players Wins!";
+
     }
     //Temporary End
     void OnGUI()
@@ -111,5 +120,8 @@ public class GUIController : MonoBehaviour
     private bool _isRoundTextAsctive = true;
     private Text _roundText;
     private Text _gameTimeText;
+
     private TimeManager _gameTime;
+    private CameraController _cameraController;
+    private GodPride _godPride;
 }

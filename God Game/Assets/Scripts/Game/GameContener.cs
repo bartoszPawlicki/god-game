@@ -15,9 +15,11 @@ public static class GameContener
         foreach (var player in Players)
         {
             player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            player.SetActive(false);
         }
 
         God.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        God.SetActive(false);
     }
 
     public static void UnfreezePlayers()
@@ -25,9 +27,11 @@ public static class GameContener
         foreach (var player in Players)
         {
             player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            player.SetActive(true);
         }
 
         God.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        God.SetActive(true);
     }
     
     public static void MovePlayersToPosition(Vector3 position)
