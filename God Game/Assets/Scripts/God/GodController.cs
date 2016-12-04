@@ -19,7 +19,7 @@ public class GodController : MonoBehaviour
     
     void Start ()
     {
-        _godSkillIndicator = transform.FindChild("ThunderIndicator").gameObject;
+        _godSkillIndicator = transform.FindChild("GodSkillIndicator").gameObject;
         _indicatorLight = _godSkillIndicator.GetComponent<Light>();
         _indicatorLightParticles = _godSkillIndicator.GetComponent<ParticleSystem>();
 

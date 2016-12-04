@@ -43,13 +43,15 @@ public class WaterGeyserController : MonoBehaviour
         _lifeTime = TotalLifeTime;
         waterGeyserRaycastFunc();
         gameObject.transform.SetParent(null);
+        gameObject.GetComponent<Renderer>().enabled = false;
+        _waterBubbles.SetActive(true);
     }
     void Start ()
     {
         OnWaterGeyserCharged += WaterGeyserController_OnWaterGeyserCharged;
         OnWaterGeyserExpired += WaterGeyserController_OnWaterGeyserExpired;
         _parent = gameObject.transform.parent;
-        //_waterBubbles = transform.FindChild("Bubbles").gameObject;
+        _waterBubbles = transform.FindChild("Bubbles").gameObject;
         _isCharged = false;
         enabled = false;
         gameObject.SetActive(false);
@@ -59,7 +61,8 @@ public class WaterGeyserController : MonoBehaviour
 
     private void WaterGeyserController_OnWaterGeyserCharged(object sender, EventArgs e)
     {
-        //_waterBubbles.SetActive(false);
+        _waterBubbles.SetActive(false);
+        gameObject.GetComponent<Renderer>().enabled = true;
     }
 
     private void WaterGeyserController_OnWaterGeyserExpired(object sender, EventArgs e)
@@ -70,15 +73,14 @@ public class WaterGeyserController : MonoBehaviour
 
     private void waterGeyserRaycastFunc()
     {
-        Vector3 _rayOrigin = gameObject.transform.position + new Vector3 (0, 30, 0);
-        if (Physics.Raycast(_rayOrigin, Vector3.down, out _waterGeyserRaycastHit, 50))
+        Vector3 _rayOrigin = gameObject.transform.position + new Vector3 (0, 60, 0);
+        if (Physics.Raycast(_rayOrigin, Vector3.down, out _waterGeyserRaycastHit, 100, _groundLayerMask))
         {
-            if (!_waterGeyserRaycastHit.collider.gameObject.CompareTag("Player"))
-            {
-                gameObject.transform.position = new Vector3 (gameObject.transform.parent.transform.position.x, _waterGeyserRaycastHit.point.y - gameObject.transform.localScale.y/2 -0.5f, gameObject.transform.parent.transform.position.z);
-                //_waterBubbles.transform.position = new Vector3(gameObject.transform.parent.transform.position.x, _waterGeyserRaycastHit.point.y - _waterBubbles.transform.localScale.y / 2 - 0.5f, gameObject.transform.parent.transform.position.z);
+           
+                gameObject.transform.position = new Vector3(gameObject.transform.parent.transform.position.x, _waterGeyserRaycastHit.point.y - gameObject.transform.localScale.y / 2 - 0.5f, gameObject.transform.parent.transform.position.z);
+                _waterBubbles.transform.position = new Vector3(gameObject.transform.parent.transform.position.x, _waterGeyserRaycastHit.point.y - _waterBubbles.transform.localScale.y / 2 - 0.25F, gameObject.transform.parent.transform.position.z);
 
-            }
+            
         }
     }
 
@@ -110,7 +112,7 @@ public class WaterGeyserController : MonoBehaviour
 
         if (_isCharged)
         {
-            if (transform.position.y < 1)
+            if (transform.position.y < _waterGeyserRaycastHit.point.y)
                 transform.Translate(Vector3.up * GushingSpeed * Time.deltaTime);
         }
         
@@ -136,6 +138,7 @@ public class WaterGeyserController : MonoBehaviour
     private bool _isCharged;
     private Transform _parent;
     private RaycastHit _waterGeyserRaycastHit;
-    //private GameObject _waterBubbles;
+    private GameObject _waterBubbles;
+    private int _groundLayerMask = 1 << 8;
 
 }
