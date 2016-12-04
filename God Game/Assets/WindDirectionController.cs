@@ -8,10 +8,9 @@ public class WindDirectionController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        _globalWind = GameObject.FindWithTag("GlobalWindObject");
-        _globalWindController = _globalWind.GetComponent<GlobalWindController>();
+        _globalWindController = GlobalWind.GetComponent<GlobalWindController>();
         transform.position = new Vector3(0f, 0f, 100f);
-
+        
     }
 	
 	// Update is called once per frame
@@ -24,6 +23,6 @@ public class WindDirectionController : MonoBehaviour
         }
     }
 
-    private GameObject _globalWind;
+    public GameObject GlobalWind;
     private GlobalWindController _globalWindController;
 }
