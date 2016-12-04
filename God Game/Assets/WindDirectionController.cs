@@ -8,18 +8,22 @@ public class WindDirectionController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        _globalWindController = GetComponentInParent<GlobalWindController>();
+        _globalWind = GameObject.FindWithTag("GlobalWindObject");
+        _globalWindController = _globalWind.GetComponent<GlobalWindController>();
+        transform.position = new Vector3(0f, 0f, 100f);
+
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        _windDirectionX = _globalWindController.AimHorizontal;
-        _windDirectionZ = _globalWindController.AimVertical;
-
-        Debug.Log("_windDirectionX: " + _windDirectionX);
-        Debug.Log("_windDirectionZ: " + _windDirectionZ);
+        if (_globalWindController.isActiveAndEnabled)
+        {
+            _windDirectionX = _globalWindController.AimHorizontal;
+            _windDirectionZ = _globalWindController.AimVertical;
+        }
     }
-    
+
+    private GameObject _globalWind;
     private GlobalWindController _globalWindController;
 }
