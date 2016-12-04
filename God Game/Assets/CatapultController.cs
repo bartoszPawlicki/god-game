@@ -1,15 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CatapultController : MonoBehaviour {
+public class CatapultController : MonoBehaviour
+{
+    public float SlowPower;
+    public float SlowDuration;
+    public float CatapultStrength;
+    public Vector3 CatapultDirection;
 
-	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 	
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            PlayerController slow = collider.GetComponent<PlayerController>();
+            slow.ApplySlow(SlowPower, SlowDuration);
+
+            collider.gameObject.GetComponent<Rigidbody>().AddForce(CatapultDirection.normalized * CatapultStrength);
+        }
+    }
 }
