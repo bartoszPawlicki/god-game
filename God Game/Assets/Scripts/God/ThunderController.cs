@@ -28,6 +28,7 @@ public class ThunderController : MonoBehaviour
     public event EventHandler OnThunderStruck;
     public void Strike()
     {
+        
         thunderRaycastFunc();
         enabled = true;
         gameObject.SetActive(true);
@@ -40,27 +41,22 @@ public class ThunderController : MonoBehaviour
     {
         enabled = false;
         gameObject.SetActive(false);
-        _initialScale = transform.localScale.x;
-    }
-    
-
-    void Update ()
-    {
-
+        _initialScaleX = transform.localScale.x;
+        _initialScaleY = transform.localScale.y;
     }
 
     void FixedUpdate()
     {
-        if (transform.position.y > _thunderRaycastHit.point.y + transform.localScale.y / 2)
+        if (transform.position.y > _thunderRaycastHit.point.y + transform.localScale.y / 2 - 5)
             transform.Translate(Vector3.down * FallingSpeed * Time.deltaTime);
         else
             IsFalling = false;
 
         if (_lifeTime >= 0)
-            transform.localScale = new Vector3(_initialScale * _lifeTime / TotalLifeTime, _initialScaleY, _initialScale * _lifeTime / TotalLifeTime);
+            transform.localScale = new Vector3(_initialScaleX * _lifeTime / TotalLifeTime, _initialScaleY, _initialScaleX * _lifeTime / TotalLifeTime);
         else
         {
-            transform.localScale = new Vector3(0, _initialScale, 0);
+            transform.localScale = new Vector3(0, _initialScaleX, 0);
             enabled = false;
             gameObject.SetActive(false);
             if (OnThunderExpired != null)
@@ -86,7 +82,6 @@ public class ThunderController : MonoBehaviour
         {
             PlayerController slow = collider.GetComponent<PlayerController>();
             slow.ApplyRisingSlow(SlowPower, SlowDuration);
-            Debug.Log("trafiam");
         }
     }
 
@@ -97,11 +92,11 @@ public class ThunderController : MonoBehaviour
     }
 
     private bool _isFalling;
-    private float _initialScaleY = 20;
-    private float _initialScale;
+    private float _initialScaleY;
+    private float _initialScaleX;
     private float _lifeTime;
-    
-    private float _initialHeight = 20;
+
+    private float _initialHeight = 5;
     private RaycastHit _thunderRaycastHit;
     private int _groundLayerMask = 1 << 8;
 }

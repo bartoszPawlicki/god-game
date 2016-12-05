@@ -21,12 +21,8 @@ public class WindDirectionController : MonoBehaviour
             _windDirectionX = _globalWindController.AimHorizontal;
             _windDirectionZ = _globalWindController.AimVertical;
 
-            transform.localRotation =  Quaternion.AngleAxis(Mathf.Atan2(_windDirectionZ, _windDirectionX)*Mathf.Rad2Deg-90, Vector3.up);
+            transform.localRotation =  Quaternion.AngleAxis(Mathf.Atan2( _windDirectionX, _windDirectionZ) *Mathf.Rad2Deg, Vector3.up);
             
-        }
-        else
-        {
-            transform.localRotation = Quaternion.AngleAxis(0, Vector3.up);
         }
     }
 

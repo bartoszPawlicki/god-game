@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
 
     private void _roundManager_OnLastRoundEnded(object sender, System.EventArgs e)
     {
+        GameContener.FreezePlayers();
         //TODO: Game End
     }
 
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
         //New round starts when camera stop moving, check _cameraController_OnCameraStopMoving method
         _timeManager.enabled = false;
         GameContener.MovePlayersToPosition(_startPostion);
+        GameContener.FreezePlayers();
         _timeManager.TimeLeft = _timeManager.TotalGameTime;
         _cameraController.IsInitialMoving = true;
     }

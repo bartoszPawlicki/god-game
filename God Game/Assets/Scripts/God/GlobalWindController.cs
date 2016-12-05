@@ -26,45 +26,32 @@ public class GlobalWindController : MonoBehaviour
     public event EventHandler OnDirectionChosen;
     public event EventHandler OnGlobalWindExpired;
 
-    // Use this for initialization
+    public GameObject windDirection;
+    private WindEffectController _windEffectController;
+    
     void Start()
     {
+        _windEffectController = windDirection.GetComponent<WindEffectController>();
         _players = GameObject.FindGameObjectsWithTag("Player");
         enabled = false;
         gameObject.SetActive(false);
         OnDirectionChosen += GlobalWindController_OnDirectionChosen;
+        OnGlobalWindExpired += GlobalWindController_OnGlobalWindExpired;
+
+        _windEffectController.SetEnabled(false);
+        _windEffectController.SetIndicatorEnabled(false);
+    }
+
+    private void GlobalWindController_OnGlobalWindExpired(object sender, EventArgs e)
+    {
+        _windEffectController.SetEnabled(false);
+        _windEffectController.SetIndicatorEnabled(false);
     }
 
     private void GlobalWindController_OnDirectionChosen(object sender, EventArgs e)
     {
         _lifeTime = TotalLifeTime;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (!_isDirectionChosen)
-        //{
-        //    if (Input.GetAxisRaw("Horizontal_God_Aim") != 0)
-        //    {
-        //        _moveHorizontal = Input.GetAxis("Horizontal_God_Aim");
-        //    }
-
-        //    if (Input.GetAxisRaw("Vertical_God_Aim") != 0)
-        //    {
-        //        _moveVertical = Input.GetAxis("Vertical_God_Aim");
-        //    }
-        //}
-
-        //if (_moveHorizontal != 0 || _moveVertical != 0)
-        //{
-        //    if (Input.GetAxis("Confirm_Target") < -0.5)
-        //    {
-        //        IsDirectionChosen = true;
-        //    }
-        //}
-    }
-
     void FixedUpdate()
     {
         if (_isDirectionChosen)
@@ -90,8 +77,9 @@ public class GlobalWindController : MonoBehaviour
         enabled = true;
         gameObject.SetActive(true);
         IsDirectionChosen = true;
-
         _lifeTime = TotalLifeTime;
+        _windEffectController.SetEnabled(true);
+        _windEffectController.SetIndicatorEnabled(true);
     }
 
     private float _lifeTime;
