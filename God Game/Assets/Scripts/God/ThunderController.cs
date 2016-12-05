@@ -28,21 +28,36 @@ public class ThunderController : MonoBehaviour
     public event EventHandler OnThunderStruck;
     public void Strike()
     {
-        
-        thunderRaycastFunc();
         enabled = true;
         gameObject.SetActive(true);
+        thunderRaycastFunc();
+
+        //_thunderCharge.SetActive(true);
+        //_thunderCharge.transform.position = new Vector3(transform.position.x, _thunderRaycastHit.point.y + 1, transform.position.z);
+        //_thunderCharge.transform.SetParent(null);
+
         transform.Translate(new Vector3(0, _initialHeight, 0));
         _lifeTime = TotalLifeTime;
         IsFalling = true;
+        
+        
     }
 
     void Start ()
     {
+        //_thunderCharge = gameObject.transform.FindChild("ThunderCharge").gameObject;
+        //_thunderCharge.SetActive(false);
+        OnThunderStruck += ThunderController_OnThunderStruck;
         enabled = false;
         gameObject.SetActive(false);
         _initialScaleX = transform.localScale.x;
         _initialScaleY = transform.localScale.y;
+    }
+
+    private void ThunderController_OnThunderStruck(object sender, EventArgs e)
+    {
+        //_thunderCharge.transform.SetParent(gameObject.transform);
+        //_thunderCharge.SetActive(false);
     }
 
     void FixedUpdate()
@@ -95,6 +110,7 @@ public class ThunderController : MonoBehaviour
     private float _initialScaleY;
     private float _initialScaleX;
     private float _lifeTime;
+    //private GameObject _thunderCharge;
 
     private float _initialHeight = 5;
     private RaycastHit _thunderRaycastHit;

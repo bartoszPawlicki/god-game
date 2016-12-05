@@ -15,6 +15,7 @@ public class RopeController : MonoBehaviour
     {
         enabled = true;
         Direction = 1;
+        _ropeAudioSource.Play();
     }
     public void EndPulling()
     {
@@ -40,6 +41,8 @@ public class RopeController : MonoBehaviour
         _originScale = transform.localScale;
 
         enabled = false;
+
+        _ropeAudioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -102,4 +105,6 @@ public class RopeController : MonoBehaviour
     private GameObject _parent;
     private GameObject _player;
     private ConstantForce _playerConstantForce;
+
+    private AudioSource _ropeAudioSource;
 }
