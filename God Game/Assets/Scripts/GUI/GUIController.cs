@@ -18,6 +18,7 @@ public class GUIController : MonoBehaviour
         _player1 = GameObject.Find("Player1").GetComponent<PlayerController>();
         _player2 = GameObject.Find("Player2").GetComponent<PlayerController>();
         _god = GameObject.Find("God").GetComponent<GodController>();
+        _totemActivator = GameObject.FindGameObjectWithTag("Totem").GetComponent<TotemActivator>();
 
         _player1Skills = GameObject.Find("Skills Player1").GetComponent<SkillsController>();
         _player2Skills = GameObject.Find("Skills Player2").GetComponent<SkillsController>();
@@ -33,6 +34,8 @@ public class GUIController : MonoBehaviour
 
         _roundText = GameObject.Find("Round").GetComponent<Text>();
         _roundText.gameObject.SetActive(false);
+
+        _totemActivator.OnTotemCapured += TotemActivator_OnTotemCaptured;
 
         _god.OnThunderSkillChosen += _god_OnThunderSkillChosen;
         _god.OnWaterGeyserSkillChosen += _god_OnWaterGeyserSkillChosen;
@@ -77,6 +80,12 @@ public class GUIController : MonoBehaviour
         _roundText.text = "Round " + roundNumber;
     }
 
+    private void TotemActivator_OnTotemCaptured(object sender, System.EventArgs e)
+    {
+        _isRoundTextAsctive = true;
+        _roundText.text = "Totem has been captured";
+        Debug.Log("Totem captured trigger");
+    }
     private void GUIController_Elapsed(object sender, ElapsedEventArgs e)
     {
         _isRoundTextAsctive = false;
@@ -124,4 +133,5 @@ public class GUIController : MonoBehaviour
     private TimeManager _gameTime;
     private CameraController _cameraController;
     private GodPride _godPride;
+    private TotemActivator _totemActivator;
 }

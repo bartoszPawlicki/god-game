@@ -36,35 +36,26 @@ public class TotemActivator : MonoBehaviour
             {
                 if (Vector3.Distance(player.transform.position, gameObject.transform.position) < totemRange && gameObject.transform.position.y - player.transform.position.y < 0.5f && _totemOfEagleCaptured == false)
                 {
-                    if(transform.rotation.eulerAngles.z < 359)
-                    {
-                        transform.Rotate(Vector3.forward * captureSpeed);                
-                    }
-                    else
-                    {
-                        _totemOfEagleCaptured = true;
-                        totemCapturedFlag = true;
-                        messageDisplayTime = 4f;
-                        if (OnTotemCapured != null)
-                            OnTotemCapured.Invoke(this, null);
-                    }
+                    captureTotem(captureSpeed);
                 }
             }
         }
-        messageDisplayTime -= Time.deltaTime;
-        if(messageDisplayTime <= 0)
-        {
-            totemCapturedFlag = false;
-        }
     }
-    void OnGUI()
+
+    void captureTotem(float captureSpeed)
     {
-        GUI.skin.label.fontSize = 70;
-        if (totemCapturedFlag == true)
+        if (transform.rotation.eulerAngles.z < 359)
         {
-            GUI.Label(new Rect(Screen.width/2, Screen.height /3, 500f, 500f), "Totem Captured");
+            transform.Rotate(Vector3.forward * captureSpeed);
         }
-        
+        else
+        {
+            Debug.Log("Totem captured trigger");
+            _totemOfEagleCaptured = true;
+            totemCapturedFlag = true;
+            if (OnTotemCapured != null)
+                OnTotemCapured.Invoke(this, null);
+        }
     }
 
 }
