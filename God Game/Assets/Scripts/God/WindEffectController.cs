@@ -11,12 +11,12 @@ public class WindEffectController : MonoBehaviour {
         if (enabled)
         {
             em.rate = 50;
-            EnableWind();
+            StartCoroutine(EnableWind());
         }
         else
         {
             em.rate = 0;
-            DisableWind();
+            StartCoroutine(DisableWind());
         }
     }
 
@@ -41,6 +41,8 @@ public class WindEffectController : MonoBehaviour {
         for (int i = 0; i <= 10; i++)
         {
             windZone.windMain = i / 2.0f;
+
+            Debug.Log(windZone.windMain);
             yield return new WaitForSeconds(.1f);
         }
     }
