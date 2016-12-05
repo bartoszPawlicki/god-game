@@ -5,7 +5,6 @@ using UnityEditorInternal;
 using System;
 using System.Timers;
 using Assets.Scripts;
-using System.Diagnostics;
 using Assets.Scripts.Utils;
 
 public class PlayerController : MonoBehaviour
@@ -45,6 +44,7 @@ public class PlayerController : MonoBehaviour
         _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
         _slowTimer = new Timer() { AutoReset = false };
         _slowTimer.Elapsed += Timer_Elapsed;
+        _risingSlowTicks = 0;
 
         _damage = 1;
         
@@ -76,9 +76,20 @@ public class PlayerController : MonoBehaviour
         _slowTimer.Interval = slowDuration;
         _slowTimer.Start();
     }
+
+    public void ApplyRisingSlow(float slowPower, float slowDuration)
+    {
+        _risingSlowTicks++;
+        if (slowPower * _risingSlowTicks >= 1) _speed = 0;
+        else _speed = StartingSpeed * (1 - (slowPower * _risingSlowTicks));
+        Debug.Log(_risingSlowTicks);
+        _slowTimer.Interval = slowDuration;
+        _slowTimer.Start();
+    }
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
         _speed = StartingSpeed;
+        _risingSlowTicks = 0;
     }
     
     void Update()
@@ -155,6 +166,7 @@ public class PlayerController : MonoBehaviour
     private Timer _slowTimer;
     private int _playerNumber;
     private float _speed;
+    private int _risingSlowTicks;
     private Rigidbody _rigidbody;
     private RopeController _rope;
     private ThrowCompanionBehaviour _throw;

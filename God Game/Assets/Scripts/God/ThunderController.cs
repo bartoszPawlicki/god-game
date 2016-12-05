@@ -75,7 +75,8 @@ public class ThunderController : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             PlayerController slow = collider.GetComponent<PlayerController>();
-            slow.ApplySlow(SlowPower, SlowDuration);
+            slow.ApplyRisingSlow(SlowPower, SlowDuration);
+            
         }
     }
 
@@ -84,7 +85,8 @@ public class ThunderController : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             PlayerController slow = collider.GetComponent<PlayerController>();
-            slow.ApplySlow(SlowPower, SlowDuration);
+            slow.ApplyRisingSlow(SlowPower, SlowDuration);
+            Debug.Log("trafiam");
         }
     }
 
