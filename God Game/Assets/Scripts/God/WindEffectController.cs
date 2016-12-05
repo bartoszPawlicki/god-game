@@ -30,7 +30,7 @@ public class WindEffectController : MonoBehaviour {
     }
     private IEnumerator DisableWind()
     {
-        for(int i = 10; i >= 0; i--)
+        for(int i = 5; i >= 0; i--)
         {
             windZone.windMain = i / 2.0f;
             yield return new WaitForSeconds(.1f);
@@ -38,7 +38,7 @@ public class WindEffectController : MonoBehaviour {
     }
     private IEnumerator EnableWind()
     {
-        for (int i = 0; i <= 10; i++)
+        for (int i = 0; i <= 6; i++)
         {
             windZone.windMain = i / 2.0f;
 
