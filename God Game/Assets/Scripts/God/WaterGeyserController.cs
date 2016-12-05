@@ -44,6 +44,7 @@ public class WaterGeyserController : MonoBehaviour
         waterGeyserRaycastFunc();
         gameObject.transform.SetParent(null);
         gameObject.GetComponent<Renderer>().enabled = false;
+        _waterStream.SetActive(false);
         _waterBubbles.SetActive(true);
     }
     void Start ()
@@ -52,6 +53,7 @@ public class WaterGeyserController : MonoBehaviour
         OnWaterGeyserExpired += WaterGeyserController_OnWaterGeyserExpired;
         _parent = gameObject.transform.parent;
         _waterBubbles = transform.FindChild("Bubbles").gameObject;
+        _waterStream = transform.FindChild("Water").gameObject;
         _isCharged = false;
         enabled = false;
         gameObject.SetActive(false);
@@ -65,6 +67,7 @@ public class WaterGeyserController : MonoBehaviour
     {
         _waterBubbles.SetActive(false);
         gameObject.GetComponent<Renderer>().enabled = true;
+        _waterStream.SetActive(true);
         _waterSoundSource.Play();
     }
 
@@ -142,6 +145,7 @@ public class WaterGeyserController : MonoBehaviour
     private Transform _parent;
     private RaycastHit _waterGeyserRaycastHit;
     private GameObject _waterBubbles;
+    private GameObject _waterStream;
     private int _groundLayerMask = 1 << 8;
     public AudioClip _waterSoundClip;
     private AudioSource _waterSoundSource;
