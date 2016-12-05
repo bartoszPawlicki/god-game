@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour
         _risingSlowTicks++;
         if (slowPower * _risingSlowTicks >= 1) _speed = 0;
         else _speed = StartingSpeed * (1 - (slowPower * _risingSlowTicks));
-        Debug.Log(_risingSlowTicks);
         _slowTimer.Interval = slowDuration;
         _slowTimer.Start();
     }

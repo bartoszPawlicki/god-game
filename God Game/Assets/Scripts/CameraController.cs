@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
             _worldPosition = Player2.transform.position;
         else
             _worldPosition = Vector3.zero;
-        
+
         if (IsInitialMoving)
         {
             _worldPosition = Vector3.Lerp(_worldPosition, _heavensGatePostion, 1 - _t);
