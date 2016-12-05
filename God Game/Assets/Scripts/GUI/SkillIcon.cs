@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class SkillIcon : MonoBehaviour {
 
     public Image skillHighlight;
-    public Image skillSelectionOverlay;
 
 	void Start ()
     {
@@ -13,7 +12,10 @@ public class SkillIcon : MonoBehaviour {
 
     public void SetSelected(bool isSelected)
     {
-        skillSelectionOverlay.enabled = isSelected;
+        if (isSelected)
+            transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        else
+            transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void SetCooldownPercent(float percent)
