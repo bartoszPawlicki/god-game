@@ -5,18 +5,9 @@ public class CatapultController : MonoBehaviour
 {
     public float SlowPower;
     public float SlowDuration;
-    public float CatapultStrength;
+    public float CatapultVerticalStrength;
+    public float CatapultHorizontalStrength;
     public Vector3 CatapultDirection;
-
-	void Start ()
-    {
-	
-	}
-	
-	void Update ()
-    {
-	
-	}
 
     void OnTriggerEnter(Collider collider)
     {
@@ -25,7 +16,8 @@ public class CatapultController : MonoBehaviour
             PlayerController slow = collider.GetComponent<PlayerController>();
             slow.ApplySlow(SlowPower, SlowDuration);
 
-            collider.gameObject.GetComponent<Rigidbody>().AddForce(CatapultDirection.normalized * CatapultStrength);
+            collider.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3 (0, CatapultDirection.y, 0).normalized * CatapultVerticalStrength);
+            collider.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(CatapultDirection.x, 0, CatapultDirection.z).normalized * CatapultHorizontalStrength);
         }
     }
 }

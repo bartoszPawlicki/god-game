@@ -5071,6 +5071,16 @@ Prefab:
       propertyPath: CatapultDirection.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultHorizontalStrength
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: SlowDuration
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
   m_IsPrefabParent: 0
@@ -6415,17 +6425,17 @@ Prefab:
     - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
         type: 2}
       propertyPath: SlowDuration
-      value: 2000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
         type: 2}
       propertyPath: CatapultDirection.x
-      value: -0.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
         type: 2}
       propertyPath: CatapultDirection.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013781665928, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6434,6 +6444,16 @@ Prefab:
     - target: {fileID: 4000013781665928, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultVerticalStrength
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultHorizontalStrength
+      value: 6000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
@@ -9397,31 +9417,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000013781665928, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013781665928, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 135
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultHorizontalStrength
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
         type: 2}
-      propertyPath: CatapultStrength
-      value: 3500
+      propertyPath: CatapultVerticalStrength
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
         type: 2}
-      propertyPath: SlowPower
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013781665928, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013781665928, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4
+      propertyPath: SlowDuration
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
@@ -13608,12 +13617,22 @@ Prefab:
     - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
         type: 2}
       propertyPath: SlowDuration
-      value: 1500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
         type: 2}
       propertyPath: CatapultStrength
       value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultVerticalStrength
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultHorizontalStrength
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
@@ -14901,7 +14920,17 @@ Prefab:
     - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
         type: 2}
       propertyPath: SlowDuration
-      value: 1500
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultVerticalStrength
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultHorizontalStrength
+      value: 6000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
@@ -15551,6 +15580,21 @@ Prefab:
         type: 2}
       propertyPath: CatapultDirection.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultVerticalStrength
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: CatapultHorizontalStrength
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013379823782, guid: 0ca813bbb01a904428d5d1b15343f0c2,
+        type: 2}
+      propertyPath: SlowDuration
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}

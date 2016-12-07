@@ -36,10 +36,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014103491508}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 0.7, z: 0}
+  m_LocalRotation: {x: -0, y: 0.92387956, z: -0, w: 0.38268343}
+  m_LocalPosition: {x: 51.8, y: 0.50000167, z: 69}
   m_LocalScale: {x: 1, y: 1, z: 4}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -104,5 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlowPower: 1
   SlowDuration: 2000
-  CatapultStrength: 4000
+  CatapultVerticalStrength: 3000
+  CatapultHorizontalStrength: 7000
   CatapultDirection: {x: 0, y: 1, z: 1}
