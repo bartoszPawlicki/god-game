@@ -24,6 +24,7 @@ public class ThrowCompanionBehaviour : MonoBehaviour
         }
 
         _cooldown = new CooldownProvider(ThrowCooldown);
+        _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
     }
     void Start()
     {
@@ -35,14 +36,14 @@ public class ThrowCompanionBehaviour : MonoBehaviour
         }
 
         _cooldown = new CooldownProvider(ThrowCooldown);
+        _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
     }
 
     void Update ()
     {
-        float throwCompanion1 = Input.GetAxis("Throw_1");
-        float throwCompanion2 = Input.GetAxis("Throw_2");
+        float throwCompanion = Input.GetAxis("Throw_" + _playerNumber);
 
-        if (throwCompanion1 == 1 && throwCompanion2 == 1)
+        if (throwCompanion == 1 && Loading == 100)
         {
             foreach (var item in _playerColliding)
             {
@@ -70,7 +71,8 @@ public class ThrowCompanionBehaviour : MonoBehaviour
         if (_playerColliding.ContainsKey(collision.gameObject))
             _playerColliding[collision.gameObject] = false;
     }
-
+    
+    private int _playerNumber;
     private Dictionary<GameObject, bool> _playerColliding;
     private CooldownProvider _cooldown;
 }
