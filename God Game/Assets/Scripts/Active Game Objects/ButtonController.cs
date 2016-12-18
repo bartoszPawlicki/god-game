@@ -4,6 +4,7 @@ using System;
 
 public class ButtonController : MonoBehaviour
 {
+    public float Speed;
     public float PushValue
     {
         get
@@ -21,9 +22,9 @@ public class ButtonController : MonoBehaviour
 	void FixedUpdate ()
     {
         if (_isPressed && transform.localScale.y > _minYScale)
-            transform.localScale -= new Vector3(0, 1, 0) * _speed;
+            transform.localScale -= new Vector3(0, 1, 0) * Speed;
         else if(!_isPressed && transform.localScale.y < _originYScale)
-            transform.localScale += new Vector3(0, 1, 0) * _speed;
+            transform.localScale += new Vector3(0, 1, 0) * Speed;
     }
 
     void Presse()
@@ -45,8 +46,7 @@ public class ButtonController : MonoBehaviour
     {
         Release();
     }
-
-    private float _speed = 0.001f;
+    
     private bool _isPressed;
     private float _originYScale;
     private float _minYScale = 0.1f;
