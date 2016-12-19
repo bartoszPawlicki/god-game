@@ -4051,6 +4051,21 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000013804565376, guid: 05596685e2f97a847970106d95a14215,
     type: 2}
   m_PrefabInternal: {fileID: 1895935368}
+--- !u!114 &281610005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 281610004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c750c1a1b01421944bcbd75a6ec45457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotRange: 0
+  shotSpeed: 20
+  shotStrength: 0
+  damage: 0
 --- !u!4 &286570326 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
@@ -15065,6 +15080,21 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013955323040, guid: 05596685e2f97a847970106d95a14215,
     type: 2}
   m_PrefabInternal: {fileID: 1716752183}
+--- !u!114 &1572925466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572925464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c750c1a1b01421944bcbd75a6ec45457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotRange: 0
+  shotSpeed: 20
+  shotStrength: 0
+  damage: 0
 --- !u!1 &1574710736 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012525327460, guid: e300fdad7ec2741fb9a9084c9f26b5e2,
