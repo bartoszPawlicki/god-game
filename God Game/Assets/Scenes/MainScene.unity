@@ -4066,6 +4066,7 @@ MonoBehaviour:
   shotSpeed: 20
   shotStrength: 0
   damage: 0
+  SlinkShotCooldown: 1000
 --- !u!4 &286570326 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
@@ -15095,6 +15096,7 @@ MonoBehaviour:
   shotSpeed: 20
   shotStrength: 0
   damage: 0
+  SlinkShotCooldown: 2000
 --- !u!1 &1574710736 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012525327460, guid: e300fdad7ec2741fb9a9084c9f26b5e2,
