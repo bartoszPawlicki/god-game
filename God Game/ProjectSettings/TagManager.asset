@@ -9,6 +9,7 @@ TagManager:
   - Rope
   - Gate
   - GlobalWindObject
+  - Bullet
   layers:
   - Default
   - TransparentFX
