@@ -9,7 +9,7 @@ public class BulletControler : MonoBehaviour
     public float shotRange;
     public float shotSpeed;
     public float shotStrength;
-    public int damage;
+    public float damage;
     public int SlinkShotCooldown;
 
     public int Direction { get; private set; }
@@ -38,6 +38,8 @@ public class BulletControler : MonoBehaviour
             _slinkShotCD.Start();
         }
 	}
+
+    
 
     private GameObject bulletPrefab;
     private CooldownProvider _slinkShotCD;

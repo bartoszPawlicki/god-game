@@ -10,6 +10,7 @@ TagManager:
   - Gate
   - GlobalWindObject
   - Bullet
+  - Temple
   layers:
   - Default
   - TransparentFX

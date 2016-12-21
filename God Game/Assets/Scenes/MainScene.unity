@@ -1467,6 +1467,58 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 43000013959241982, guid: c907e99793716b0469b112b57500aaee, type: 2}
+--- !u!1001 &167396362
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4013852401076902, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 19.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013852401076902, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013852401076902, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 24.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013852401076902, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013852401076902, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013852401076902, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013852401076902, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013852401076902, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114545734593983618, guid: ad99be76934c056499631de1c5cb2e12,
+        type: 2}
+      propertyPath: God
+      value: 
+      objectReference: {fileID: 2026037687}
+    - target: {fileID: 114545734593983618, guid: ad99be76934c056499631de1c5cb2e12,
+        type: 2}
+      propertyPath: GroundGod
+      value: 
+      objectReference: {fileID: 1172643195}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ad99be76934c056499631de1c5cb2e12, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &183201895 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013562997138, guid: 1ffddf2d779950141a30e3f5f683d14c,
@@ -2313,7 +2365,7 @@ MonoBehaviour:
   shotRange: 0
   shotSpeed: 20
   shotStrength: 0
-  damage: 0
+  damage: 1
   SlinkShotCooldown: 1000
 --- !u!4 &286570326 stripped
 Transform:
@@ -8746,6 +8798,11 @@ Prefab:
     - {fileID: 3300000, guid: 2d51636b79dcac443b52bb906afe4d59, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2d51636b79dcac443b52bb906afe4d59, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1172643195 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1398182009785678, guid: f53cf50041697db49b6c62eeb124eec3,
+    type: 2}
+  m_PrefabInternal: {fileID: 196127106}
 --- !u!1001 &1174899863
 Prefab:
   m_ObjectHideFlags: 0
@@ -12948,7 +13005,7 @@ MonoBehaviour:
   shotRange: 0
   shotSpeed: 20
   shotStrength: 0
-  damage: 0
+  damage: 1
   SlinkShotCooldown: 2000
 --- !u!1 &1574710736 stripped
 GameObject:
