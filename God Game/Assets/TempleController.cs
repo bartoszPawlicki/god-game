@@ -32,6 +32,7 @@ public class TempleController : MonoBehaviour {
     IEnumerator TempleDestroyed()
     {
         Debug.Log("Umieram");
+        _godController.silenceGodSkills();
         yield return new WaitForSeconds(3);
         _godController.enabled = false;
         God.SetActive(false);

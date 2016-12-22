@@ -5,11 +5,11 @@ using UnityEngine;
 public class GroundGodController : MonoBehaviour {
 
     public float GodInitialSpeed;
+    
 
     void Start ()
     {
         _godSpeed = GodInitialSpeed;
-
     }
 
     void FixedUpdate()

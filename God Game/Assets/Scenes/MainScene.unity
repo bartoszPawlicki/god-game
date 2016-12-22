@@ -1563,6 +1563,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114369870066900446, guid: f53cf50041697db49b6c62eeb124eec3,
+        type: 2}
+      propertyPath: God
+      value: 
+      objectReference: {fileID: 2026037687}
+    - target: {fileID: 54719265605616206, guid: f53cf50041697db49b6c62eeb124eec3,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f53cf50041697db49b6c62eeb124eec3, type: 2}
   m_IsPrefabParent: 0
