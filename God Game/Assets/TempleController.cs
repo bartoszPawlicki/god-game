@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts;
 
 public class TempleController : MonoBehaviour {
 
     public float _startingHp;
     public GameObject God;
     public GameObject GroundGod;
-
+    public event TempleDestroyedEventHandler OnTempleDestroyed;
 
 	void Start ()
     {
@@ -31,13 +33,12 @@ public class TempleController : MonoBehaviour {
 
     IEnumerator TempleDestroyed()
     {
-        Debug.Log("Umieram");
-        _godController.silenceGodSkills();
+        _godController.silenceGodSkills(true);
         yield return new WaitForSeconds(3);
-        _godController.enabled = false;
-        God.SetActive(false);
+        
+        if (OnTempleDestroyed != null)
+            OnTempleDestroyed.Invoke(this, gameObject.transform);
         gameObject.SetActive(false);
-        GroundGod.transform.position = new Vector3(transform.position.x, 10, transform.position.z);
     }
 
     private float HP;

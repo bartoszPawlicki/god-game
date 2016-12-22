@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4559,6 +4559,7 @@ GameObject:
   - component: {fileID: 550028889}
   - component: {fileID: 550028888}
   - component: {fileID: 550028887}
+  - component: {fileID: 550028891}
   m_Layer: 0
   m_Name: Game
   m_TagString: GameController
@@ -4640,6 +4641,20 @@ MonoBehaviour:
   bonusTimeOnCapture: 30
   TotalGameTimeSeconds: 60
   TimeLeftSeconds: 0
+--- !u!114 &550028891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550028885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d949559aed807744b4ba2b5789b09e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  God: {fileID: 2026037687}
+  GroundGod: {fileID: 1172643195}
+  GroundGodDuration: 10
 --- !u!4 &551398603 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013084169012, guid: a3a8ea0b7e0ccdb4bacdeebc12f4b3fb,

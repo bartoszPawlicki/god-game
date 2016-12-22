@@ -223,9 +223,9 @@ public class GodController : MonoBehaviour
         }
     }
 
-    public void silenceGodSkills()
+    public void silenceGodSkills(bool silence)
     {
-        _areSkillsSilenced = true;
+        _areSkillsSilenced = silence;
     }
 
     private float _lightRange = 1.5f;
