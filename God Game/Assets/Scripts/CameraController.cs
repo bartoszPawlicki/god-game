@@ -48,26 +48,26 @@ public class CameraController : MonoBehaviour
         else
             _worldPosition = Vector3.zero;
 
-        //if (IsInitialMoving)
-        //{
-        //    _worldPosition = Vector3.Lerp(_worldPosition, _heavensGatePostion, 1 - _t);
-        //    _t += 0.002f;
+        if (IsInitialMoving)
+        {
+            _worldPosition = Vector3.Lerp(_worldPosition, _heavensGatePostion, 1 - _t);
+            _t += 0.002f;
 
-        //    _offset += new Vector3(0, 10 - _t * 10, 0);
+            _offset += new Vector3(0, 10 - _t * 10, 0);
 
-        //    transform.position = _worldPosition + _offset;
-        //    transform.LookAt(Vector3.Lerp(_worldPosition, _heavensGatePostion, 1 - _t));
-
-        //    if (_t >= 1)
-        //    {
-        //        IsInitialMoving = false;
-        //        _t = 0;
-        //    }
-        //}
-        //else
-        
             transform.position = _worldPosition + _offset;
-            transform.LookAt(_worldPosition);
+            transform.LookAt(Vector3.Lerp(_worldPosition, _heavensGatePostion, 1 - _t));
+
+            if (_t >= 1)
+            {
+                IsInitialMoving = false;
+                _t = 0;
+            }
+        }
+        else
+
+        transform.position = _worldPosition + _offset;
+        transform.LookAt(_worldPosition);
         
     }
 
