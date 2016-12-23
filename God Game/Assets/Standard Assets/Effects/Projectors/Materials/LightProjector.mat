@@ -30,7 +30,7 @@ Material:
     - first:
         name: _FalloffTex
       second:
-        m_Texture: {fileID: 2800000, guid: 9c547d4991fa3da42adec7211a1b86e8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 223436c94d2ed274caffd02b9d4f4504, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
