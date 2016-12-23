@@ -5,14 +5,40 @@ public class BloodthirstyFlowerController : MonoBehaviour
 {
     public float Range;
     public float Speed;
+    /// <summary>
+    /// In range 0 - 1
+    /// </summary>
+    public float HP
+    {
+        get { return _hp; }
+        set
+        {
+            if(value != _hp)
+            {
+                _hp = value;
+                Range *= _hp;
+                _material.color = new Color(_originColor.r, _originColor.g * _hp, _originColor.b, _originColor.a);
+                if (_hp <= 0)
+                {
+                    _hp = 0;
+                    enabled = false;
+                }
+            }
+        }
+    }
     void Start ()
     {
         _players = GameObject.FindGameObjectsWithTag("Player");
 
+        _material = gameObject.GetComponent<Renderer>().material;
+
+        _originColor = _material.color;
         _respawnManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RespawnManager>();
 
         _originPosition = transform.position;
         _originScale = transform.localScale;
+
+        HP = 1;
     }
 	
 	void Update ()
@@ -77,8 +103,11 @@ public class BloodthirstyFlowerController : MonoBehaviour
     
     void EatPlayer()
     {
-        _respawnManager.StartRespawn(_playerInRange);
-        _isPlayerInRange = false;
+        if(isActiveAndEnabled)
+        {
+            _respawnManager.StartRespawn(_playerInRange);
+            _isPlayerInRange = false;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -86,6 +115,10 @@ public class BloodthirstyFlowerController : MonoBehaviour
         _direction = -1;
         if (collision.collider.tag == "Player")
             EatPlayer();
+
+        //TODO: 0.1f powinno być ustawiane z zewnątrz
+        if (collision.collider.tag == "Bullet")
+            HP -= 0.3f;
     }
 
     void OnTriggerEnter(Collider other)
@@ -95,6 +128,9 @@ public class BloodthirstyFlowerController : MonoBehaviour
             EatPlayer();
     }
 
+    private Color _originColor;
+    private Material _material;
+    private float _hp;
     private bool _isMoving;
     private int _direction;
     private bool _isPlayerInRange;

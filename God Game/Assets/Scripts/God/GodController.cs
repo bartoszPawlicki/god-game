@@ -44,6 +44,8 @@ public class GodController : MonoBehaviour
         _thunderCooldown = new CooldownProvider(ThunderCooldown);
         _waterGeyserCooldown = new CooldownProvider(WaterGeyserCooldown);
         _globalWindCooldown = new CooldownProvider(GlobalWindCooldown);
+
+        _areSkillsSilenced = false;
 }
     public float ThunderCooldownValue
     {
@@ -145,7 +147,7 @@ public class GodController : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("Confirm_Target") == 1 || (Input.GetAxis("Confirm_Target") < -0.5) && SkillChosen != Skill.None)
+        if ( (Input.GetAxis("Confirm_Target") == 1 || (Input.GetAxis("Confirm_Target") < -0.5) ) && SkillChosen != Skill.None && !_areSkillsSilenced)
         {
             if (SkillChosen == Skill.Thunder && !_thunderController.isActiveAndEnabled && ThunderCooldownValue == 100)
             {
@@ -221,6 +223,11 @@ public class GodController : MonoBehaviour
         }
     }
 
+    public void silenceGodSkills(bool silence)
+    {
+        _areSkillsSilenced = silence;
+    }
+
     private float _lightRange = 1.5f;
     private float _godSpeed;
 
@@ -241,4 +248,6 @@ public class GodController : MonoBehaviour
     private CooldownProvider _thunderCooldown;
     private CooldownProvider _waterGeyserCooldown;
     private CooldownProvider _globalWindCooldown;
+
+    private bool _areSkillsSilenced;
 }
