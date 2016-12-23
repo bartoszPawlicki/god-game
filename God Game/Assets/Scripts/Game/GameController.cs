@@ -23,9 +23,6 @@ public class GameController : MonoBehaviour
 
         _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         _cameraController.OnCameraStopMoving += _cameraController_OnCameraStopMoving;
-
-        // set this to false if you don't want players freeze at the start of the game
-        _iWantToTestGameAndDontWantToCommentThisEveryTime = true;
     }
 
     private void _cameraController_OnCameraStopMoving(object sender, System.EventArgs e)
@@ -45,7 +42,7 @@ public class GameController : MonoBehaviour
 
     private void _roundManager_OnLastRoundEnded(object sender, System.EventArgs e)
     {
-        if (!_iWantToTestGameAndDontWantToCommentThisEveryTime) GameContener.FreezePlayers();
+        GameContener.FreezePlayers();
         //TODO: Game End
     }
 
@@ -54,7 +51,7 @@ public class GameController : MonoBehaviour
         //New round starts when camera stop moving, check _cameraController_OnCameraStopMoving method
         _timeManager.enabled = false;
         GameContener.MovePlayersToPosition(_startPostion);
-        if (!_iWantToTestGameAndDontWantToCommentThisEveryTime) GameContener.FreezePlayers();
+        GameContener.FreezePlayers();
         _timeManager.TimeLeft = _timeManager.TotalGameTime;
         _cameraController.IsInitialMoving = true;
     }
@@ -83,5 +80,4 @@ public class GameController : MonoBehaviour
     private RespawnManager _respawnManager;
     private PortalColliderController _portalCollider;
     private CameraController _cameraController;
-    private bool _iWantToTestGameAndDontWantToCommentThisEveryTime;
 }

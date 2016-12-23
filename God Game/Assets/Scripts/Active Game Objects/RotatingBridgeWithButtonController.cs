@@ -21,7 +21,7 @@ public class RotatingBridgeWithButtonController : MonoBehaviour
         float alfa = (360 - transform.localEulerAngles.y) * Mathf.PI / 180;
         float x = Mathf.Sin(alfa) * _lenght;
         float z = (1 - Mathf.Cos(alfa)) * _lenght;
-        transform.localPosition = new Vector3(x, 0, z);
+        transform.localPosition = new Vector3(x, transform.localPosition.y, z);
     }
 
     private float _lenght;
