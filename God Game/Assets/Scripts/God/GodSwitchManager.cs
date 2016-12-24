@@ -54,7 +54,7 @@ public class GodSwitchManager : MonoBehaviour {
     {
         _godController.enabled = true;
         God.SetActive(true);
-        God.transform.position = new Vector3(GroundGod.transform.position.x, 2.5f, GroundGod.transform.position.z);
+        God.transform.position = new Vector3(GroundGod.transform.position.x, 5f, GroundGod.transform.position.z);
         _godController.silenceGodSkills(false);
 
         _groundGodController.enabled = false;
