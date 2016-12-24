@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5031,7 +5031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   God: {fileID: 2026037687}
-  GroundGod: {fileID: 1398182009785678, guid: f53cf50041697db49b6c62eeb124eec3, type: 2}
+  GroundGod: {fileID: 1804481806}
   GroundGodDuration: 10
 --- !u!4 &551398603 stripped
 Transform:
@@ -8052,7 +8052,6 @@ GameObject:
   - component: {fileID: 935220686}
   - component: {fileID: 935220687}
   - component: {fileID: 935220690}
-  - component: {fileID: 935220691}
   m_Layer: 2
   m_Name: Thunder
   m_TagString: Untagged
@@ -8150,7 +8149,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 75ef49a728bfb3e45a04d392c03d0736, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -8220,17 +8219,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &935220691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 935220684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c3d8bbf6d894b74eae9818e6f89d8d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &946039789
 Prefab:
   m_ObjectHideFlags: 0
@@ -9943,6 +9931,91 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1559658402}
   m_GameObject: {fileID: 1147530357}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1158427433 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013071841390, guid: 75b6ab8c71d21824da11f4c279e8fd5c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1400420765}
+--- !u!82 &1158427442
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1158427433}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: eef17fe2cb3e96f4bbf7f13757d41854, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1163259257 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100014, guid: 2d51636b79dcac443b52bb906afe4d59, type: 3}
@@ -11990,6 +12063,16 @@ Prefab:
     - target: {fileID: 54000012177677732, guid: 75b6ab8c71d21824da11f4c279e8fd5c,
         type: 2}
       propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010283933792, guid: 75b6ab8c71d21824da11f4c279e8fd5c,
+        type: 2}
+      propertyPath: CastingTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 82493739791687330, guid: 75b6ab8c71d21824da11f4c279e8fd5c,
+        type: 2}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -15041,7 +15124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingHp: 5
   God: {fileID: 2026037687}
-  GroundGod: {fileID: 1398182009785678, guid: f53cf50041697db49b6c62eeb124eec3, type: 2}
+  GroundGod: {fileID: 1804481806}
 --- !u!65 &1611527538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16729,7 +16812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f537fb73cb3128b40beb51cde050095c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodInitialSpeed: 5
+  GodInitialSpeed: 0.05
   ThunderCooldown: 1000
 --- !u!23 &1804481810
 MeshRenderer:
