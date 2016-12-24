@@ -45,9 +45,8 @@ public class GodSwitchManager : MonoBehaviour {
             cont.OnTempleDestroyed += TempleDestroyed;
         }
 
-        GroundGod.SetActive(false);
         _groundGodController.enabled = false;
-        
+        GroundGod.SetActive(false);
 
     }
 

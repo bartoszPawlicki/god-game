@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1398182009785678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.28, y: 10, z: 24.1}
+  m_LocalPosition: {x: 54.451942, y: 1.02, z: 87.30727}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GodInitialSpeed: 5
+  ThunderCooldown: 0
 --- !u!136 &136586443921133652
 CapsuleCollider:
   m_ObjectHideFlags: 1

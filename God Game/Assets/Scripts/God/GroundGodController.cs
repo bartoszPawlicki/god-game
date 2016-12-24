@@ -1,17 +1,54 @@
-﻿using System;
+﻿using Assets.Scripts.Utils;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 
 public class GroundGodController : MonoBehaviour {
 
     public float GodInitialSpeed;
-    
+    public float ThunderCooldown;
 
+    public float ThunderCooldownValue
+    {
+        get
+        {
+            return _thunderCooldown.Loading;
+        }
+    }
     void Start ()
     {
         _godSpeed = GodInitialSpeed;
         _rigidbody = GetComponent<Rigidbody>();
+        _thunder = transform.FindChild("Thunder").gameObject;
+        _thunder.SetActive(false);
+        _thunderCooldown = new CooldownProvider(ThunderCooldown);
+
+        _thunderTimer = new Timer() { Interval = ThunderCooldown / 2, AutoReset = false};
+        _thunderTimer.Elapsed += _thunderTimer_Elapsed;
+    }
+
+    private void _thunderTimer_Elapsed(object sender, ElapsedEventArgs e)
+    {
+        _setThunderActiveFalse = true;
+        _thunderCooldown.Start();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire_Thunder") && ThunderCooldownValue == 100)
+        {
+            _thunderCooldown.Use();
+            _thunder.SetActive(true);
+            _thunderTimer.Start();
+        }
+
+        if(_setThunderActiveFalse)
+        {
+            _setThunderActiveFalse = false;
+            _thunder.SetActive(false);
+        }
     }
 
     void FixedUpdate()
@@ -32,6 +69,12 @@ public class GroundGodController : MonoBehaviour {
         }
     }
 
+    private bool _setThunderActiveFalse;
+
     private float _godSpeed;
     private Rigidbody _rigidbody;
+
+    private Timer _thunderTimer; 
+    private GameObject _thunder;
+    private CooldownProvider _thunderCooldown;
 }
