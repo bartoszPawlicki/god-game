@@ -51,9 +51,10 @@ public class ThunderController : MonoBehaviour
     {
         //_thunderCharge = gameObject.transform.FindChild("ThunderCharge").gameObject;
         //_thunderCharge.SetActive(false);
-        OnThunderStruck += ThunderController_OnThunderStruck;
         enabled = false;
         gameObject.SetActive(false);
+        OnThunderStruck += ThunderController_OnThunderStruck;
+        
         _initialScaleX = transform.localScale.x;
         _initialScaleY = transform.localScale.y;
         _thunderSoundSource = gameObject.GetComponent<AudioSource>();

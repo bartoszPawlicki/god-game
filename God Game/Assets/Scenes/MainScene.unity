@@ -5031,7 +5031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   God: {fileID: 2026037687}
-  GroundGod: {fileID: 1398182009785678, guid: f53cf50041697db49b6c62eeb124eec3, type: 2}
+  GroundGod: {fileID: 1804481806}
   GroundGodDuration: 10
 --- !u!4 &551398603 stripped
 Transform:
@@ -8149,7 +8149,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 75ef49a728bfb3e45a04d392c03d0736, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -16812,7 +16812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f537fb73cb3128b40beb51cde050095c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodInitialSpeed: 5
+  GodInitialSpeed: 0.05
 --- !u!23 &1804481810
 MeshRenderer:
   m_ObjectHideFlags: 0
