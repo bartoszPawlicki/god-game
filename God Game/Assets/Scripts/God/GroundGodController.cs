@@ -20,12 +20,16 @@ public class GroundGodController : MonoBehaviour {
         float moveHorizontal = Input.GetAxis("Horizontal_God");
         float moveVertical = Input.GetAxis("Vertical_God");
 
-        Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * _godSpeed * Time.deltaTime;
-        _rigidbody.MovePosition(movement);
+        if (moveHorizontal != 0 || moveVertical != 0)
+        {
 
-        //gameObject.transform.Translate(new Vector3(moveHorizontal, 0, moveVertical) * _godSpeed * Time.deltaTime);
+            Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * _godSpeed;
+            _rigidbody.MovePosition(movement);
 
-        transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal, moveVertical) * Mathf.Rad2Deg), 0);
+            //gameObject.transform.Translate(new Vector3(moveHorizontal, 0, moveVertical) * _godSpeed * Time.deltaTime);
+
+            transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal, moveVertical) * Mathf.Rad2Deg), 0);
+        }
     }
 
     private float _godSpeed;
