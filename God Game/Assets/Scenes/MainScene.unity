@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2847,6 +2847,7 @@ MonoBehaviour:
   shotStrength: 0
   damage: 1
   SlinkShotCooldown: 1000
+  BulletVanishingTime: 0
 --- !u!4 &286570326 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
@@ -4972,7 +4973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusTimeOnCapture: 30
-  TotalGameTimeSeconds: 60
+  TotalGameTimeSeconds: 120
   TimeLeftSeconds: 0
 --- !u!114 &550028891
 MonoBehaviour:
@@ -14464,10 +14465,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotRange: 0
-  shotSpeed: 20
+  shotSpeed: 30
   shotStrength: 0
   damage: 1
   SlinkShotCooldown: 2000
+  BulletVanishingTime: 4000
 --- !u!1 &1574710736 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012525327460, guid: e300fdad7ec2741fb9a9084c9f26b5e2,
