@@ -117,7 +117,7 @@ public class ThunderController : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             PlayerController player = collider.GetComponent<PlayerController>();
-            player.ApplyRisingSlow(SlowPower, SlowDuration);
+            //player.ApplyRisingSlow(SlowPower, SlowDuration);
 
             player.HP -= ThunderDamage;
 
@@ -129,7 +129,7 @@ public class ThunderController : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             PlayerController player = collider.GetComponent<PlayerController>();
-            player.ApplyRisingSlow(SlowPower, SlowDuration);
+            //player.ApplyRisingSlow(SlowPower, SlowDuration);
 
             player.HP -= ThunderDamage;
         }
