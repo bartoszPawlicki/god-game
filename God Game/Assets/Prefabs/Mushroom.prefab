@@ -106,3 +106,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlowPower: 0.3
   SlowDuration: 1000
+  ShroomDamage: 0.1

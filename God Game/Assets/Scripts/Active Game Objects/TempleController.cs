@@ -7,14 +7,38 @@ using Assets.Scripts;
 public class TempleController : MonoBehaviour
 {
 
-    public float _startingHp;
+    public float StartingHp;
     public GameObject God;
     public GameObject GroundGod;
     public event TempleDestroyedEventHandler OnTempleDestroyed;
 
+    
+    private float _hp;
+    public float HP
+    {
+        get { return _hp; }
+        set
+        {
+            if (value != _hp)
+            {
+                _hp = value;
+                Debug.Log(_hp);
+                _material.color = new Color(_originColor.r, _originColor.g, _originColor.b, _originColor.a) * HP / StartingHp;
+                if (_hp <= 0)
+                {
+                    _material.color = new Color(1, 0, 0, _originColor.a);
+                    _hp = 0;
+                    StartCoroutine(TempleDestroyed());
+                    
+
+                }
+            }
+        }
+    }
+
     void Start()
     {
-        HP = _startingHp;
+        _hp = StartingHp;
         _godController = God.GetComponent<GodController>();
         _groundGodController = GroundGod.GetComponent<GroundGodController>();
 
@@ -26,20 +50,20 @@ public class TempleController : MonoBehaviour
     public void ApplyDamage(float damage)
     {
         HP -= damage;
-        _material.color = new Color(_originColor.r, _originColor.g, _originColor.b, _originColor.a) * HP / _startingHp;
+        
     }
 
     void Update()
     {
         if (HP <= 0)
         {
-            StartCoroutine(TempleDestroyed());
-            _material.color = new Color(1, 0, 0, _originColor.a);
+            
         }
     }
 
     IEnumerator TempleDestroyed()
     {
+        
         _godController.silenceGodSkills(true);
         yield return new WaitForSeconds(3);
 
@@ -47,8 +71,7 @@ public class TempleController : MonoBehaviour
             OnTempleDestroyed.Invoke(this, gameObject.transform);
         gameObject.SetActive(false);
     }
-
-    private float HP;
+    
     private GodController _godController;
     private GroundGodController _groundGodController;
     private Color _originColor;

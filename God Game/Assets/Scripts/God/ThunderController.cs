@@ -9,6 +9,7 @@ public class ThunderController : MonoBehaviour
     public float TotalLifeTime;
     public float FallingSpeed;
     public float CastingTime;
+    public float ThunderDamage;
 
     public bool IsFalling
     {
@@ -115,8 +116,10 @@ public class ThunderController : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            PlayerController slow = collider.GetComponent<PlayerController>();
-            slow.ApplyRisingSlow(SlowPower, SlowDuration);
+            PlayerController player = collider.GetComponent<PlayerController>();
+            player.ApplyRisingSlow(SlowPower, SlowDuration);
+
+            player.HP -= ThunderDamage;
 
         }
     }
@@ -125,8 +128,10 @@ public class ThunderController : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            PlayerController slow = collider.GetComponent<PlayerController>();
-            slow.ApplyRisingSlow(SlowPower, SlowDuration);
+            PlayerController player = collider.GetComponent<PlayerController>();
+            player.ApplyRisingSlow(SlowPower, SlowDuration);
+
+            player.HP -= ThunderDamage;
         }
     }
 
@@ -144,7 +149,7 @@ public class ThunderController : MonoBehaviour
     private float _castingTimer;
     //private GameObject _thunderCharge;
 
-    private float _initialHeight = 5;
+    private float _initialHeight = 9;
     private RaycastHit _thunderRaycastHit;
     private int _groundLayerMask = 1 << 8;
 

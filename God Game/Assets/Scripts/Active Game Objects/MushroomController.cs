@@ -5,6 +5,7 @@ public class MushroomController : MonoBehaviour {
 
     public float SlowPower;
     public float SlowDuration;
+    public float ShroomDamage;
 
     // Use this for initialization
     void Start ()
@@ -22,8 +23,9 @@ public class MushroomController : MonoBehaviour {
     {
         if (collider.gameObject.tag == "Player")
         {
-            PlayerController slow = collider.GetComponent<PlayerController>();
-            slow.ApplySlow(SlowPower, SlowDuration);
+            PlayerController player = collider.GetComponent<PlayerController>();
+            player.ApplySlow(SlowPower, SlowDuration);
+            player.HP -= ShroomDamage;
             gameObject.SetActive(false);
 
         }

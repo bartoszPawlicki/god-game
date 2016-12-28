@@ -17,7 +17,6 @@ public class BulletCollisionScript : MonoBehaviour {
         {
             TempleController dmg = collision.collider.GetComponent<TempleController>();
             dmg.ApplyDamage(damage);
-            Debug.Log("dostał");
         }
     }
 }

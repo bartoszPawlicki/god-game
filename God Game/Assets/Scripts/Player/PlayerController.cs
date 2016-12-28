@@ -23,6 +23,25 @@ public class PlayerController : MonoBehaviour
             return _ropeCooldown.Loading;
         }
     }
+
+    public float StartingHp;
+    private float _hp;
+    public float HP
+    {
+        get { return _hp; }
+        set
+        {
+            if (value != _hp)
+            {
+                _hp = value;
+                if (_hp <= 0)
+                {
+                    _hp = 0;
+                    //TODO: behaviour on player death
+                }
+            }
+        }
+    }
     /// <summary>
     /// Player name has to end with player number
     /// </summary>
@@ -47,7 +66,8 @@ public class PlayerController : MonoBehaviour
         _risingSlowTicks = 0;
 
         _damage = 1;
-        
+        _hp = StartingHp;
+
         //Niech to już zniknie xD bo patrzeć nie moge
         //totem1
         _totem1 = transform.parent.FindChild("TotemOfTheEagle").gameObject;
@@ -61,6 +81,8 @@ public class PlayerController : MonoBehaviour
         _totem3 = transform.parent.FindChild("TotemOfThePhoenix").gameObject;
         _totemActivator3 = _totem3.GetComponent<TotemActivator>();
         _totemActivator3.OnTotemCapured += PlayerControler_OnTotemCaptured;
+
+        
 
          InvokeRepeating("InflictDamageOnGod", 3.0f,1.0f);
     }
