@@ -8,6 +8,7 @@ public class TempleController : MonoBehaviour
 {
 
     public float StartingHp;
+    public int TempleResTime;
     public GameObject God;
     public GameObject GroundGod;
     public event TempleDestroyedEventHandler OnTempleDestroyed;
@@ -22,7 +23,6 @@ public class TempleController : MonoBehaviour
             if (value != _hp)
             {
                 _hp = value;
-                Debug.Log(_hp);
                 _material.color = new Color(_originColor.r, _originColor.g, _originColor.b, _originColor.a) * HP / StartingHp;
                 if (_hp <= 0)
                 {
@@ -70,6 +70,15 @@ public class TempleController : MonoBehaviour
         if (OnTempleDestroyed != null)
             OnTempleDestroyed.Invoke(this, gameObject.transform);
         gameObject.SetActive(false);
+        
+    }
+
+    public IEnumerator TempleRes()
+    {
+        yield return new WaitForSeconds(TempleResTime);
+
+        HP = StartingHp;
+        gameObject.SetActive(true);
     }
     
     private GodController _godController;

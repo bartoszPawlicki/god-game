@@ -6602,6 +6602,11 @@ Prefab:
       propertyPath: StartingHp
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114218798142908306, guid: 8e871d065c6ff254f9ebd4929bc875f3,
+        type: 2}
+      propertyPath: TempleResTime
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}
   m_IsPrefabParent: 0
@@ -12814,6 +12819,11 @@ Prefab:
         type: 2}
       propertyPath: StartingHp
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114218798142908306, guid: 8e871d065c6ff254f9ebd4929bc875f3,
+        type: 2}
+      propertyPath: TempleResTime
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}

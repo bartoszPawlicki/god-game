@@ -10,8 +10,6 @@ public class GodSwitchManager : MonoBehaviour {
 
     public float GroundGodDuration;
 
-    public event EventHandler OnGroundGodExpired;
-
     public bool IsGroundGodExpired
     {
         get { return _isGroundGodExpired; }
@@ -27,25 +25,29 @@ public class GodSwitchManager : MonoBehaviour {
         }
     }
 
+    public event EventHandler OnGroundGodExpired;
+
     void Start ()
     {
+        IsGroundGodExpired = false;
+        OnGroundGodExpired += GodSwitchManager_OnGroundGodExpired;
+
+        _templeDestroyed = false;
+
         _godController = God.GetComponent<GodController>();
         _groundGodController = GroundGod.GetComponent<GroundGodController>();
 
-        OnGroundGodExpired += GodSwitchManager_OnGroundGodExpired;
-
         _temples = GameObject.FindGameObjectsWithTag("Temple");
+
         foreach (GameObject temple in _temples)
         {
             TempleController cont = temple.GetComponent<TempleController>();
             cont.OnTempleDestroyed += TempleDestroyed;
         }
 
-        _templeDestroyed = false;
-        IsGroundGodExpired = false;
-
         _groundGodController.enabled = false;
         GroundGod.SetActive(false);
+
     }
 
     private void GodSwitchManager_OnGroundGodExpired(object sender, EventArgs e)
@@ -70,7 +72,8 @@ public class GodSwitchManager : MonoBehaviour {
 
         _groundGodTimer = GroundGodDuration;
         _templeDestroyed = true;
-        IsGroundGodExpired = false;
+
+        StartCoroutine(transform.gameObject.GetComponent<TempleController>().TempleRes());
     }
 
     void Update()
