@@ -140,12 +140,21 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal_" + _playerNumber);
         float moveVertical = Input.GetAxis("Vertical_" + _playerNumber);
 
-        if (moveHorizontal != 0 || moveVertical != 0)
+        float aimHorizontal = Input.GetAxis("Horizontal_" + _playerNumber + "_rotate");
+        float aimVertical = Input.GetAxis("Vertical_" + _playerNumber + "_rotate");
+
+        
+
+        if (moveHorizontal != 0 || moveVertical != 0 || aimHorizontal != 0 || aimVertical != 0)
         {
             Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * _speed;
             _rigidbody.MovePosition(movement);
             if (!_rope.isActiveAndEnabled)
-                transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal, moveVertical) * 180 / Math.PI), 0);
+            {
+                transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(aimHorizontal, aimVertical) * 180 / Math.PI), 0);
+
+            }
+                
         }
 
         if (_rope.isActiveAndEnabled)
