@@ -69,7 +69,12 @@ public class GUIController : MonoBehaviour
     {
         _isRoundTextAsctive = true;
         _roundText.text = "Round " + roundNumber;
-        var timer = new Timer(1500) { AutoReset = false };
+        int time;
+        if (roundNumber == 1)
+            time = 2500;
+        else
+            time = 1500;
+        var timer = new Timer(time) { AutoReset = false };
         timer.Elapsed += GUIController_Elapsed;
         timer.Start();
     }
@@ -78,8 +83,11 @@ public class GUIController : MonoBehaviour
     {
         _isRoundTextAsctive = true;
         _roundText.text = "Totem has been captured";
-        Debug.Log("Totem captured trigger");
+        var timer = new Timer(1500) { AutoReset = false };
+        timer.Elapsed += GUIController_Elapsed; ;
+        timer.Start();
     }
+    
     private void GUIController_Elapsed(object sender, ElapsedEventArgs e)
     {
         _isRoundTextAsctive = false;
