@@ -10,4 +10,5 @@ namespace Assets.Scripts
     public delegate void DealDamageEventHandler(object sender, int damage);
     public delegate void NewRoundEventHandler(object sender, short roundNumber);
     public delegate void TempleDestroyedEventHandler(object sender, Transform transform);
+    public delegate void PlayerFallEventHandler(object sender, GameObject player);
 }

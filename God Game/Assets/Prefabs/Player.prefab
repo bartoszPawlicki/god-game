@@ -192,7 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac8d32c4e9617a4aa6e182c77a4aaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GravityStrenght: 200
+  StartingHp: 0
+  GravityStrenght: 100
   RopeCooldown: 1000
   StartingSpeed: 0.1
 --- !u!114 &114000012791188370

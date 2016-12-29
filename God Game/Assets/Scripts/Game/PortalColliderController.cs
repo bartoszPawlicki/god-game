@@ -44,7 +44,7 @@ public class PortalColliderController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             _playerColliding[collision.gameObject] = true;
-            collision.gameObject.SetActive(false);
+            collision.gameObject.GetComponent<PlayerController>().enabled = false;
         }
     }
 
