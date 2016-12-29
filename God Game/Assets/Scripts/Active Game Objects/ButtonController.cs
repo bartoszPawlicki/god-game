@@ -12,7 +12,9 @@ public class ButtonController : MonoBehaviour
             return ((1000.0f/3.0f)*transform.localScale.y - (400.0f/3.0f)) * -1;
         }
     }
-                                       // Use this for initialization
+
+    public bool IsPressed { get; private set; }       
+    // Use this for initialization
     void Start ()
     {
         _originYScale = transform.localScale.y;
@@ -21,20 +23,20 @@ public class ButtonController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        if (_isPressed && transform.localScale.y > _minYScale)
+        if (IsPressed && transform.localScale.y > _minYScale)
             transform.localScale -= new Vector3(0, 1, 0) * Speed;
-        else if(!_isPressed && transform.localScale.y < _originYScale)
+        else if(!IsPressed && transform.localScale.y < _originYScale)
             transform.localScale += new Vector3(0, 1, 0) * Speed;
     }
 
     void Presse()
     {
-        _isPressed = true;
+        IsPressed = true;
     }
 
     void Release()
     {
-        _isPressed = false;
+        IsPressed = false;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -47,7 +49,6 @@ public class ButtonController : MonoBehaviour
         Release();
     }
     
-    private bool _isPressed;
     private float _originYScale;
     private float _minYScale = 0.1f;
 }
