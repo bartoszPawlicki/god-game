@@ -25,6 +25,9 @@ public class CameraController : MonoBehaviour
             }
         }
     }
+
+    public Vector3 StartPosition { get; set; }
+
     Vector3 _worldPosition;
     Vector3 _offset;
 	// Use this for initialization
@@ -46,7 +49,7 @@ public class CameraController : MonoBehaviour
         else if (Player2.GetComponent<PlayerController>().isActiveAndEnabled)
             _worldPosition = Player2.transform.position;
         else
-            _worldPosition = Vector3.zero;
+            _worldPosition = StartPosition;
 
         if (IsInitialMoving)
         {

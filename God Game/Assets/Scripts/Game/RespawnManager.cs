@@ -89,7 +89,7 @@ public class RespawnManager : MonoBehaviour
 
         if(_objectToSetActive != null)
         {
-            _objectToSetActive.transform.position = _livingPlayerPosition + new Vector3(5, 0, 0);
+            _objectToSetActive.transform.position = _livingPlayerPosition + new Vector3(5, 2, 0);
             _objectToSetActive.SetActive(true);
             _objectToSetActive = null;
         }

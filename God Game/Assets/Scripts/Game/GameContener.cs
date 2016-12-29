@@ -36,14 +36,14 @@ public static class GameContener
     
     public static void MovePlayersToPosition(Vector3 position)
     {
-        short i = 0;
+        short i = -5;
         foreach (var player in Players)
         {
-            player.transform.position = new Vector3(position.x + i,position.y,position.z);
+            player.transform.localPosition = new Vector3(position.x + i,position.y,position.z);
             player.gameObject.SetActive(true);
             i += 10;
         }
-        God.transform.position = new Vector3(position.x + 5, position.y + 4, position.z);
+        God.transform.localPosition = new Vector3(position.x, position.y + 4, position.z);
         God.gameObject.SetActive(true);
     }
 	public static void Initialize ()

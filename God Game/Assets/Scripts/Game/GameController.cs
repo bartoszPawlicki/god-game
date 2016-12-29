@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class GameController : MonoBehaviour
 {
+
+    public Vector3 StartPosition;
+    public GameObject[] Spawns;
 
     // Use this for initialization
     private void Start ()
@@ -23,6 +27,7 @@ public class GameController : MonoBehaviour
 
         _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         _cameraController.OnCameraStopMoving += _cameraController_OnCameraStopMoving;
+        _cameraController.StartPosition = StartPosition + transform.position;
     }
 
     private void _cameraController_OnCameraStopMoving(object sender, System.EventArgs e)
@@ -37,7 +42,7 @@ public class GameController : MonoBehaviour
     {
         _portalCollider.Collider.enabled = false;
         
-        GameContener.MovePlayersToPosition(_finalIslandPosition);
+        GameContener.MovePlayersToPosition(getRandomSpawn());
     }
 
     private void _roundManager_OnLastRoundEnded(object sender, System.EventArgs e)
@@ -50,7 +55,7 @@ public class GameController : MonoBehaviour
     {
         //New round starts when camera stop moving, check _cameraController_OnCameraStopMoving method
         _timeManager.enabled = false;
-        GameContener.MovePlayersToPosition(_startPostion);
+        GameContener.MovePlayersToPosition(StartPosition);
         GameContener.FreezePlayers();
         _timeManager.TimeLeft = _timeManager.TotalGameTime;
         _cameraController.IsInitialMoving = true;
@@ -71,9 +76,14 @@ public class GameController : MonoBehaviour
     {
 	
 	}
+    
+    private Vector3 getRandomSpawn()
+    {
+        int number = random.Next(0, Spawns.Length);
+        return Spawns[number].transform.localPosition;
+    }
 
-    private Vector3 _startPostion = new Vector3(-5, 1, 0);
-    private Vector3 _finalIslandPosition = new Vector3(-25, 41, -100);
+    private System.Random random = new System.Random();
 
     private RoundManager _roundManager;
     private TimeManager _timeManager;
