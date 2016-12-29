@@ -17,7 +17,7 @@ public class BloodthirstyFlowerController : MonoBehaviour
             {
                 _hp = value;
                 Range *= _hp;
-                _material.color = new Color(_originColor.r, _originColor.g * _hp, _originColor.b, _originColor.a);
+                //_material.color = new Color(_originColor.r, _originColor.g * _hp, _originColor.b, _originColor.a);
                 if (_hp <= 0)
                 {
                     _hp = 0;
@@ -30,14 +30,18 @@ public class BloodthirstyFlowerController : MonoBehaviour
     {
         _players = GameObject.FindGameObjectsWithTag("Player");
 
-        _material = gameObject.GetComponent<Renderer>().material;
+        //_material = gameObject.GetComponent<Renderer>().material;
 
-        _originColor = _material.color;
+        //_originColor = _material.color;
         _respawnManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RespawnManager>();
 
         _originPosition = transform.position;
-        _originScale = transform.localScale;
 
+        _stemExpanding = transform.FindChild("stem_expanding");
+        _stemHead = transform.FindChild("head");
+        
+        _originStemScale = _stemExpanding.localScale;
+        
         HP = 1;
     }
 	
@@ -45,22 +49,24 @@ public class BloodthirstyFlowerController : MonoBehaviour
     {
         if(_isMoving)
         {
-            if (transform.localScale.z <= Range || _direction == -1)
+            if (_stemExpanding.localScale.z <= Range || _direction == -1)
             {
-                transform.localScale += new Vector3(0, 0, 0.1f) * _direction * Speed;
-
-                float lenght = transform.localScale.z / 2;
+                _stemExpanding.localScale += new Vector3(0, 0, 0.1f) * _direction * Speed;
+                _stemHead.localPosition = new Vector3(0, 0, (_stemExpanding.localScale.z - 1) / 2);
+                float lenght = _stemExpanding.localScale.z / 2;
                 float distanceBetweenPoints = Vector3.Distance(_originPosition, _playerInRange.transform.position);
-                transform.position = Vector3.Lerp(_originPosition, _playerInRange.transform.position, lenght / distanceBetweenPoints);
+                //transform.position = Vector3.Lerp(_originPosition, _playerInRange.transform.position, lenght / distanceBetweenPoints);
             }
             else
                 _direction = -1;
             
 
-            if (transform.localScale.z <= _originScale.z)
+            if (_stemExpanding.localScale.z <= _originStemScale.z)
             {
                 _direction = 1;
-                transform.localScale = _originScale;
+                _stemExpanding.localScale = _originStemScale;
+                _stemHead.localPosition = Vector3.zero;
+                transform.localEulerAngles = new Vector3(0, 0, 0);
                 transform.position = _originPosition;
                 _isMoving = false;
             }
@@ -110,18 +116,18 @@ public class BloodthirstyFlowerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void OnCollision(Collision collision)
     {
         _direction = -1;
         if (collision.collider.tag == "Player")
             EatPlayer();
 
-        //TODO: 0.1f powinno być ustawiane z zewnątrz
+        //TODO: 0.3f powinno być ustawiane z zewnątrz
         if (collision.collider.tag == "Bullet")
             HP -= 0.3f;
     }
 
-    void OnTriggerEnter(Collider other)
+    public void OnCollider(Collider other)
     {
         _direction = -1;
         if (other.attachedRigidbody.tag == "Player")
@@ -136,7 +142,9 @@ public class BloodthirstyFlowerController : MonoBehaviour
     private bool _isPlayerInRange;
     private GameObject _playerInRange;
     private Vector3 _originPosition;
-    private Vector3 _originScale;
+    private Vector3 _originStemScale;
     private GameObject[] _players;
     private RespawnManager _respawnManager;
+    private Transform _stemExpanding;
+    private Transform _stemHead;
 }
