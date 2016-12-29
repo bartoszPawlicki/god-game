@@ -16,7 +16,10 @@ public class GUIController : MonoBehaviour
     void Start ()
     {
         _player1 = GameObject.Find("Player1").GetComponent<PlayerController>();
+        _player1Bullet = GameObject.Find("Player1").GetComponent<BulletControler>();
         _player2 = GameObject.Find("Player2").GetComponent<PlayerController>();
+        _player2Bullet = GameObject.Find("Player2").GetComponent<BulletControler>();
+
         _god = GameObject.Find("God").GetComponent<GodController>();
         _totemActivator = GameObject.FindGameObjectWithTag("Totem").GetComponent<TotemActivator>();
 
@@ -108,8 +111,11 @@ public class GUIController : MonoBehaviour
     {
         _player1Skills.ThrowCooldown = _player1.ThrowCooldownValue;
         _player1Skills.RopeCooldown = _player1.RopeCooldownValue;
+        _player1Skills.SlingshotCooldown = _player1Bullet.SlinkShootValue;
+
         _player2Skills.ThrowCooldown = _player2.ThrowCooldownValue;
         _player2Skills.RopeCooldown = _player2.RopeCooldownValue;
+        _player2Skills.SlingshotCooldown = _player2Bullet.SlinkShootValue;
 
         _godSkills.ThunderCooldown = _god.ThunderCooldownValue;
         _godSkills.WaterGeyserCooldown = _god.WaterGeyserCooldownValue;
@@ -132,4 +138,7 @@ public class GUIController : MonoBehaviour
     private CameraController _cameraController;
     private GodPride _godPride;
     private TotemActivator _totemActivator;
+
+    private BulletControler _player1Bullet;
+    private BulletControler _player2Bullet;
 }

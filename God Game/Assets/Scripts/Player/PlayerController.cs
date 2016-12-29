@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
     /// <summary>
     /// Player name has to end with player number
     /// </summary>
