@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 public class BulletControler : MonoBehaviour
 {
-
+    enum SA : int { freezingBullet, fireBullet, pushPowerBullet}
     public float shotRange;
     public float shotSpeed;
     public float shotStrength;
     public float damage;
     public int SlinkShotCooldown;
     public int BulletVanishingTime;
-   
+    public GameObject totem;
     //public ArrayList bulletList;
     public Dictionary<GameObject,bool> bulletDic;
     public int Direction { get; private set; }
@@ -44,6 +44,8 @@ public class BulletControler : MonoBehaviour
             newBullet.SetActive(false);
             bulletDic.Add(newBullet,true);
         }
+        _totemActivator = totem.GetComponent<TotemActivator>();
+        _totemActivator.OnEnableSpecialAbility += TotemActivator_OnEnableSpecialAbility;
     }
 	void Update ()
     {
@@ -82,12 +84,40 @@ public class BulletControler : MonoBehaviour
             }
         }
 	}
+    public void TotemActivator_OnEnableSpecialAbility(object sender, int specialAbility)
+    {
+        if(specialAbility == (int)SA.freezingBullet)
+        {
+            _freezingBullet = true;
+            _fireBullet = false;
+            _pushPowerBullet = false;
+            Debug.Log("sa = freezingBullet");
+        }
+        if (specialAbility == (int)SA.fireBullet)
+        {
+            _freezingBullet = false;
+            _fireBullet = true;
+            _pushPowerBullet = false;
+            Debug.Log("sa = fireBullet");
+        }
+        if (specialAbility == (int)SA.pushPowerBullet)
+        {
+            _freezingBullet = false;
+            _fireBullet = false;
+            _pushPowerBullet = true;
+            Debug.Log("sa = pushPowerBullet");
+        }
+    }
 
-    
+
 
     private GameObject bulletPrefab;
     private CooldownProvider _slinkShotCD;
     private CooldownProvider _bulletCollector;
+    private TotemActivator _totemActivator;
+    private bool _freezingBullet;
+    private bool _fireBullet;
+    private bool _pushPowerBullet;
     private int _playerNumber;
     private int _amountOfBullets = 5;
     private bool _isBulletAvailable = true;

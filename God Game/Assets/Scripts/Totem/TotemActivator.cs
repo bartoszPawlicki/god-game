@@ -2,14 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Assets.Scripts;
 
 public class TotemActivator : MonoBehaviour
 {
     public float captureSpeed = 0.2f;
     public GameObject player1;
     public GameObject player2;
-
+    
     public event EventHandler OnTotemCapured;
+    public event EnableSpecialAbility OnEnableSpecialAbility;
     void Start()
     {
         _playerControler1 = player1.GetComponent<PlayerController>();
@@ -40,9 +42,14 @@ public class TotemActivator : MonoBehaviour
         }
         else if (_totemOfEagleCaptured == false)
         {
+            System.Random rand = new System.Random();
             _playerControler1.IncreseDamage(2);
             _playerControler2.IncreseDamage(2);
             Debug.Log("player damage = " + _playerControler2.DAMAGE);
+            if (OnTotemCapured != null)
+                OnTotemCapured.Invoke(this, null);
+            if (OnEnableSpecialAbility != null)
+                OnEnableSpecialAbility.Invoke(this,rand.Next(0,2));
             _totemOfEagleCaptured = true;
         }
     }

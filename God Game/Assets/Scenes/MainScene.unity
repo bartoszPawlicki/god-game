@@ -2296,6 +2296,7 @@ MonoBehaviour:
   damage: 1
   SlinkShotCooldown: 1000
   BulletVanishingTime: 0
+  totem: {fileID: 1767335959}
 --- !u!1001 &296358056
 Prefab:
   m_ObjectHideFlags: 0
@@ -11023,6 +11024,7 @@ MonoBehaviour:
   damage: 1
   SlinkShotCooldown: 2000
   BulletVanishingTime: 4000
+  totem: {fileID: 1767335959}
 --- !u!1 &1574710736 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012525327460, guid: e300fdad7ec2741fb9a9084c9f26b5e2,
