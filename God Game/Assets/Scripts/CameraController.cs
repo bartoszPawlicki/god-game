@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public GameObject Player2;
     public float Distance;
     public event EventHandler OnCameraStopMoving;
-    private bool _isInitialMoving = true;
+    private bool _isInitialMoving;
     public bool IsInitialMoving
     {
         get

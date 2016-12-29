@@ -42,11 +42,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
     public int DAMAGE
     {
         get { return _damage; }
         set { _damage = DAMAGE;}
     }
+
+
     /// <summary>
     /// Player name has to end with player number
     /// </summary>
