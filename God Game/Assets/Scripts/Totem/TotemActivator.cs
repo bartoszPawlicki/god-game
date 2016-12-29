@@ -5,25 +5,15 @@ using System;
 
 public class TotemActivator : MonoBehaviour
 {
-    private GameObject[] _players;
     public float captureSpeed = 0.2f;
-    private float totemRange = 4.0f;
-    private float messageDisplayTime = 0f;
-    public bool totemCapturedFlag { get; set; }
-    private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
-    private bool _totemOfEagleCaptured = false;
-
+    public GameObject player1;
+    public GameObject player2;
 
     public event EventHandler OnTotemCapured;
     void Start()
     {
-        totemCapturedFlag = false;
-        _players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var player in _players)
-        {
-            if (player != gameObject)
-                _playerColliding.Add(player, false);
-        }
+        _playerControler1 = player1.GetComponent<PlayerController>();
+        _playerControler2 = player2.GetComponent<PlayerController>();
     }
     void FixedUpdate()
     {
@@ -32,12 +22,12 @@ public class TotemActivator : MonoBehaviour
 
         if (captureTotem1 == 1 && captureTotem2 == 1)
         {
-            foreach (GameObject player in _players)
+            if (Vector3.Distance(_playerControler1.transform.position, gameObject.transform.position) < totemRange
+                && gameObject.transform.position.y - _playerControler1.transform.position.y < 0.5f && _totemOfEagleCaptured == false
+                && Vector3.Distance(_playerControler2.transform.position, gameObject.transform.position) < totemRange &&
+                gameObject.transform.position.y - _playerControler2.transform.position.y < 0.5f && _totemOfEagleCaptured == false)
             {
-                if (Vector3.Distance(player.transform.position, gameObject.transform.position) < totemRange && gameObject.transform.position.y - player.transform.position.y < 0.5f && _totemOfEagleCaptured == false)
-                {
-                    captureTotem(captureSpeed);
-                }
+                captureTotem(captureSpeed);
             }
         }
     }
@@ -48,15 +38,18 @@ public class TotemActivator : MonoBehaviour
         {
             transform.Rotate(Vector3.forward * captureSpeed);
         }
-        else
+        else if (_totemOfEagleCaptured == false)
         {
-            Debug.Log("Totem captured trigger");
+            _playerControler1.IncreseDamage(2);
+            _playerControler2.IncreseDamage(2);
+            Debug.Log("player damage = " + _playerControler2.DAMAGE);
             _totemOfEagleCaptured = true;
-            totemCapturedFlag = true;
-            if (OnTotemCapured != null)
-                OnTotemCapured.Invoke(this, null);
         }
     }
-
+    private float totemRange = 4.0f;
+    private Dictionary<GameObject, bool> _playerColliding = new Dictionary<GameObject, bool>();
+    private PlayerController _playerControler1;
+    private PlayerController _playerControler2;
+    private bool _totemOfEagleCaptured = false;
 }
 
