@@ -86,6 +86,7 @@ public class GUIController : MonoBehaviour
     {
         _isRoundTextAsctive = true;
         _roundText.text = "Totem has been captured";
+
         var timer = new Timer(1500) { AutoReset = false };
         timer.Elapsed += GUIController_Elapsed; ;
         timer.Start();

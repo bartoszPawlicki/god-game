@@ -94,9 +94,14 @@ public class GameController : MonoBehaviour
 	
 	}
     
+    //First reandom.Next is always 0 i don't know why
     private Vector3 getRandomSpawn()
     {
+        random.Next(0, Spawns.Length);
+        random.Next(0, Spawns.Length);
+        random.Next(0, Spawns.Length);
         int number = random.Next(0, Spawns.Length);
+        Debug.Log(number);
         return Spawns[number].transform.localPosition;
     }
 
