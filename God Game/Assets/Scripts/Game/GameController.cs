@@ -101,7 +101,6 @@ public class GameController : MonoBehaviour
         random.Next(0, Spawns.Length);
         random.Next(0, Spawns.Length);
         int number = random.Next(0, Spawns.Length);
-        Debug.Log(number);
         return Spawns[number].transform.localPosition;
     }
 

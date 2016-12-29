@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4247061984452964}
   - component: {fileID: 114134660870245148}
   m_Layer: 0
-  m_Name: bloodthirstyflower
+  m_Name: Bloodthirstyflower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

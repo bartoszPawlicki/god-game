@@ -223,52 +223,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f89b70b05f68cbe4fb57a426e8dcb9d5, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &25976894
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58331677}
-    m_Modifications:
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -54.980328
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.7286264
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 56.988815
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010200763642, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_Name
-      value: Bloodthirsty Flower 1 (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &30468681
 Prefab:
   m_ObjectHideFlags: 0
@@ -401,11 +355,6 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 198000013849184444, guid: 05b5db6ecd78746039233ac5cd477049,
     type: 2}
   m_PrefabInternal: {fileID: 30468681}
---- !u!4 &36085598 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
-    type: 2}
-  m_PrefabInternal: {fileID: 1323768911}
 --- !u!1001 &36508794
 Prefab:
   m_ObjectHideFlags: 0
@@ -483,14 +432,13 @@ Transform:
   m_LocalPosition: {x: 10, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1764563576}
-  - {fileID: 36085598}
-  - {fileID: 1369415041}
-  - {fileID: 1475583624}
-  - {fileID: 1140283898}
-  - {fileID: 1330848553}
-  - {fileID: 107845439}
-  - {fileID: 899803075}
+  - {fileID: 1460418672}
+  - {fileID: 1063656568}
+  - {fileID: 1054044109}
+  - {fileID: 636422172}
+  - {fileID: 1817045457}
+  - {fileID: 1331221558}
+  - {fileID: 1698012423}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -728,80 +676,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5286f01c87f4214986ad8964da96642, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &87663969
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 87663970}
-  - component: {fileID: 87663973}
-  - component: {fileID: 87663972}
-  m_Layer: 5
-  m_Name: Game Timer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &87663970
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 87663969}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1415566470}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: -20}
-  m_SizeDelta: {x: 140, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &87663972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 87663969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 21
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 99:99:99
---- !u!222 &87663973
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 87663969}
 --- !u!1 &88559461 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010212929608, guid: e300fdad7ec2741fb9a9084c9f26b5e2,
@@ -868,11 +742,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010810359952, guid: 06bcaa4bd0a9759409c75f6a7eb5e645,
     type: 2}
   m_PrefabInternal: {fileID: 103329661}
---- !u!4 &107845439 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
-    type: 2}
-  m_PrefabInternal: {fileID: 25976894}
 --- !u!1001 &124092891
 Prefab:
   m_ObjectHideFlags: 0
@@ -1247,6 +1116,56 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011901883186, guid: 3d7ffe9aa3fec5a4b9e5037d5cffffb7,
     type: 2}
   m_PrefabInternal: {fileID: 840097649}
+--- !u!1001 &190294662
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 58331677}
+    m_Modifications:
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 11.982834
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.4537938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 16.755852
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.81009275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.58630174
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400732168112886, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_Name
+      value: Bloodthirstyflower (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -108.21
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &206248808
 Prefab:
   m_ObjectHideFlags: 0
@@ -1551,7 +1470,7 @@ RectTransform:
   - {fileID: 1006651175}
   - {fileID: 653809947}
   m_Father: {fileID: 1415566470}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -2791,57 +2710,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 43000013914793698, guid: 0621cabc767d2554fb07010bd9ec0e99, type: 2}
---- !u!1001 &349618654
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58331677}
-    m_Modifications:
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -11.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -3.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010200763642, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_Name
-      value: Bloodthirsty Flower
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010778954440, guid: 9eda6518c91dea745af74b93db177297,
-        type: 2}
-      propertyPath: Speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &366198021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,7 +2738,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1415566470}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3369,6 +3237,56 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f89b70b05f68cbe4fb57a426e8dcb9d5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &420698306
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 58331677}
+    m_Modifications:
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -30.699047
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.4537936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 76.31687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.31341234
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.94961715
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400732168112886, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_Name
+      value: Bloodthirstyflower (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -36.53
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!224 &425588004 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
@@ -3765,48 +3683,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010240088584, guid: 1d6ac20d933c91f4796c1c961621564d,
     type: 2}
   m_PrefabInternal: {fileID: 1420353070}
---- !u!1001 &491002869
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58331677}
-    m_Modifications:
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -42.868477
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.8911737
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 78.726364
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &510908474
 Prefab:
   m_ObjectHideFlags: 0
@@ -3987,11 +3863,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 550028886}
-  - component: {fileID: 550028890}
   - component: {fileID: 550028889}
   - component: {fileID: 550028888}
   - component: {fileID: 550028887}
   - component: {fileID: 550028891}
+  - component: {fileID: 550028892}
   m_Layer: 0
   m_Name: Game
   m_TagString: GameController
@@ -4039,6 +3915,7 @@ MonoBehaviour:
   - {fileID: 1885559202}
   - {fileID: 2100151949}
   - {fileID: 164191702}
+  TutorialEnable: 1
 --- !u!114 &550028888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4065,21 +3942,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumberOfRounds: 5
---- !u!114 &550028890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000012830462938, guid: fbff0cd11abb3c74895770507e9ef171,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 550028885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ba36e491d196d4f8e83a75e9c7dd97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bonusTimeOnCapture: 30
-  TotalGameTimeSeconds: 120
-  TimeLeftSeconds: 0
 --- !u!114 &550028891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4094,6 +3956,17 @@ MonoBehaviour:
   God: {fileID: 2026037687}
   GroundGod: {fileID: 1804481806}
   GroundGodDuration: 10
+--- !u!114 &550028892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550028885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21678d1e4d975d743ab5b1e389c8396e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &551398603 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013084169012, guid: a3a8ea0b7e0ccdb4bacdeebc12f4b3fb,
@@ -4507,6 +4380,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca813bbb01a904428d5d1b15343f0c2, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &636422172 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1984868850}
 --- !u!1 &648172749
 GameObject:
   m_ObjectHideFlags: 0
@@ -4541,7 +4419,7 @@ RectTransform:
   - {fileID: 1658860144}
   - {fileID: 243274045}
   m_Father: {fileID: 1415566470}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5190,57 +5068,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300008, guid: 2d51636b79dcac443b52bb906afe4d59, type: 3}
---- !u!1001 &755181415
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58331677}
-    m_Modifications:
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 11.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010200763642, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_Name
-      value: Bloodthirsty Flower
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010778954440, guid: 9eda6518c91dea745af74b93db177297,
-        type: 2}
-      propertyPath: Speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &770850158
 GameObject:
   m_ObjectHideFlags: 0
@@ -6211,11 +6038,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 893743801}
   m_Mesh: {fileID: 4300002, guid: b9949ccc5cebbbf4288efd4f4ee19298, type: 3}
---- !u!4 &899803075 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
-    type: 2}
-  m_PrefabInternal: {fileID: 491002869}
 --- !u!1 &901489771
 GameObject:
   m_ObjectHideFlags: 0
@@ -6247,7 +6069,7 @@ RectTransform:
   m_Children:
   - {fileID: 433871635}
   m_Father: {fileID: 1415566470}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -6337,6 +6159,52 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 43000010237685408, guid: 006637d3259adc34ca1dc30dd29b0c0f, type: 2}
+--- !u!1001 &907748668
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 58331677}
+    m_Modifications:
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -9.2740345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.45379412
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.5093803
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.788333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.61524886
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 104.06
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &913397877
 Prefab:
   m_ObjectHideFlags: 0
@@ -6482,57 +6350,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010419195792, guid: 455de2ad0898aeb4ab7dcfbdf0e2b009,
     type: 2}
   m_PrefabInternal: {fileID: 923072725}
---- !u!1001 &930489226
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58331677}
-    m_Modifications:
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 11.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -9.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010200763642, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_Name
-      value: Bloodthirsty Flower
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010778954440, guid: 9eda6518c91dea745af74b93db177297,
-        type: 2}
-      propertyPath: Speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &932606969
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,52 +6749,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f89b70b05f68cbe4fb57a426e8dcb9d5, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &998729692
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58331677}
-    m_Modifications:
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -30.583183
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 75.74393
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010200763642, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_Name
-      value: Bloodthirsty Flower 1 (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9eda6518c91dea745af74b93db177297, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &998747359
 Prefab:
@@ -7462,6 +7233,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12678aa6710bf4b4e9b2f96faf01d5cc, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1054044109 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f,
+    type: 2}
+  m_PrefabInternal: {fileID: 420698306}
 --- !u!1001 &1059367955
 Prefab:
   m_ObjectHideFlags: 0
@@ -7565,6 +7341,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1063656568 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1593579165}
 --- !u!1001 &1071120326
 Prefab:
   m_ObjectHideFlags: 0
@@ -7795,11 +7576,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: -70.913, z: 0}
---- !u!4 &1140283898 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
-    type: 2}
-  m_PrefabInternal: {fileID: 1174899863}
 --- !u!1001 &1145176609
 Prefab:
   m_ObjectHideFlags: 0
@@ -8293,52 +8069,6 @@ Prefab:
     - {fileID: 3300000, guid: 2d51636b79dcac443b52bb906afe4d59, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2d51636b79dcac443b52bb906afe4d59, type: 3}
   m_IsPrefabParent: 0
---- !u!1001 &1174899863
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58331677}
-    m_Modifications:
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -43.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 45.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010200763642, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_Name
-      value: Bloodthirsty Flower
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1177534967 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100008, guid: 2d51636b79dcac443b52bb906afe4d59, type: 3}
@@ -8357,6 +8087,56 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 2d51636b79dcac443b52bb906afe4d59, type: 3}
+--- !u!1001 &1182807304
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 58331677}
+    m_Modifications:
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 13.224258
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.45379642
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -11.352358
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.30220354
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.95324343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400732168112886, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_Name
+      value: Bloodthirstyflower (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -35.18
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1192245432
 Prefab:
   m_ObjectHideFlags: 0
@@ -9591,67 +9371,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309546093}
   m_Mesh: {fileID: 4300002, guid: ffb1314cfc5f4b2448297334bf46c0a2, type: 3}
---- !u!1001 &1323768911
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 58331677}
-    m_Modifications:
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -33.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010200763642, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-      propertyPath: m_Name
-      value: Bloodthirsty Flower
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010778954440, guid: 9eda6518c91dea745af74b93db177297,
-        type: 2}
-      propertyPath: Speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9eda6518c91dea745af74b93db177297, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &1327248643 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010240088584, guid: 1d6ac20d933c91f4796c1c961621564d,
     type: 2}
   m_PrefabInternal: {fileID: 1695299483}
---- !u!4 &1330848553 stripped
+--- !u!4 &1331221558 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
+  m_PrefabParentObject: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f,
     type: 2}
-  m_PrefabInternal: {fileID: 998729692}
+  m_PrefabInternal: {fileID: 1182807304}
 --- !u!1 &1336897609
 GameObject:
   m_ObjectHideFlags: 0
@@ -9728,11 +9457,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013707057652, guid: 12678aa6710bf4b4e9b2f96faf01d5cc,
     type: 2}
   m_PrefabInternal: {fileID: 1223878219}
---- !u!4 &1369415041 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
-    type: 2}
-  m_PrefabInternal: {fileID: 349618654}
 --- !u!224 &1369968020 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
@@ -10074,7 +9798,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 432588449}
-  - {fileID: 87663970}
   - {fileID: 366198022}
   - {fileID: 1840815932}
   - {fileID: 238038995}
@@ -10171,6 +9894,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013707057652, guid: 12678aa6710bf4b4e9b2f96faf01d5cc,
     type: 2}
   m_PrefabInternal: {fileID: 124092891}
+--- !u!4 &1460418672 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1758037086}
 --- !u!1001 &1462242650
 Prefab:
   m_ObjectHideFlags: 0
@@ -10674,11 +10402,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013176639510, guid: 67ec1fa1e43964d4eace8a68e1b7d026,
     type: 2}
   m_PrefabInternal: {fileID: 1463988959}
---- !u!4 &1475583624 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
-    type: 2}
-  m_PrefabInternal: {fileID: 755181415}
 --- !u!1001 &1481785587
 Prefab:
   m_ObjectHideFlags: 0
@@ -11381,6 +11104,56 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ffddf2d779950141a30e3f5f683d14c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1593579165
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 58331677}
+    m_Modifications:
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -55.07952
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.06981534
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 57.477516
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.78564095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.61868274
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400732168112886, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_Name
+      value: Bloodthirstyflower (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 103.56
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1597839997
 Prefab:
   m_ObjectHideFlags: 0
@@ -11966,6 +11739,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d6ac20d933c91f4796c1c961621564d, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1698012423 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f,
+    type: 2}
+  m_PrefabInternal: {fileID: 907748668}
 --- !u!1001 &1701881294
 Prefab:
   m_ObjectHideFlags: 0
@@ -12602,11 +12380,64 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f89b70b05f68cbe4fb57a426e8dcb9d5, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1764563576 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013170781338, guid: 9eda6518c91dea745af74b93db177297,
-    type: 2}
-  m_PrefabInternal: {fileID: 930489226}
+--- !u!1001 &1758037086
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 58331677}
+    m_Modifications:
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -42.515472
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.2658964
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 79.07436
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.98058045
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.19611731
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400732168112886, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_Name
+      value: Bloodthirstyflower (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -157.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1767335959
 GameObject:
   m_ObjectHideFlags: 0
@@ -13076,6 +12907,11 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 43000012278013134, guid: 93d29025ef4f9fb438331a4f2235de6a, type: 2}
+--- !u!4 &1817045457 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f,
+    type: 2}
+  m_PrefabInternal: {fileID: 190294662}
 --- !u!1001 &1818563957
 Prefab:
   m_ObjectHideFlags: 0
@@ -13219,7 +13055,7 @@ RectTransform:
   - {fileID: 1633001844}
   - {fileID: 425588004}
   m_Father: {fileID: 1415566470}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -14211,6 +14047,52 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011169155512, guid: ccf39070e3d64f341aead7561aeb200d,
     type: 2}
   m_PrefabInternal: {fileID: 725694569}
+--- !u!1001 &1984868850
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 58331677}
+    m_Modifications:
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -43.380314
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.45379546
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 45.80175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247061984452964, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400732168112886, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+      propertyPath: m_Name
+      value: Bloodthirstyflower (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 540bd32bfaa51a344ae0c493442a596f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1994536176
 GameObject:
   m_ObjectHideFlags: 0
