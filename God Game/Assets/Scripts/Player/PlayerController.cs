@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    public int DAMAGE
+    {
+        get { return _damage; }
+        set { _damage = DAMAGE;}
+    }
     /// <summary>
     /// Player name has to end with player number
     /// </summary>
@@ -50,7 +55,7 @@ public class PlayerController : MonoBehaviour
     public float StartingSpeed;
     public event DealDamageEventHandler OnInflictDamage;
     //All players had to be on scene or had to be add to players in some way
-    void Start ()
+    void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _rope = GetComponentInChildren<RopeController>();
@@ -58,7 +63,7 @@ public class PlayerController : MonoBehaviour
         _ropeCooldown = new CooldownProvider(RopeCooldown);
 
         _throw = GetComponent<ThrowCompanionBehaviour>();
-        
+
         _speed = StartingSpeed;
         _playerNumber = (int)char.GetNumericValue(transform.gameObject.name[transform.gameObject.name.Length - 1]);
         _slowTimer = new Timer() { AutoReset = false };
@@ -67,24 +72,6 @@ public class PlayerController : MonoBehaviour
 
         _damage = 1;
         _hp = StartingHp;
-
-        //Niech to już zniknie xD bo patrzeć nie moge
-        //totem1
-        _totem1 = transform.parent.FindChild("TotemOfTheEagle").gameObject;
-        _totemActivator1 = _totem1.GetComponent<TotemActivator>();
-        _totemActivator1.OnTotemCapured += PlayerControler_OnTotemCaptured;
-        //totem2
-        _totem2 = transform.parent.FindChild("TotemOfTheBear").gameObject;
-        _totemActivator2 = _totem2.GetComponent<TotemActivator>();
-        _totemActivator2.OnTotemCapured += PlayerControler_OnTotemCaptured;
-        //totem3
-        _totem3 = transform.parent.FindChild("TotemOfThePhoenix").gameObject;
-        _totemActivator3 = _totem3.GetComponent<TotemActivator>();
-        _totemActivator3.OnTotemCapured += PlayerControler_OnTotemCaptured;
-
-        
-
-         InvokeRepeating("InflictDamageOnGod", 3.0f,1.0f);
     }
 
     /// <summary>
@@ -112,10 +99,10 @@ public class PlayerController : MonoBehaviour
         _speed = StartingSpeed;
         _risingSlowTicks = 0;
     }
-    
+
     void Update()
     {
-        if(Input.GetButtonDown("FireRope_" + _playerNumber))
+        if (Input.GetButtonDown("FireRope_" + _playerNumber))
         {
             if (!_collidingWithAnotherPlayer)
             {
@@ -129,10 +116,10 @@ public class PlayerController : MonoBehaviour
                     _rope.EndPulling();
                 }
             }
-        }   
+        }
     }
 
-	void FixedUpdate()
+    void FixedUpdate()
     {
         if (_rigidbody.velocity.y < -1)
             _rigidbody.AddForce(new Vector3(0, -GravityStrenght, 0));
@@ -143,7 +130,7 @@ public class PlayerController : MonoBehaviour
         float aimHorizontal = Input.GetAxis("Horizontal_" + _playerNumber + "_rotate");
         float aimVertical = Input.GetAxis("Vertical_" + _playerNumber + "_rotate");
 
-        
+
 
         if (moveHorizontal != 0 || moveVertical != 0 || aimHorizontal != 0 || aimVertical != 0)
         {
@@ -154,7 +141,7 @@ public class PlayerController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(aimHorizontal, aimVertical) * 180 / Math.PI), 0);
 
             }
-                
+
         }
 
         if (_rope.isActiveAndEnabled)
@@ -183,15 +170,11 @@ public class PlayerController : MonoBehaviour
         _damage += 2;
         UnityEngine.Debug.Log("damage++, now equls: " + _damage);
     }
-    private void InflictDamageOnGod()
+    public void IncreseDamage(int damage)
     {
-        if (gameObject.transform.position.y > 30)
-        {
-            if (OnInflictDamage != null)
-                OnInflictDamage.Invoke(this, _damage);
-        }
+        _damage += damage;
     }
-    
+
     private bool _collidingWithAnotherPlayer;
     private Timer _slowTimer;
     private int _playerNumber;
@@ -201,13 +184,5 @@ public class PlayerController : MonoBehaviour
     private RopeController _rope;
     private ThrowCompanionBehaviour _throw;
     private int _damage;
-    private CooldownProvider _ropeCooldown; 
-
-    // wymyslic czy nie da sie lepiej bez robienia niepotrzebnego syfu
-    private TotemActivator _totemActivator1;
-    private GameObject _totem1;
-    private TotemActivator _totemActivator2;
-    private GameObject _totem2;
-    private TotemActivator _totemActivator3;
-    private GameObject _totem3;
+    private CooldownProvider _ropeCooldown;
 }

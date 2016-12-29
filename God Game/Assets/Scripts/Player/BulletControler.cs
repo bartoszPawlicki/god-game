@@ -62,7 +62,7 @@ public class BulletControler : MonoBehaviour
                     _bulletCollector.Use();
                     _bulletCollector.Start();
                     bulletDic[item.Key] = false; //this bullet in now on cooldown
-                    //Debug.Log("szczeliłem kulką");
+                    Debug.Log("szczeliłem kulką");
                     break;
                 }
             }
@@ -75,7 +75,7 @@ public class BulletControler : MonoBehaviour
                 {
                     bulletDic[item.Key] = true;
                     item.Key.SetActive(false);
-                    //Debug.Log("kulka unicestwiona xD");
+                    Debug.Log("kulka unicestwiona xD");
                     break;
                 }
                
