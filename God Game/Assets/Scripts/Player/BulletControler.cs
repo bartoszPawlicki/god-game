@@ -13,6 +13,7 @@ public class BulletControler : MonoBehaviour
     public float damage;
     public int SlinkShotCooldown;
     public int BulletVanishingTime;
+    public int _amountOfBullets;
     public GameObject totem;
     //public ArrayList bulletList;
     public Dictionary<GameObject,bool> bulletDic;
@@ -60,6 +61,7 @@ public class BulletControler : MonoBehaviour
                     item.Key.transform.position = transform.position + gameObject.transform.forward; //set bullet starting point to player position
                     Rigidbody rb = item.Key.GetComponent<Rigidbody>();
                     rb.velocity = gameObject.transform.forward * shotSpeed;
+                    item.Key.transform.Translate(new Vector3 (0, 0.8f, 0));
                     _slinkShotCD.Start();
                     _bulletCollector.Use();
                     _bulletCollector.Start();
@@ -117,7 +119,7 @@ public class BulletControler : MonoBehaviour
     private bool _fireBullet;
     private bool _pushPowerBullet;
     private int _playerNumber;
-    private int _amountOfBullets = 5;
+
     private bool _isBulletAvailable = true;
 
 }

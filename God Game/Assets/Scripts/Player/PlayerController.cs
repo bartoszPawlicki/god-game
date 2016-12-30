@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         {
             if (value != _hp)
             {
+                StartCoroutine(FlashColour());
                 Debug.Log(_hp);
                 _hp = value;
                 if (_hp <= 0)
@@ -77,6 +78,9 @@ public class PlayerController : MonoBehaviour
         _hp = StartingHp;
 
         _respawnManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RespawnManager>();
+
+        _material = gameObject.GetComponent<Renderer>().material;
+        _originColor = _material.color;
     }
 
     /// <summary>
@@ -180,6 +184,16 @@ public class PlayerController : MonoBehaviour
         _damage += damage;
     }
 
+    IEnumerator FlashColour()
+    {
+        _material.color = new Color(1, 0, 0, _originColor.a);
+
+        yield return new WaitForSeconds(0.3f);
+
+        _material.color = new Color(_originColor.r, _originColor.g, _originColor.b, _originColor.a);
+
+    }
+
     private bool _collidingWithAnotherPlayer;
     private Timer _slowTimer;
     private int _playerNumber;
@@ -191,4 +205,7 @@ public class PlayerController : MonoBehaviour
     private int _damage;
     private CooldownProvider _ropeCooldown;
     private RespawnManager _respawnManager;
+
+    private Material _material;
+    private Color _originColor;
 }

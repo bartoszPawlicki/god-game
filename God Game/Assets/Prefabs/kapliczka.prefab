@@ -130,8 +130,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073299059413190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.28, y: 0, z: 24.1}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 15.7519455, y: -0.42043564, z: 67.135826}
+  m_LocalScale: {x: 12, y: 20, z: 12}
   m_Children:
   - {fileID: 4749828889733062}
   m_Father: {fileID: 0}
@@ -261,7 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82666e677f3d6774e91dd25b72760d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingHp: 5
+  StartingHp: 80
+  TempleResTime: 120
   God: {fileID: 0}
   GroundGod: {fileID: 0}
 --- !u!198 &198065872550703870
