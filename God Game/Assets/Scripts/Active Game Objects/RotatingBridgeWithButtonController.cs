@@ -23,7 +23,7 @@ public class RotatingBridgeWithButtonController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(_buttonController1 != null && _buttonController.PushValue > _buttonController1.PushValue)
+        if(_buttonController1 != null)
         {                
             if (_buttonController.PushValue > _buttonController1.PushValue)
                 transform.localEulerAngles = new Vector3(0, -_buttonController.PushValue * (Angle / 100), 0);

@@ -37,6 +37,8 @@ public class GroundGodController : MonoBehaviour {
 
     void Update()
     {
+        
+
         if (Input.GetButtonDown("Fire_Thunder") && ThunderCooldownValue == 100)
         {
             _thunderCooldown.Use();
@@ -67,6 +69,13 @@ public class GroundGodController : MonoBehaviour {
 
             transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal, moveVertical) * Mathf.Rad2Deg), 0);
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 8)
+            _rigidbody.drag = 10;
+        
     }
 
     private bool _setThunderActiveFalse;

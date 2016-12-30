@@ -7,6 +7,7 @@ public class GUIController : MonoBehaviour
 {
     public ProgressBar progressBar;
     public static ProgressBar pBar;
+
     // Use this for initialization
     void Awake()
     {
@@ -44,7 +45,10 @@ public class GUIController : MonoBehaviour
 
         _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
 
-        _godPride = GameObject.FindGameObjectWithTag("God").GetComponent<GodPride>();
+        //_godPride = GameObject.FindGameObjectWithTag("GroundGod").GetComponent<GodPride>();
+
+        _player1Text = GameObject.Find("HP Player 1").GetComponent<Text>();
+        _player2Text = GameObject.Find("HP Player 2").GetComponent<Text>();
     }
 
     private void _god_OnThunderSkillChosen(object sender, System.EventArgs e)
@@ -123,8 +127,10 @@ public class GUIController : MonoBehaviour
         _godSkills.GlobalWindCooldown = _god.GlobalWindCooldownValue;
 
         _roundText.gameObject.SetActive(_isRoundTextAsctive);
-    }
 
+        _player1Text.text = _player1.HP.ToString();
+        _player2Text.text = _player2.HP.ToString();
+    }
     private PlayerController _player1;
     private PlayerController _player2;
     private GodController _god;
@@ -142,4 +148,7 @@ public class GUIController : MonoBehaviour
 
     private BulletControler _player1Bullet;
     private BulletControler _player2Bullet;
+
+    private Text _player1Text;
+    private Text _player2Text;
 }

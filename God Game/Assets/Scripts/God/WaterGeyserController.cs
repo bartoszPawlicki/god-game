@@ -4,6 +4,7 @@ using System;
 
 public class WaterGeyserController : MonoBehaviour
 {
+    public float WaterGeyserDamage;
     public float WaterGeyserKnockUpStrength;
     public float TotalLifeTime;
     public float WaterGeyserChargingTime;
@@ -132,9 +133,13 @@ public class WaterGeyserController : MonoBehaviour
             {
                 collider.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, WaterGeyserKnockUpStrength, 0));
 
-                PlayerController slow = collider.GetComponent<PlayerController>();
-                slow.ApplySlow(SlowPower, SlowDuration);
+                PlayerController player = collider.GetComponent<PlayerController>();
+                player.ApplySlow(SlowPower, SlowDuration);
+
+                player.HP -= WaterGeyserDamage;
             }
+
+
 
         }
     }
@@ -150,5 +155,4 @@ public class WaterGeyserController : MonoBehaviour
     public AudioClip _waterSoundClip;
     private AudioSource _waterSoundSource;
     
-
 }

@@ -33,11 +33,12 @@ public class PlayerController : MonoBehaviour
         {
             if (value != _hp)
             {
+                Debug.Log(_hp);
                 _hp = value;
                 if (_hp <= 0)
                 {
                     _hp = 0;
-                    //TODO: behaviour on player death
+                    _respawnManager.StartRespawn(gameObject);
                 }
             }
         }
@@ -48,8 +49,7 @@ public class PlayerController : MonoBehaviour
         get { return _damage; }
         set { _damage = DAMAGE;}
     }
-
-
+    
     /// <summary>
     /// Player name has to end with player number
     /// </summary>
@@ -75,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
         _damage = 1;
         _hp = StartingHp;
+
+        _respawnManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RespawnManager>();
     }
 
     /// <summary>
@@ -188,4 +190,5 @@ public class PlayerController : MonoBehaviour
     private ThrowCompanionBehaviour _throw;
     private int _damage;
     private CooldownProvider _ropeCooldown;
+    private RespawnManager _respawnManager;
 }

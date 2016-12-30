@@ -16,6 +16,7 @@ public class TotemActivator : MonoBehaviour
     {
         _playerControler1 = player1.GetComponent<PlayerController>();
         _playerControler2 = player2.GetComponent<PlayerController>();
+        transform.FindChild("BlobLightProjector").SetParent(null);
     }
     void FixedUpdate()
     {

@@ -58,7 +58,9 @@ public class GodSwitchManager : MonoBehaviour {
         _godController.silenceGodSkills(false);
 
         _groundGodController.enabled = false;
-        GroundGod.SetActive(false); 
+        GroundGod.SetActive(false);
+
+        IsGroundGodExpired = false;
     }
 
     public void TempleDestroyed(object sender, Transform transform)

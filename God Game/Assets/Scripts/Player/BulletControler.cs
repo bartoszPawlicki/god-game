@@ -49,7 +49,7 @@ public class BulletControler : MonoBehaviour
     }
 	void Update ()
     {
-        if (Input.GetAxis("Bullet_" + _playerNumber) == 1 && SlinkShootValue == 100)
+        if (Input.GetAxis("Bullet_" + _playerNumber) < -0.5 && SlinkShootValue == 100)
         {
             foreach (var item in bulletDic)
             {
@@ -108,8 +108,6 @@ public class BulletControler : MonoBehaviour
             Debug.Log("sa = pushPowerBullet");
         }
     }
-
-
 
     private GameObject bulletPrefab;
     private CooldownProvider _slinkShotCD;

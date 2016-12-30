@@ -37,6 +37,12 @@ public class GodPride : MonoBehaviour
             Debug.Log("gameOver");
         }
     }
+    public void ApplyDamage(float dmg)
+    {
+        godPride -= dmg;
+        progressBar.SetProgress(godPride / maxPride);
+        Debug.Log(godPride);
+    }
 
     private PlayerController _playerControler1;
     private GameObject _player1;
