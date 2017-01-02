@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour
     {
         _material.color = new Color(1, 0, 0, _originColor.a);
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
 
         _material.color = new Color(_originColor.r, _originColor.g, _originColor.b, _originColor.a);
 
