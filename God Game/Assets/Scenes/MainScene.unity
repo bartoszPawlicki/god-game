@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -11548,15 +11548,15 @@ Prefab:
       objectReference: {fileID: 1804481806}
     - target: {fileID: 4551938565888394, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}
       propertyPath: m_LocalScale.x
-      value: 12
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4551938565888394, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}
       propertyPath: m_LocalScale.y
-      value: 20
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4551938565888394, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}
       propertyPath: m_LocalScale.z
-      value: 12
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 114218798142908306, guid: 8e871d065c6ff254f9ebd4929bc875f3,
         type: 2}
@@ -13042,6 +13042,8 @@ GameObject:
   - component: {fileID: 1804481809}
   - component: {fileID: 1804481808}
   - component: {fileID: 1804481813}
+  - component: {fileID: 1804481815}
+  - component: {fileID: 1804481814}
   m_Layer: 0
   m_Name: GroundGod
   m_TagString: GroundGod
@@ -13161,6 +13163,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godPride: 200
+--- !u!114 &1804481814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1804481806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8896f7a86add2e4b80c95e623659c78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImmolationDamage: 0.01
+--- !u!136 &1804481815
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1804481806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 0.6
+  m_Height: 0.8
+  m_Direction: 1
+  m_Center: {x: -0.0038004965, y: 0.3329214, z: 0.05914609}
 --- !u!1001 &1806198978
 Prefab:
   m_ObjectHideFlags: 0
@@ -15156,6 +15183,18 @@ Prefab:
       propertyPath: GroundGod
       value: 
       objectReference: {fileID: 1804481806}
+    - target: {fileID: 4551938565888394, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551938565888394, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551938565888394, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e871d065c6ff254f9ebd4929bc875f3, type: 2}
   m_IsPrefabParent: 0

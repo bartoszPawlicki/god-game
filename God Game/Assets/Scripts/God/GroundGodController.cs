@@ -75,7 +75,6 @@ public class GroundGodController : MonoBehaviour {
     {
         if (collision.gameObject.layer == 8)
             _rigidbody.drag = 10;
-        
     }
 
     private bool _setThunderActiveFalse;

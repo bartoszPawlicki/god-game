@@ -52,6 +52,8 @@ public class GodSwitchManager : MonoBehaviour {
 
     private void GodSwitchManager_OnGroundGodExpired(object sender, EventArgs e)
     {
+        GroundGod.GetComponent<Rigidbody>().drag = 0;
+
         _godController.enabled = true;
         God.SetActive(true);
         God.transform.position = new Vector3(GroundGod.transform.position.x, 5f, GroundGod.transform.position.z);
