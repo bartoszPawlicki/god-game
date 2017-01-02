@@ -3166,6 +3166,16 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 66c90b3311c5afb44ab8cc903915e42d,
         type: 3}
+    - target: {fileID: 224000012887774652, guid: a5286f01c87f4214986ad8964da96642,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012887774652, guid: a5286f01c87f4214986ad8964da96642,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5286f01c87f4214986ad8964da96642, type: 2}
   m_IsPrefabParent: 0
@@ -12252,29 +12262,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1000013804565376, guid: 05596685e2f97a847970106d95a14215, type: 2}
-      propertyPath: m_Name
-      value: Player1
-      objectReference: {fileID: 0}
     - target: {fileID: 114005468152904904, guid: 05596685e2f97a847970106d95a14215,
         type: 2}
       propertyPath: totem
       value: 
       objectReference: {fileID: 1767335959}
-    - target: {fileID: 114005468152904904, guid: 05596685e2f97a847970106d95a14215,
-        type: 2}
-      propertyPath: _amountOfBullets
-      value: 10
+    - target: {fileID: 1000013804565376, guid: 05596685e2f97a847970106d95a14215, type: 2}
+      propertyPath: m_Name
+      value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011022886982, guid: 05596685e2f97a847970106d95a14215,
+    - target: {fileID: 114009207795272786, guid: 05596685e2f97a847970106d95a14215,
         type: 2}
-      propertyPath: StartingSpeed
-      value: 0.15
+      propertyPath: SprintCooldown
+      value: 11000
       objectReference: {fileID: 0}
-    - target: {fileID: 114005468152904904, guid: 05596685e2f97a847970106d95a14215,
+    - target: {fileID: 114009207795272786, guid: 05596685e2f97a847970106d95a14215,
         type: 2}
-      propertyPath: damage
-      value: 5
+      propertyPath: SprintDuration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114009207795272786, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: SpeedMagnifier
+      value: 1.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}
@@ -13929,6 +13939,21 @@ Prefab:
         type: 2}
       propertyPath: StartingSpeed
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114009207795272786, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: SprintCooldown
+      value: 11000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114009207795272786, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: SprintDuration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114009207795272786, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: SpeedMagnifier
+      value: 1.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}

@@ -23,6 +23,14 @@ public class PlayerController : MonoBehaviour
             return _ropeCooldown.Loading;
         }
     }
+    public float SprintCooldownValue
+    {
+        get
+        {
+            return _sprintCooldown.Loading;
+        }
+    }
+    
 
     public float StartingHp;
     private float _hp;
@@ -43,6 +51,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public float Speed
+    {
+        get { return _speed; }
+        set { _speed = value; }
     }
 
     public int DAMAGE
@@ -81,6 +95,9 @@ public class PlayerController : MonoBehaviour
 
         _material = gameObject.GetComponent<Renderer>().material;
         _originColor = _material.color;
+
+        _sprintScript = GetComponent<SprintScript>();
+        _sprintCooldown = new CooldownProvider(_sprintScript.SprintCooldown);
     }
 
     /// <summary>
@@ -126,6 +143,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetButtonDown("Sprint_" + _playerNumber))
+        {
+            if (SprintCooldownValue == 100)
+            {
+                _sprintCooldown.Use();
+                _sprintCooldown.Start();
+                StartCoroutine(_sprintScript.StartSprint());
+            }
+        }
+
+
     }
 
     void FixedUpdate()
@@ -205,6 +234,8 @@ public class PlayerController : MonoBehaviour
     private int _damage;
     private CooldownProvider _ropeCooldown;
     private RespawnManager _respawnManager;
+    private CooldownProvider _sprintCooldown;
+    private SprintScript _sprintScript;
 
     private Material _material;
     private Color _originColor;

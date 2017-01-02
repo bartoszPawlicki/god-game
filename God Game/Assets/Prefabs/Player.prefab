@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 114000012791188370}
   - component: {fileID: 75000012807622834}
   - component: {fileID: 114005468152904904}
+  - component: {fileID: 114009207795272786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -277,7 +278,7 @@ MonoBehaviour:
   StartingHp: 100
   GravityStrenght: 100
   RopeCooldown: 1000
-  StartingSpeed: 0.2
+  StartingSpeed: 0.15
 --- !u!114 &114000012791188370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,10 +320,24 @@ MonoBehaviour:
   shotRange: 0
   shotSpeed: 30
   shotStrength: 0
-  damage: 1
+  damage: 5
   SlinkShotCooldown: 500
   BulletVanishingTime: 2000
+  _amountOfBullets: 10
   totem: {fileID: 0}
+--- !u!114 &114009207795272786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013804565376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22e4762c6c3d6f47837f178263f2711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedMagnifier: 2
+  SprintDuration: 5
 --- !u!136 &136000010000404440
 CapsuleCollider:
   m_ObjectHideFlags: 1
