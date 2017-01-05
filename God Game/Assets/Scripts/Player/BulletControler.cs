@@ -62,6 +62,7 @@ public class BulletControler : MonoBehaviour
                     Rigidbody rb = item.Key.GetComponent<Rigidbody>();
                     rb.velocity = gameObject.transform.forward * shotSpeed;
                     item.Key.transform.Translate(new Vector3 (0, 0.8f, 0));
+                    item.Key.GetComponent<BulletCollisionScript>().damage = damage;
                     _slinkShotCD.Start();
                     _bulletCollector.Use();
                     _bulletCollector.Start();
