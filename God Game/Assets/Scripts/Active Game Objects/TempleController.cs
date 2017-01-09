@@ -12,6 +12,9 @@ public class TempleController : MonoBehaviour
     public GameObject God;
     public GameObject GroundGod;
     public event TempleDestroyedEventHandler OnTempleDestroyed;
+    public AudioSource TempleCollapseSoundSource;
+
+    private bool TempleFallen;
 
     
     private float _hp;
@@ -26,9 +29,15 @@ public class TempleController : MonoBehaviour
                 _material.color = new Color(_originColor.r, _originColor.g, _originColor.b, _originColor.a) * HP / StartingHp;
                 if (_hp <= 0)
                 {
-                    _material.color = new Color(1, 0, 0, _originColor.a);
-                    _hp = 0;
-                    StartCoroutine(TempleDestroyed());
+                    
+                    if(!TempleFallen)
+                    {
+                        TempleFallen = true;
+                        _material.color = new Color(1, 0, 0, _originColor.a);
+                        _hp = 0;
+                        StartCoroutine(TempleDestroyed());
+                    }
+                    
                     
 
                 }
@@ -45,6 +54,8 @@ public class TempleController : MonoBehaviour
         _material = gameObject.GetComponent<Renderer>().material;
 
         _originColor = _material.color;
+
+        TempleFallen = false;
     }
 
     public void ApplyDamage(float damage)
@@ -63,7 +74,7 @@ public class TempleController : MonoBehaviour
 
     IEnumerator TempleDestroyed()
     {
-        
+        TempleCollapseSoundSource.Play();
         _godController.silenceGodSkills(true);
         yield return new WaitForSeconds(3);
 
@@ -77,6 +88,7 @@ public class TempleController : MonoBehaviour
     {
         yield return new WaitForSeconds(TempleResTime);
 
+        TempleFallen = false;
         HP = StartingHp;
         gameObject.SetActive(true);
     }

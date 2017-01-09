@@ -16,6 +16,7 @@ public class SprintScript : MonoBehaviour
     void Start ()
     {
         _player = GetComponentInParent<PlayerController>();
+        SprintEffect.SetActive(false);
     }
 	
     public IEnumerator StartSprint()
@@ -27,6 +28,7 @@ public class SprintScript : MonoBehaviour
         yield return new WaitForSeconds(SprintDuration);
 
         _player.Speed = _player.StartingSpeed;
+        SprintAudioSource.Stop();
         SprintEffect.SetActive(false);
     }
 

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23252923676477952}
   - component: {fileID: 65249821387860720}
   - component: {fileID: 114218798142908306}
+  - component: {fileID: 82555469365415386}
   m_Layer: 0
   m_Name: kapliczka
   m_TagString: Temple
@@ -130,8 +131,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073299059413190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.7519455, y: -0.42043564, z: 67.135826}
-  m_LocalScale: {x: 12, y: 20, z: 12}
+  m_LocalPosition: {x: 44.9, y: -0.4204379, z: -18.5}
+  m_LocalScale: {x: 18, y: 24, z: 18}
   m_Children:
   - {fileID: 4749828889733062}
   m_Father: {fileID: 0}
@@ -216,6 +217,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.47657096, y: 0.4841245, z: 0.47657096}
   m_Center: {x: -0.000000007450581, y: 0.18206225, z: -0.0009636134}
+--- !u!82 &82555469365415386
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073299059413190}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 94b1163d745b5824cba46b21ea35910c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!108 &108945268076122112
 Light:
   m_ObjectHideFlags: 1
@@ -265,6 +346,7 @@ MonoBehaviour:
   TempleResTime: 120
   God: {fileID: 0}
   GroundGod: {fileID: 0}
+  TempleCollapseSoundSource: {fileID: 82555469365415386}
 --- !u!198 &198065872550703870
 ParticleSystem:
   m_ObjectHideFlags: 1
