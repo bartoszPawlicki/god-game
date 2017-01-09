@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BloodthirstyFlowerController : MonoBehaviour
 {
+    public AudioSource FlowerEatingAudioSource;
     public float Range;
     public float Speed;
     /// <summary>
@@ -111,6 +112,7 @@ public class BloodthirstyFlowerController : MonoBehaviour
     {
         if(isActiveAndEnabled)
         {
+            FlowerEatingAudioSource.Play();
             _respawnManager.StartRespawn(_playerInRange);
             _isPlayerInRange = false;
         }

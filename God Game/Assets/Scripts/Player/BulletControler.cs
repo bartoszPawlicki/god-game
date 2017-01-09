@@ -32,6 +32,8 @@ public class BulletControler : MonoBehaviour
             return _bulletCollector.Loading;
         }
     }
+
+    public AudioSource SlingshotSoundSource;
     void Start ()
     {
         bulletPrefab = Resources.Load("bullet") as GameObject;
@@ -47,6 +49,7 @@ public class BulletControler : MonoBehaviour
         }
         _totemActivator = totem.GetComponent<TotemActivator>();
         _totemActivator.OnEnableSpecialAbility += TotemActivator_OnEnableSpecialAbility;
+        
     }
 	void Update ()
     {
@@ -57,6 +60,7 @@ public class BulletControler : MonoBehaviour
                 if(item.Value)
                 {
                     _slinkShotCD.Use();
+                    SlingshotSoundSource.Play();
                     item.Key.SetActive(true); //activate bullet as gameObject
                     item.Key.transform.position = transform.position + gameObject.transform.forward; //set bullet starting point to player position
                     Rigidbody rb = item.Key.GetComponent<Rigidbody>();
@@ -122,5 +126,7 @@ public class BulletControler : MonoBehaviour
     private int _playerNumber;
 
     private bool _isBulletAvailable = true;
+
+    
 
 }

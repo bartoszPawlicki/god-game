@@ -49,6 +49,7 @@ public class ThrowCompanionBehaviour : MonoBehaviour
             {
                 if (item.Value)
                 {
+                    ThrowCompanionAudioSource.Play();
                     float forceHorizontal = item.Key.transform.position.x - transform.position.x;
                     float forceVertical = item.Key.transform.position.z - transform.position.z;
                     Vector3 movement = new Vector3(forceHorizontal, 0, forceVertical).normalized;
@@ -75,4 +76,5 @@ public class ThrowCompanionBehaviour : MonoBehaviour
     private int _playerNumber;
     private Dictionary<GameObject, bool> _playerColliding;
     private CooldownProvider _cooldown;
+    public AudioSource ThrowCompanionAudioSource;
 }

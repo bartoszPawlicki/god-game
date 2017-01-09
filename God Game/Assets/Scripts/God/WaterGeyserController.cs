@@ -58,7 +58,6 @@ public class WaterGeyserController : MonoBehaviour
         _isCharged = false;
         enabled = false;
         gameObject.SetActive(false);
-        _waterSoundSource = gameObject.GetComponent<AudioSource>();
         
     }
 
@@ -69,7 +68,7 @@ public class WaterGeyserController : MonoBehaviour
         _waterBubbles.SetActive(false);
         gameObject.GetComponent<Renderer>().enabled = true;
         _waterStream.SetActive(true);
-        _waterSoundSource.Play();
+        WaterSoundSource.Play();
     }
 
     private void WaterGeyserController_OnWaterGeyserExpired(object sender, EventArgs e)
@@ -156,7 +155,7 @@ public class WaterGeyserController : MonoBehaviour
     private GameObject _waterBubbles;
     private GameObject _waterStream;
     private int _groundLayerMask = 1 << 8;
-    public AudioClip _waterSoundClip;
-    private AudioSource _waterSoundSource;
+    public AudioSource WaterSoundSource;
+    public AudioSource WaterBubblesSoundSource;
     
 }

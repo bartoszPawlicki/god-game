@@ -14,12 +14,15 @@ public class CatapultController : MonoBehaviour
     void Start()
     {
         _catapultPlank = transform.FindChild("catapult_plank").gameObject;
+        _catapultSoundEffect = gameObject.GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
         {
+            _catapultSoundEffect.Play();
+
             PlayerController slow = collider.GetComponent<PlayerController>();
             slow.ApplySlow(SlowPower, SlowDuration);
 
@@ -47,4 +50,5 @@ public class CatapultController : MonoBehaviour
     }
 
     private GameObject _catapultPlank;
+    private AudioSource _catapultSoundEffect;
 }

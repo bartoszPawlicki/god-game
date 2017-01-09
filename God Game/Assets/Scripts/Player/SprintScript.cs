@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SprintScript : MonoBehaviour
 {
+    public AudioSource SprintAudioSource;
+
     private PlayerController _player;
 
     public float SpeedMagnifier;
@@ -14,13 +16,13 @@ public class SprintScript : MonoBehaviour
     void Start ()
     {
         _player = GetComponentInParent<PlayerController>();
-
     }
 	
     public IEnumerator StartSprint()
     {
         _player.Speed = _player.StartingSpeed * SpeedMagnifier;
         SprintEffect.SetActive(true);
+        SprintAudioSource.Play();
 
         yield return new WaitForSeconds(SprintDuration);
 
@@ -28,5 +30,6 @@ public class SprintScript : MonoBehaviour
         SprintEffect.SetActive(false);
     }
 
+    
     
 }
