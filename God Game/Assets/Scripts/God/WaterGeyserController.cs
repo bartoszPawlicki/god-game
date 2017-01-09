@@ -138,9 +138,13 @@ public class WaterGeyserController : MonoBehaviour
 
                 player.HP -= WaterGeyserDamage;
             }
-
-
-
+        }
+        else if(collider.gameObject.tag == "TrainingBall")
+        {
+            if (_isCharged)
+            {
+                collider.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, WaterGeyserKnockUpStrength, 0));
+            }
         }
     }
 
