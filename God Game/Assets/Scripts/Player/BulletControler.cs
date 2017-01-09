@@ -61,15 +61,24 @@ public class BulletControler : MonoBehaviour
                 {
                     _slinkShotCD.Use();
                     SlingshotSoundSource.Play();
+                    _slinkShotCD.Start();
+                    _bulletCollector.Use();
+                    _bulletCollector.Start();
                     item.Key.SetActive(true); //activate bullet as gameObject
                     item.Key.transform.position = transform.position + gameObject.transform.forward; //set bullet starting point to player position
                     Rigidbody rb = item.Key.GetComponent<Rigidbody>();
                     rb.velocity = gameObject.transform.forward * shotSpeed;
                     item.Key.transform.Translate(new Vector3 (0, 0.8f, 0));
                     item.Key.GetComponent<BulletCollisionScript>().damage = damage;
-                    _slinkShotCD.Start();
-                    _bulletCollector.Use();
-                    _bulletCollector.Start();
+                    item.Key.GetComponent<BulletCollisionScript>().sa = _specialAbility;
+                    if(_specialAbility == 2)
+                    {
+                        rb.mass += 10;
+                    }
+                    else
+                    {
+                        rb.mass = 1;
+                    }
                     bulletDic[item.Key] = false; //this bullet in now on cooldown
                     Debug.Log("szczeliłem kulką");
                     break;
@@ -98,6 +107,7 @@ public class BulletControler : MonoBehaviour
             _freezingBullet = true;
             _fireBullet = false;
             _pushPowerBullet = false;
+            _specialAbility = (int)SA.freezingBullet;
             Debug.Log("sa = freezingBullet");
         }
         if (specialAbility == (int)SA.fireBullet)
@@ -105,6 +115,7 @@ public class BulletControler : MonoBehaviour
             _freezingBullet = false;
             _fireBullet = true;
             _pushPowerBullet = false;
+            _specialAbility = (int)SA.fireBullet;
             Debug.Log("sa = fireBullet");
         }
         if (specialAbility == (int)SA.pushPowerBullet)
@@ -112,6 +123,7 @@ public class BulletControler : MonoBehaviour
             _freezingBullet = false;
             _fireBullet = false;
             _pushPowerBullet = true;
+            _specialAbility = (int)SA.pushPowerBullet;
             Debug.Log("sa = pushPowerBullet");
         }
     }
@@ -124,6 +136,7 @@ public class BulletControler : MonoBehaviour
     private bool _fireBullet;
     private bool _pushPowerBullet;
     private int _playerNumber;
+    private int _specialAbility;
 
     private bool _isBulletAvailable = true;
 
