@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - Temple
   - GroundGod
+  - TrainingBall
   layers:
   - Default
   - TransparentFX

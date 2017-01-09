@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 67005050}
   m_Layer: 0
   m_Name: god_ball
-  m_TagString: Player
+  m_TagString: TrainingBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
