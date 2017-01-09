@@ -9,18 +9,24 @@ public class SprintScript : MonoBehaviour
     public float SpeedMagnifier;
     public float SprintDuration;
     public float SprintCooldown;
+    public GameObject SprintEffect;
 
-	void Start ()
+    void Start ()
     {
         _player = GetComponentInParent<PlayerController>();
-	}
+
+    }
 	
     public IEnumerator StartSprint()
     {
         _player.Speed = _player.StartingSpeed * SpeedMagnifier;
+        SprintEffect.SetActive(true);
 
         yield return new WaitForSeconds(SprintDuration);
 
         _player.Speed = _player.StartingSpeed;
+        SprintEffect.SetActive(false);
     }
+
+    
 }
