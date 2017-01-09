@@ -33,6 +33,7 @@ public class GlobalWindController : MonoBehaviour
     {
         _windEffectController = windDirection.GetComponent<WindEffectController>();
         _players = GameObject.FindGameObjectsWithTag("Player");
+        _tutorialBall = GameObject.FindGameObjectWithTag("TrainingBall");
         enabled = false;
         gameObject.SetActive(false);
         OnDirectionChosen += GlobalWindController_OnDirectionChosen;
@@ -61,6 +62,7 @@ public class GlobalWindController : MonoBehaviour
             {
                 player.GetComponent<Rigidbody>().AddForce((new Vector3(AimHorizontal, 0, AimVertical).normalized * GlobalWindStrength));
             }
+            _tutorialBall.GetComponent<Rigidbody>().AddForce((new Vector3(AimHorizontal, 0, AimVertical).normalized * GlobalWindStrength));
         }
 
         if (_lifeTime < 0)
@@ -87,4 +89,5 @@ public class GlobalWindController : MonoBehaviour
     private float _moveVertical;
     private GameObject[] _players;
     private bool _isDirectionChosen;
+    private GameObject _tutorialBall;
 }
