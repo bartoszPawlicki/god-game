@@ -71,12 +71,33 @@ public class GroundGodController : MonoBehaviour {
         }
     }
 
+    public void ApplySpecialAbility(int sa)
+    {
+        _sa = sa;
+        if (_sa == 0)
+        {
+            StartCoroutine(StartSlow());
+        }
+    }
+    public IEnumerator StartSlow()
+    {
+        //TODO slow powinien dzialas 5 s od czasu dostania ostatnia kulka
+        _godSpeed = GodInitialSpeed / 2;
+        Debug.Log("dostaje slowa");
+        yield return new WaitForSeconds(5);
+        _godSpeed = GodInitialSpeed;
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 8)
             _rigidbody.drag = 10;
-    }
 
+        if (collision.collider.gameObject.tag == "Bullet")
+        {
+            ApplySpecialAbility(_sa);
+        }
+    }
     private bool _setThunderActiveFalse;
 
     private float _godSpeed;
@@ -85,4 +106,6 @@ public class GroundGodController : MonoBehaviour {
     private Timer _thunderTimer; 
     private GameObject _thunder;
     private CooldownProvider _thunderCooldown;
+
+    private int _sa;
 }
