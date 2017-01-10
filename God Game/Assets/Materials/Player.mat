@@ -124,10 +124,10 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.35294116, g: 0.35740376, b: 1, a: 1}
+      second: {r: 0, g: 0.0068967342, b: 1, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _OutlineColor
-      second: {r: 0.64705884, g: 0.29498273, b: 0.29498273, a: 1}
+      second: {r: 0.20588237, g: 0.39495462, b: 1, a: 1}
