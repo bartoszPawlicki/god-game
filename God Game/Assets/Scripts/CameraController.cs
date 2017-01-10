@@ -4,6 +4,7 @@ using System;
 
 public class CameraController : MonoBehaviour
 {
+    public GameObject TutorialCamera;
     public GameObject Player1;
     public GameObject Player2;
     public float Distance;
@@ -72,6 +73,14 @@ public class CameraController : MonoBehaviour
         transform.position = _worldPosition + _offset;
         transform.LookAt(_worldPosition);
         
+    }
+
+    public void SwitchCamera(bool isTutorial)
+    {
+        if (isTutorial)
+            TutorialCamera.SetActive(true);
+        else
+            TutorialCamera.SetActive(false);
     }
 
     private float _t = 0;

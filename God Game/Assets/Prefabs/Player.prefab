@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lenght: 6
-  ThrowSpeed: 1
+  ThrowSpeed: 2
   ThrowStrength: 100
 --- !u!114 &114005468152904904
 MonoBehaviour:

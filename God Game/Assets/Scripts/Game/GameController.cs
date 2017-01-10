@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     {
         GameContener.UnfreezePlayers();
         _cameraController.IsInitialMoving = false;
+        _cameraController.SwitchCamera(false);
         _respawnManager.enabled = true;
         _roundManager.enabled = true;
         _respawnTutorialManager.enabled = false;
@@ -48,11 +49,11 @@ public class GameController : MonoBehaviour
 
     private void initTutorial()
     {
-        _cameraController.IsInitialMoving = true;
+        _cameraController.IsInitialMoving = false;
+        _cameraController.SwitchCamera(true);
         _respawnManager.enabled = false;
         _respawnTutorialManager.enabled = true;
         _roundManager.enabled = false;
-        GameContener.FreezePlayers();
         GameContener.MovePlayersToPosition(StartPosition);
         //here you may disable HP
     }

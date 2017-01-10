@@ -18,7 +18,10 @@ public class BloodthirstyFlowerController : MonoBehaviour
             {
                 _hp = value;
                 Range *= _hp;
-                //_material.color = new Color(_originColor.r, _originColor.g * _hp, _originColor.b, _originColor.a);
+                foreach(Material m in _material)
+                {
+                    m.color = new Color(_hp * 255, _hp * 255, _hp * 255, 255);
+                }
                 if (_hp <= 0)
                 {
                     _hp = 0;
@@ -31,10 +34,12 @@ public class BloodthirstyFlowerController : MonoBehaviour
     {
         _players = GameObject.FindGameObjectsWithTag("Player");
 
-        //_material = gameObject.GetComponent<Renderer>().material;
+        for(int i = 0; i < 3; i++)
+        {
+            _material[i] = transform.GetChild(i).GetComponent<Renderer>().material;
+        }
 
-        //_originColor = _material.color;
-        _respawnManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RespawnManager>();
+       _respawnManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RespawnManager>();
 
         _originPosition = transform.position;
 
@@ -137,7 +142,7 @@ public class BloodthirstyFlowerController : MonoBehaviour
     }
 
     private Color _originColor;
-    private Material _material;
+    private Material[] _material = new Material[3];
     private float _hp;
     private bool _isMoving;
     private int _direction;

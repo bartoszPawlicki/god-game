@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
             if (value != _hp)
             {
                 StartCoroutine(FlashColour());
-                Debug.Log(_hp);
                 _hp = value;
                 if (_hp <= 0)
                 {
