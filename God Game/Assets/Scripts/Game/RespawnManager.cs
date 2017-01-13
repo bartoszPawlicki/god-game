@@ -3,6 +3,7 @@ using System.Collections;
 using System.Timers;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class RespawnManager : MonoBehaviour
 {
@@ -10,7 +11,12 @@ public class RespawnManager : MonoBehaviour
     /// millis
     /// </summary>
     public float RespawnTime;
-    public event EventHandler OnLastPlayerFall;
+    public event EventHandler OnLastPlayerDied;
+
+    public void InitRespawnManager()
+    {
+        
+    }
 
     public void StartRespawn(GameObject gameObject)
     {
@@ -28,12 +34,11 @@ public class RespawnManager : MonoBehaviour
     {
         tuple.GameObject.SetActive(false);
         tuple.Timer.Start();
-        _playersInGame--;
     }
     void Start ()
     {
         var players = GameObject.FindGameObjectsWithTag("Player");
-        _playersInGame = players.Length;
+        //_playersInGame = players.Length;
 
         foreach (var item in players)
         { 
@@ -45,14 +50,13 @@ public class RespawnManager : MonoBehaviour
 
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
-        if(_playersInGame < _playerTuples.Count)
+        if(_playerTuples.Where(x => x.GameObject.activeInHierarchy).ToList().Count > 0)
         {
             foreach (var item in _playerTuples)
             {
                 if (item.Timer == (Timer)sender)
                 {
                     _objectToSetActive = item.GameObject;
-                    _playersInGame++;
                 }
             }
         }
@@ -70,12 +74,13 @@ public class RespawnManager : MonoBehaviour
             }
         }
 
-        if(_playersInGame <= 0)
+        Debug.Log(_playerTuples.Where(x => x.GameObject.activeInHierarchy).ToList().Count);
+        
+
+        if (_playerTuples.Where(x => x.GameObject.activeInHierarchy).ToList().Count < 1)
         {
-            if (OnLastPlayerFall != null)
-                OnLastPlayerFall.Invoke(this, null);
-            enabled = false;
-            _playersInGame = 2;
+            if (OnLastPlayerDied != null)
+                OnLastPlayerDied.Invoke(this, null);
         }
 
         foreach (var item in _playerTuples)
@@ -94,8 +99,7 @@ public class RespawnManager : MonoBehaviour
             _objectToSetActive = null;
         }
 	}
-
-    private int _playersInGame;
+    
     private List<Tuple> _playerTuples = new List<Tuple>();
     private Vector3 _livingPlayerPosition;
     private GameObject _objectToSetActive;

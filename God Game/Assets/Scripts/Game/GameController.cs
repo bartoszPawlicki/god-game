@@ -13,18 +13,18 @@ public class GameController : MonoBehaviour
     private void Start ()
     {
         GameContener.Initialize();
-        _roundManager = gameObject.GetComponent<RoundManager>();
-        _roundManager.OnLastRoundEnded += _roundManager_OnLastRoundEnded;
-        _roundManager.OnNewRoundStarted += _roundManager_OnNewRoundStarted;
+        //_roundManager = gameObject.GetComponent<RoundManager>();
+        //_roundManager.OnLastRoundEnded += _roundManager_OnLastRoundEnded;
+        //_roundManager.OnNewRoundStarted += _roundManager_OnNewRoundStarted;
 
         _respawnManager = gameObject.GetComponent<RespawnManager>();
-        _respawnManager.OnLastPlayerFall += _respawnManager_OnLastPlayerFall;
+        _respawnManager.OnLastPlayerDied += _respawnManager_OnLastPlayerDied;
 
         _respawnTutorialManager = gameObject.GetComponent<RespawnTutorialManager>();
         _respawnTutorialManager.OnPlayerFall += _respawnTutorialManager_OnPlayerFall;
 
         _portalCollider = GameObject.Find("PortalCollider").GetComponent<PortalColliderController>();
-        _portalCollider.OnPlayersPassed += GameController_OnPlayersPassed;
+        _portalCollider.OnPlayersPassed += _portalCollider_OnPlayersPassed; ;
 
         _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         _cameraController.OnCameraStopMoving += _cameraController_OnCameraStopMoving;
@@ -37,14 +37,21 @@ public class GameController : MonoBehaviour
 
     }
 
+    private void _portalCollider_OnPlayersPassed(object sender, EventArgs e)
+    {
+        initGame();
+    }
+
     private void initGame()
     {
+        GameContener.MovePlayersToPosition(getRandomSpawn());
         GameContener.UnfreezePlayers();
         _cameraController.IsInitialMoving = false;
         _cameraController.SwitchCamera(false);
         _respawnManager.enabled = true;
-        _roundManager.enabled = true;
+        //_roundManager.enabled = true;
         _respawnTutorialManager.enabled = false;
+        _respawnManager.InitRespawnManager();
     }
 
     private void initTutorial()
@@ -53,7 +60,7 @@ public class GameController : MonoBehaviour
         _cameraController.SwitchCamera(true);
         _respawnManager.enabled = false;
         _respawnTutorialManager.enabled = true;
-        _roundManager.enabled = false;
+        //_roundManager.enabled = false;
         GameContener.MovePlayersToPosition(StartPosition);
         //here you may disable HP
     }
@@ -69,25 +76,21 @@ public class GameController : MonoBehaviour
         GameContener.UnfreezePlayers();
     }
 
-    private void GameController_OnPlayersPassed(object sender, System.EventArgs e)
-    {
-        initGame();
-    }
+    //private void _roundManager_OnLastRoundEnded(object sender, System.EventArgs e)
+    //{
+    //    GameContener.FreezePlayers();
+    //    //TODO: Game End
+    //}
 
-    private void _roundManager_OnLastRoundEnded(object sender, System.EventArgs e)
+    //private void _roundManager_OnNewRoundStarted(object sender, short roundNumber)
+    //{
+    //    GameContener.MovePlayersToPosition(getRandomSpawn());
+    //}
+
+    private void _respawnManager_OnLastPlayerDied(object sender, System.EventArgs e)
     {
-        GameContener.FreezePlayers();
         //TODO: Game End
-    }
-
-    private void _roundManager_OnNewRoundStarted(object sender, short roundNumber)
-    {
-        GameContener.MovePlayersToPosition(getRandomSpawn());
-    }
-
-    private void _respawnManager_OnLastPlayerFall(object sender, System.EventArgs e)
-    {
-        _roundManager.RoundEnd();
+        initGame();
     }
         
     private void Update ()
@@ -107,7 +110,7 @@ public class GameController : MonoBehaviour
 
     private System.Random random = new System.Random();
 
-    private RoundManager _roundManager;
+    //private RoundManager _roundManager;
     private RespawnManager _respawnManager;
     private PortalColliderController _portalCollider;
     private CameraController _cameraController;
