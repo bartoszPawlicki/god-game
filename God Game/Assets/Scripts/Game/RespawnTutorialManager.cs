@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RespawnTutorialManager : MonoBehaviour
 {
@@ -26,5 +27,11 @@ public class RespawnTutorialManager : MonoBehaviour
                     OnPlayerFall.Invoke(this, player);
             }
         }
+    }
+
+    public void StartRespawn(GameObject _playerInRange)
+    {
+        if (OnPlayerFall != null)
+            OnPlayerFall.Invoke(this, _playerInRange);
     }
 }
