@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
                 if (_hp <= 0)
                 {
                     _hp = 0;
-                    _respawnManager.StartRespawn(gameObject);
+                    gameObject.SetActive(false);
                 }
             }
         }

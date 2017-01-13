@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Timers;
+using Assets.Scripts;
+using System;
 
 public class GUIController : MonoBehaviour
 {
@@ -28,7 +30,8 @@ public class GUIController : MonoBehaviour
         _player2Skills = GameObject.Find("Skills Player2").GetComponent<SkillsController>();
         _godSkills = GameObject.Find("skills_god").GetComponent<GodSkillsController>();
 
-        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        GameController gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        gameController.OnGameEnd += gameController_OnGameEnd;
 
         RoundManager roundManager = gameController.GetComponent<RoundManager>();
         roundManager.OnLastRoundEnded += RoundManager_OnLastRoundEnded;
@@ -49,6 +52,13 @@ public class GUIController : MonoBehaviour
 
         _player1Text = GameObject.Find("HP Player 1").GetComponent<Text>();
         _player2Text = GameObject.Find("HP Player 2").GetComponent<Text>();
+
+        _gameEnd = transform.FindChild("GameEnd").GetComponent<Text>();
+    }
+
+    private void gameController_OnGameEnd(object sender, Winner w)
+    {
+        _gameEnd.text = w.ToString() + " Win !!!";
     }
 
     private void _god_OnThunderSkillChosen(object sender, System.EventArgs e)
@@ -151,4 +161,6 @@ public class GUIController : MonoBehaviour
 
     private Text _player1Text;
     private Text _player2Text;
+
+    private Text _gameEnd;
 }

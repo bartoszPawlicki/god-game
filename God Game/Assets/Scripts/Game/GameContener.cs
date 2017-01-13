@@ -10,6 +10,13 @@ public static class GameContener
     public static GameObject Player2;
     public static GameObject[] Players = new GameObject[2];
     public static GameObject God;
+
+    public static PlayerController Player1Controller { get; private set; }
+
+    public static PlayerController Player2Controller { get; private set; }
+
+    public static GodController GodController { get; private set; }
+    public static GodPride GodPride { get; private set; }
     public static void FreezePlayers()
     {
         foreach (var player in Players)
@@ -51,9 +58,15 @@ public static class GameContener
         Player1 = GameObject.Find("Player1");
         Player2 = GameObject.Find("Player2");
 
+        Player1Controller = Player1.GetComponent<PlayerController>();
+        Player2Controller = Player2.GetComponent<PlayerController>();
+
         Players[0] = Player1;
         Players[1] = Player2;
 
         God = GameObject.Find("God");
-	}
+        GodController = God.GetComponent<GodController>();
+        GodPride = God.GetComponent<GodPride>();
+
+    }
 }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Linq;
+using Assets.Scripts;
 
 public class GameController : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class GameController : MonoBehaviour
     public Vector3 StartPosition;
     public GameObject[] Spawns;
     public bool TutorialEnable;
+
+    public GameEndEventHandler OnGameEnd;
 
     // Use this for initialization
     private void Start ()
@@ -29,6 +33,9 @@ public class GameController : MonoBehaviour
         _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         _cameraController.OnCameraStopMoving += _cameraController_OnCameraStopMoving;
         _cameraController.StartPosition = StartPosition + transform.position;
+
+        _endCamera = GameObject.Find("End Camera");
+        _endCamera.SetActive(false);
 
         if (TutorialEnable)
             initTutorial();
@@ -89,15 +96,38 @@ public class GameController : MonoBehaviour
 
     private void _respawnManager_OnLastPlayerDied(object sender, System.EventArgs e)
     {
-        //TODO: Game End
-        initGame();
+        if (OnGameEnd != null)
+            OnGameEnd.Invoke(this, Winner.God);
+        GameEnd();
     }
         
     private void Update ()
     {
-	
-	}
+        if (GameContener.Players.Where(x => x.GetComponent<PlayerController>().HP > 0).ToList().Count <= 0)
+        {
+            if (OnGameEnd != null)
+                OnGameEnd.Invoke(this, Winner.Players);
+            GameEnd();
+        }
+
+        if (GameContener.GodPride.godPride <= 0)
+        {
+            if (OnGameEnd != null)
+                OnGameEnd.Invoke(this, Winner.God);
+            GameEnd();
+        }
+    }
     
+    private void GameEnd()
+    {
+        GameContener.FreezePlayers();
+        _endCamera.SetActive(true);
+        _cameraController.gameObject.SetActive(false);
+
+        enabled = false;
+
+        //TODO: Game End Logic
+    }
     //First reandom.Next is always 0 i don't know why
     private Vector3 getRandomSpawn()
     {
@@ -115,4 +145,6 @@ public class GameController : MonoBehaviour
     private PortalColliderController _portalCollider;
     private CameraController _cameraController;
     private RespawnTutorialManager _respawnTutorialManager;
+    private GameObject _endCamera;
+
 }

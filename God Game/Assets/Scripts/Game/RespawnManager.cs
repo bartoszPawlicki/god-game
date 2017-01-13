@@ -12,6 +12,7 @@ public class RespawnManager : MonoBehaviour
     /// </summary>
     public float RespawnTime;
     public event EventHandler OnLastPlayerDied;
+    public float HPLost;
 
     public void InitRespawnManager()
     {
@@ -44,22 +45,20 @@ public class RespawnManager : MonoBehaviour
         { 
             Timer timer = new Timer(RespawnTime) { AutoReset = false};
             timer.Elapsed += Timer_Elapsed;
-            _playerTuples.Add(new Tuple() { GameObject = item, Timer = timer });
+            _playerTuples.Add(new Tuple() { GameObject = item, Timer = timer, PlayerController = item.GetComponent<PlayerController>() });
         }
     }
 
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
-        if(_playerTuples.Where(x => x.GameObject.activeInHierarchy).ToList().Count > 0)
-        {
+
             foreach (var item in _playerTuples)
             {
                 if (item.Timer == (Timer)sender)
                 {
-                    _objectToSetActive = item.GameObject;
+                    _objectToSetActive = item;
                 }
             }
-        }
     }
 
     // Update is called once per frame
@@ -73,10 +72,7 @@ public class RespawnManager : MonoBehaviour
                 StartRespawn(item);
             }
         }
-
-        Debug.Log(_playerTuples.Where(x => x.GameObject.activeInHierarchy).ToList().Count);
         
-
         if (_playerTuples.Where(x => x.GameObject.activeInHierarchy).ToList().Count < 1)
         {
             if (OnLastPlayerDied != null)
@@ -92,19 +88,21 @@ public class RespawnManager : MonoBehaviour
             }
         }
 
-        if(_objectToSetActive != null)
+        if (_objectToSetActive != null && _playerTuples.Where(x => x.PlayerController.isActiveAndEnabled).ToList().Count > 0)
         {
-            _objectToSetActive.transform.position = _livingPlayerPosition + new Vector3(5, 2, 0);
-            _objectToSetActive.SetActive(true);
+            _objectToSetActive.GameObject.transform.position = _livingPlayerPosition + new Vector3(5, 2, 0);
+            _objectToSetActive.GameObject.SetActive(true);
+            _objectToSetActive.PlayerController.HP *= (1 - HPLost);
             _objectToSetActive = null;
         }
 	}
     
     private List<Tuple> _playerTuples = new List<Tuple>();
     private Vector3 _livingPlayerPosition;
-    private GameObject _objectToSetActive;
+    private Tuple _objectToSetActive;
     public class Tuple
     {
+        public PlayerController PlayerController { get; set; }
         public GameObject GameObject { get; set; }
         public Timer Timer { get; set; }
     }
