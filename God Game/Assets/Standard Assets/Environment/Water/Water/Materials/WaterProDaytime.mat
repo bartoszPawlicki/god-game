@@ -70,7 +70,7 @@ Material:
     m_Colors:
     - first:
         name: WaveSpeed
-      second: {r: 5, g: 3, b: -3, a: -1}
+      second: {r: 30, g: 3, b: -3, a: -1}
     - first:
         name: _BumpMap_ST
       second: {r: 1, g: 1, b: 0, a: 0}
