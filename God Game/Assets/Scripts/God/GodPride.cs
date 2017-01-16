@@ -49,24 +49,19 @@ public class GodPride : MonoBehaviour
     }
     public void ApplySpecialAbility(int sa)
     {
-        Debug.Log("pale sie1 xD");
-        //zmienic zeby to nie bylo zahardkodowane
         if (sa == 1)
         {
-            Debug.Log("pale sie2 xD");
-            for (int i =0; i < 5; i++)
-            {
-               StartCoroutine(StartBurning());
-            }
+            StartCoroutine(StartBurning());
         }
     }
     public IEnumerator StartBurning()
     {
-        // i to też
-        Debug.Log("pale sie3 xD");
-        godPride -= 2;
-        progressBar.SetProgress(godPride / maxPride);
-        yield return new WaitForSeconds(1);
+        for (int i = 0; i < 5; i++)
+        {
+            godPride -= 2;
+            progressBar.SetProgress(godPride / maxPride);
+            yield return new WaitForSeconds(1);
+        }
     }
 
 

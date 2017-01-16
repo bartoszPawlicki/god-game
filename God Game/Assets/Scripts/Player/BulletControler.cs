@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class BulletControler : MonoBehaviour
 {
-    enum SA : int { freezingBullet, fireBullet, pushPowerBullet}
+    enum SA : int { normalBullet, fireBullet, pushPowerBullet, freezingBullet }
     public float shotRange;
     public float shotSpeed;
     public float shotStrength;
@@ -72,13 +72,9 @@ public class BulletControler : MonoBehaviour
                     item.Key.GetComponent<BulletCollisionScript>().damage = damage;
                     item.Key.GetComponent<BulletCollisionScript>().sa = _specialAbility;
                     if(_specialAbility == 2)
-                    {
                         rb.mass += 10;
-                    }
                     else
-                    {
                         rb.mass = 1;
-                    }
                     bulletDic[item.Key] = false; //this bullet in now on cooldown
                     Debug.Log("szczeliłem kulką");
                     break;
@@ -125,6 +121,14 @@ public class BulletControler : MonoBehaviour
             _pushPowerBullet = true;
             _specialAbility = (int)SA.pushPowerBullet;
             Debug.Log("sa = pushPowerBullet");
+        }
+        if (specialAbility == (int)SA.normalBullet)
+        {
+            _freezingBullet = false;
+            _fireBullet = false;
+            _pushPowerBullet = false;
+            _specialAbility = (int)SA.normalBullet;
+            Debug.Log("sa = normalBullet");
         }
     }
 

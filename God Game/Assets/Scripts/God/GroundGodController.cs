@@ -79,7 +79,7 @@ public class GroundGodController : MonoBehaviour {
     public void ApplySpecialAbility(int sa)
     {
         _sa = sa;
-        if (_sa == 0)
+        if (_sa == 3)
         {
             StartCoroutine(StartSlow());
         }
