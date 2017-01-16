@@ -6,6 +6,7 @@ using System;
 using System.Timers;
 using Assets.Scripts;
 using Assets.Scripts.Utils;
+using XInputDotNetPure;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             if (value != _hp)
             {
+                _vibraionTimer = 0.5f;
                 StartCoroutine(FlashColour());
                 _hp = value;
                 if (_hp <= 0)
@@ -99,6 +101,8 @@ public class PlayerController : MonoBehaviour
         _sprintCooldown = new CooldownProvider(_sprintScript.SprintCooldown);
     }
 
+    
+
     /// <summary>
     /// 
     /// </summary>
@@ -153,7 +157,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
+        PadVibrationOnDamage();
     }
 
     void FixedUpdate()
@@ -171,6 +175,8 @@ public class PlayerController : MonoBehaviour
 
         if (moveHorizontal != 0 || moveVertical != 0 || aimHorizontal != 0 || aimVertical != 0)
         {
+            
+
             Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * _speed;
             _rigidbody.MovePosition(movement);
             if (!_rope.isActiveAndEnabled)
@@ -222,6 +228,35 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void PadVibrationOnDamage()
+    {
+        if (_vibraionTimer >= 0)
+        {
+            IsVibrationInUse = true;
+            _vibraionTimer -= Time.deltaTime;
+        }
+
+        else IsVibrationInUse = false;
+
+        
+    }
+
+    public bool IsVibrationInUse
+    {
+        get { return _isVibrationInUse; }
+        private set
+        {
+            if (value != _isVibrationInUse)
+            {
+                _isVibrationInUse = value;
+
+                if (value) GamePad.SetVibration((PlayerIndex)_playerNumber - 1, 1, 1);
+                else GamePad.SetVibration((PlayerIndex)_playerNumber - 1, 0, 0);
+            }
+        }
+    }
+
+
     private bool _collidingWithAnotherPlayer;
     private Timer _slowTimer;
     private int _playerNumber;
@@ -235,7 +270,8 @@ public class PlayerController : MonoBehaviour
     private RespawnManager _respawnManager;
     private CooldownProvider _sprintCooldown;
     private SprintScript _sprintScript;
-
     private Material _material;
     private Color _originColor;
+    private float _vibraionTimer = 0f;
+    private bool _isVibrationInUse = false;
 }

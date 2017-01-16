@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class GroundGodController : MonoBehaviour {
 
@@ -27,6 +28,8 @@ public class GroundGodController : MonoBehaviour {
 
         _thunderTimer = new Timer() { Interval = ThunderCooldown / 2, AutoReset = false};
         _thunderTimer.Elapsed += _thunderTimer_Elapsed;
+
+        VibraionTimer = 0f;
     }
 
     private void _thunderTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -51,6 +54,8 @@ public class GroundGodController : MonoBehaviour {
             _setThunderActiveFalse = false;
             _thunder.SetActive(false);
         }
+
+        PadVibrationOnDamage();
     }
 
     void FixedUpdate()
@@ -98,6 +103,35 @@ public class GroundGodController : MonoBehaviour {
             ApplySpecialAbility(_sa);
         }
     }
+
+    void PadVibrationOnDamage()
+    {
+        if (VibraionTimer >= 0)
+        {
+            IsVibrationInUse = true;
+            VibraionTimer -= Time.deltaTime;
+        }
+
+        else IsVibrationInUse = false;
+
+
+    }
+
+    public bool IsVibrationInUse
+    {
+        get { return _isVibrationInUse; }
+        private set
+        {
+            if (value != _isVibrationInUse)
+            {
+                _isVibrationInUse = value;
+
+                if (value) GamePad.SetVibration((PlayerIndex)2, 1, 1);
+                else GamePad.SetVibration((PlayerIndex)2, 0, 0);
+            }
+        }
+    }
+    
     private bool _setThunderActiveFalse;
 
     private float _godSpeed;
@@ -108,4 +142,7 @@ public class GroundGodController : MonoBehaviour {
     private CooldownProvider _thunderCooldown;
 
     private int _sa;
+
+    public float VibraionTimer { get; set; } 
+    private bool _isVibrationInUse = false;
 }
