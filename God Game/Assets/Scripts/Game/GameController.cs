@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
     private void initTutorial()
     {
         _cameraController.IsInitialMoving = false;
-        _cameraController.SwitchCamera(true);
+       // _cameraController.SwitchCamera(true);
         _respawnManager.enabled = false;
         _respawnTutorialManager.enabled = true;
         //_roundManager.enabled = false;
