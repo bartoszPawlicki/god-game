@@ -69,10 +69,24 @@ public class CameraController : MonoBehaviour
             }
         }
         else
+        {
+            //tutaj
+            //transform.position = CameraPosition(_zeroPoint, _worldPosition, 50, 30);
+            transform.position = _worldPosition + _offset;
+            transform.LookAt(_worldPosition);
+        }
+    }
 
-        transform.position = _worldPosition + _offset;
-        transform.LookAt(_worldPosition);
-        
+    public Vector3 CameraPosition(Vector3 WorldPos, Vector3 PlayersMiddlePos, double CameraDistanceFromMiddlePoint, double CameraHeight)
+    {
+        double alfa = Math.Atan(PlayersMiddlePos.x / PlayersMiddlePos.z) + Mathf.Deg2Rad * 180;
+        double camX, camZ;
+
+        camX = 0 * Math.Cos(alfa) - CameraDistanceFromMiddlePoint * Math.Sin(alfa);
+        camZ = 0 * Math.Sin(alfa) - CameraDistanceFromMiddlePoint * Math.Cos(alfa);
+
+        return new Vector3((float)(WorldPos.x + camX), (float)CameraHeight, (float)(WorldPos.z + camZ));
+
     }
 
     public void SwitchCamera(bool isTutorial)
@@ -86,4 +100,5 @@ public class CameraController : MonoBehaviour
     private float _t = 0;
     
     private Vector3 _heavensGatePostion;
+    private Vector3 _zeroPoint = new Vector3(45, 0, 74);
 }
