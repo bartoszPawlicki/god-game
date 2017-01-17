@@ -20,7 +20,7 @@ public class BloodthirstyFlowerControllerTraining : MonoBehaviour
                 Range *= _hp;
                 foreach(Material m in _material)
                 {
-                    m.color = new Color(_hp * 255, _hp * 255, _hp * 255, 255);
+                    m.color = new Color(_hp, _hp, _hp , 1);
                 }
                 if (_hp <= 0)
                 {

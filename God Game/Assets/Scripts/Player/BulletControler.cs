@@ -15,6 +15,8 @@ public class BulletControler : MonoBehaviour
     public int BulletVanishingTime;
     public int _amountOfBullets;
     public GameObject totem;
+    public AmmoDisplay ammoDisplay;
+
     //public ArrayList bulletList;
     public Dictionary<GameObject,bool> bulletDic;
     public int Direction { get; private set; }
@@ -47,6 +49,7 @@ public class BulletControler : MonoBehaviour
             newBullet.SetActive(false);
             bulletDic.Add(newBullet,true);
         }
+        ammoDisplay.ammo = _amountOfBullets;
         _totemActivator = totem.GetComponent<TotemActivator>();
         _totemActivator.OnEnableSpecialAbility += TotemActivator_OnEnableSpecialAbility;
         
@@ -68,6 +71,7 @@ public class BulletControler : MonoBehaviour
                     item.Key.transform.position = transform.position + gameObject.transform.forward; //set bullet starting point to player position
                     Rigidbody rb = item.Key.GetComponent<Rigidbody>();
                     rb.velocity = gameObject.transform.forward * shotSpeed;
+                    ammoDisplay.ammo--;
                     item.Key.transform.Translate(new Vector3 (0, 0.8f, 0));
                     item.Key.GetComponent<BulletCollisionScript>().damage = damage;
                     item.Key.GetComponent<BulletCollisionScript>().sa = _specialAbility;
@@ -90,6 +94,7 @@ public class BulletControler : MonoBehaviour
                     bulletDic[item.Key] = true;
                     item.Key.SetActive(false);
                     Debug.Log("kulka unicestwiona xD");
+                    ammoDisplay.ammo = _amountOfBullets;
                     break;
                 }
                

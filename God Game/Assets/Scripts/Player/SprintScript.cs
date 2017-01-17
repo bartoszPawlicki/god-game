@@ -24,7 +24,6 @@ public class SprintScript : MonoBehaviour
         _player.Speed = _player.StartingSpeed * SpeedMagnifier;
         SprintEffect.SetActive(true);
         SprintAudioSource.Play();
-        _player._animation.speed = 2;
         _player._isRunning = true;
 
         yield return new WaitForSeconds(SprintDuration);

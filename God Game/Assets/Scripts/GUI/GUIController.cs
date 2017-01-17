@@ -148,6 +148,8 @@ public class GUIController : MonoBehaviour
     private SkillsController _player1Skills;
     private SkillsController _player2Skills;
     private GodSkillsController _godSkills;
+    private BulletControler _ammo1;
+    private BulletControler _ammo2;
 
     private bool _isRoundTextAsctive;
     private Text _roundText;

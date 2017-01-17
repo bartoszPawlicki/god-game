@@ -182,20 +182,23 @@ public class PlayerController : MonoBehaviour
             _rigidbody.MovePosition(movement);
             if (!_rope.isActiveAndEnabled)
             {
-                transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(aimHorizontal, aimVertical) * 180 / Math.PI), 0);
+                transform.localEulerAngles = new Vector3(0, (float)(Math.Atan2(aimHorizontal, aimVertical) * 180 / Math.PI), 0);
                 _playerModel.transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal, moveVertical) * 180 / Math.PI), 0);
 
             }
-
-            if (!_isRunning) _animation.speed = 1;
         }
 
+        if (moveHorizontal != 0 || moveVertical != 0)
+        {
+            if (_isRunning) _animation.speed = 2;
+            else _animation.speed = 1;
+        }
         else _animation.speed = 0;
 
         if (_rope.isActiveAndEnabled)
         {
             transform.eulerAngles = new Vector3(0, _rope.transform.eulerAngles.y, 0);
-            _playerModel.transform.eulerAngles = new Vector3(0, _rope.transform.eulerAngles.y, 0);
+            //_playerModel.transform.eulerAngles = new Vector3(0, _rope.transform.eulerAngles.y, 0);
         }
             
     }
