@@ -101,6 +101,7 @@ public class PlayerController : MonoBehaviour
         _sprintCooldown = new CooldownProvider(_sprintScript.SprintCooldown);
 
         _animation = GetComponentInChildren<AnimatorTest>();
+        _playerModel = transform.FindChild("Y_Bot").gameObject;
     }
 
     
@@ -182,6 +183,7 @@ public class PlayerController : MonoBehaviour
             if (!_rope.isActiveAndEnabled)
             {
                 transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(aimHorizontal, aimVertical) * 180 / Math.PI), 0);
+                _playerModel.transform.eulerAngles = new Vector3(0, (float)(Math.Atan2(moveHorizontal, moveVertical) * 180 / Math.PI), 0);
 
             }
 
@@ -191,7 +193,11 @@ public class PlayerController : MonoBehaviour
         else _animation.speed = 0;
 
         if (_rope.isActiveAndEnabled)
+        {
             transform.eulerAngles = new Vector3(0, _rope.transform.eulerAngles.y, 0);
+            _playerModel.transform.eulerAngles = new Vector3(0, _rope.transform.eulerAngles.y, 0);
+        }
+            
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -279,4 +285,5 @@ public class PlayerController : MonoBehaviour
     private bool _isVibrationInUse = false;
     public AnimatorTest _animation;
     public bool _isRunning = false;
+    private GameObject _playerModel;
 }
