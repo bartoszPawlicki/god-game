@@ -99,6 +99,8 @@ public class PlayerController : MonoBehaviour
 
         _sprintScript = GetComponent<SprintScript>();
         _sprintCooldown = new CooldownProvider(_sprintScript.SprintCooldown);
+
+        _animation = GetComponentInChildren<AnimatorTest>();
     }
 
     
@@ -175,8 +177,6 @@ public class PlayerController : MonoBehaviour
 
         if (moveHorizontal != 0 || moveVertical != 0 || aimHorizontal != 0 || aimVertical != 0)
         {
-            
-
             Vector3 movement = transform.position + new Vector3(moveHorizontal, 0, moveVertical) * _speed;
             _rigidbody.MovePosition(movement);
             if (!_rope.isActiveAndEnabled)
@@ -185,7 +185,10 @@ public class PlayerController : MonoBehaviour
 
             }
 
+            if (!_isRunning) _animation.speed = 1;
         }
+
+        else _animation.speed = 0;
 
         if (_rope.isActiveAndEnabled)
             transform.eulerAngles = new Vector3(0, _rope.transform.eulerAngles.y, 0);
@@ -274,4 +277,6 @@ public class PlayerController : MonoBehaviour
     private Color _originColor;
     private float _vibraionTimer = 0f;
     private bool _isVibrationInUse = false;
+    public AnimatorTest _animation;
+    public bool _isRunning = false;
 }

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class AnimatorTest : MonoBehaviour {
     public int speed;
+    private Animator _animator;
 	// Use this for initialization
 	void Start () {
-        GetComponent<Animator>().SetInteger("Speed", speed);
+        _animator = GetComponent<Animator>();
+        
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        _animator.SetInteger("Speed", speed);
+    }
 }

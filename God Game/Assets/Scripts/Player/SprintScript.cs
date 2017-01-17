@@ -24,12 +24,15 @@ public class SprintScript : MonoBehaviour
         _player.Speed = _player.StartingSpeed * SpeedMagnifier;
         SprintEffect.SetActive(true);
         SprintAudioSource.Play();
+        _player._animation.speed = 2;
+        _player._isRunning = true;
 
         yield return new WaitForSeconds(SprintDuration);
 
         _player.Speed = _player.StartingSpeed;
         SprintAudioSource.Stop();
         SprintEffect.SetActive(false);
+        _player._isRunning = false;
     }
 
     
