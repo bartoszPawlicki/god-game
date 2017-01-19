@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour
 
         _animation = GetComponentInChildren<AnimatorTest>();
         _playerModel = transform.FindChild("Y_Bot").gameObject;
+
+        _celownik = gameObject.transform.FindChild("Celownik").gameObject;
     }
 
     
@@ -194,6 +196,12 @@ public class PlayerController : MonoBehaviour
             else _animation.speed = 1;
         }
         else _animation.speed = 0;
+
+        if (aimHorizontal != 0 || aimVertical != 0)
+        {
+            _celownik.SetActive(true);
+        }
+        else _celownik.SetActive(false);
 
         if (_rope.isActiveAndEnabled)
         {
@@ -289,4 +297,5 @@ public class PlayerController : MonoBehaviour
     public AnimatorTest _animation;
     public bool _isRunning = false;
     private GameObject _playerModel;
+    private GameObject _celownik;
 }

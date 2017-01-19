@@ -26,10 +26,9 @@ public class TempleController : MonoBehaviour
             if (value != _hp)
             {
                 _hp = value;
-                _material.color = new Color(_originColor.r, _originColor.g, _originColor.b, _originColor.a) * HP / StartingHp;
+                
                 if (_hp <= 0)
                 {
-                    
                     if(!TempleFallen)
                     {
                         TempleFallen = true;
@@ -37,10 +36,9 @@ public class TempleController : MonoBehaviour
                         _hp = 0;
                         StartCoroutine(TempleDestroyed());
                     }
-                    
-                    
-
                 }
+                else _material.color = new Color(_originColor.r, _originColor.g, _originColor.b, _originColor.a) * HP / StartingHp;
+
             }
         }
     }

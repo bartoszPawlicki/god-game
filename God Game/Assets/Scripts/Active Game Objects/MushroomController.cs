@@ -22,23 +22,24 @@ public class MushroomController : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player" && !_destroyed)
         {
             PlayerController player = collider.GetComponent<PlayerController>();
             
             player.ApplySlow(SlowPower, SlowDuration);
             player.HP -= ShroomDamage;
             StartCoroutine(ShroomSound());
-            
-            
-
         }
     }
 
     IEnumerator ShroomSound()
     {
         MushroomSoundSource.Play();
+        _destroyed = true;
+        gameObject.GetComponent<Renderer>().enabled = false;
         yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
     }
+
+    private bool _destroyed = false;
 }
