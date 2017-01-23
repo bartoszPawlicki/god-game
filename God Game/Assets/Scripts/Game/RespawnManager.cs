@@ -25,6 +25,7 @@ public class RespawnManager : MonoBehaviour
         {
             if(item.GameObject == gameObject)
             {
+                item.GameObject.GetComponent<SprintScript>().EndSprint();
                 StartRespawn(item);
                 break;
             }
