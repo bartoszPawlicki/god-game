@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3583,8 +3583,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cooperate! Push your teammate on the other side with (A). Let him pull you
-    with rope (B).
+  m_Text: Press (Y) to activate sprint to run through the hole.
 --- !u!222 &218316219
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12513,11 +12512,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4599873523148014, guid: c6e2d211ecc94ba4498e9b0420db8c3b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.21
+      value: 10.251
       objectReference: {fileID: 0}
     - target: {fileID: 4599873523148014, guid: c6e2d211ecc94ba4498e9b0420db8c3b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -2.19
+      value: -2.1858
       objectReference: {fileID: 0}
     - target: {fileID: 4599873523148014, guid: c6e2d211ecc94ba4498e9b0420db8c3b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12545,7 +12544,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4599873523148014, guid: c6e2d211ecc94ba4498e9b0420db8c3b, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.706422
       objectReference: {fileID: 0}
     - target: {fileID: 64225009453474496, guid: c6e2d211ecc94ba4498e9b0420db8c3b,
         type: 2}
@@ -17737,6 +17736,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3852d1390c43d54680a014351550b23, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1199700187 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1885371103630214, guid: c6e2d211ecc94ba4498e9b0420db8c3b,
+    type: 2}
+  m_PrefabInternal: {fileID: 823167055}
+--- !u!114 &1199700191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199700187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6072305539601c49aa3b3aa159db55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1205014624
 Prefab:
   m_ObjectHideFlags: 0
@@ -20120,7 +20135,7 @@ Prefab:
     - target: {fileID: 224902070768427170, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 224902070768427170, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
@@ -20170,7 +20185,7 @@ Prefab:
     - target: {fileID: 224608093448143438, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 224608093448143438, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
@@ -20180,7 +20195,7 @@ Prefab:
     - target: {fileID: 224608093448143438, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 224164171461964876, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
@@ -20200,7 +20215,7 @@ Prefab:
     - target: {fileID: 224164171461964876, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 224164171461964876, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
@@ -20210,7 +20225,7 @@ Prefab:
     - target: {fileID: 224164171461964876, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 224787020996434334, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
@@ -20230,7 +20245,7 @@ Prefab:
     - target: {fileID: 224787020996434334, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 224787020996434334, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
@@ -20240,7 +20255,7 @@ Prefab:
     - target: {fileID: 224787020996434334, guid: 3ab7482742b623e4ca36eb461fc14edc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ab7482742b623e4ca36eb461fc14edc, type: 2}
