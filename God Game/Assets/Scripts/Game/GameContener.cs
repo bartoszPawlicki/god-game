@@ -10,7 +10,7 @@ public static class GameContener
     public static GameObject Player2;
     public static GameObject[] Players = new GameObject[2];
     public static GameObject God;
-
+    public static bool IsTutorialEnable { get; set; }
     public static PlayerController Player1Controller { get; private set; }
 
     public static PlayerController Player2Controller { get; private set; }

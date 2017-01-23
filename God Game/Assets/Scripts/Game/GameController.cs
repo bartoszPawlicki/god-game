@@ -9,8 +9,7 @@ public class GameController : MonoBehaviour
 
     public Vector3 StartPosition;
     public GameObject[] Spawns;
-    public bool TutorialEnable;
-
+   
     public GameEndEventHandler OnGameEnd;
 
     // Use this for initialization
@@ -37,7 +36,8 @@ public class GameController : MonoBehaviour
         _endCamera = GameObject.Find("End Camera");
         _endCamera.SetActive(false);
 
-        if (TutorialEnable)
+
+        if (GameContener.IsTutorialEnable)
             initTutorial();
         else
             initGame();
@@ -137,7 +137,7 @@ public class GameController : MonoBehaviour
         int number = random.Next(0, Spawns.Length);
         return Spawns[number].transform.localPosition;
     }
-
+    
     private System.Random random = new System.Random();
 
     //private RoundManager _roundManager;

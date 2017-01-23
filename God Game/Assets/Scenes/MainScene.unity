@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4270,7 +4270,7 @@ Prefab:
     - target: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -395
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
         type: 2}
@@ -8709,7 +8709,6 @@ MonoBehaviour:
   - {fileID: 1885559202}
   - {fileID: 2100151949}
   - {fileID: 164191702}
-  TutorialEnable: 0
 --- !u!114 &550028888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10487,7 +10486,7 @@ Prefab:
     - target: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -395
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
         type: 2}
@@ -24814,7 +24813,7 @@ Prefab:
     - target: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -500
+      value: -395
       objectReference: {fileID: 0}
     - target: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
         type: 2}
@@ -25924,6 +25923,11 @@ Prefab:
       propertyPath: particleSystem
       value: 
       objectReference: {fileID: 238407686}
+    - target: {fileID: 114005468152904904, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: amountOfBullets
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}
   m_IsPrefabParent: 0
@@ -29051,6 +29055,11 @@ Prefab:
       propertyPath: particleSystem
       value: 
       objectReference: {fileID: 144450354}
+    - target: {fileID: 114005468152904904, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: amountOfBullets
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}
   m_IsPrefabParent: 0
@@ -30664,7 +30673,7 @@ Prefab:
     - target: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -500
+      value: -395
       objectReference: {fileID: 0}
     - target: {fileID: 224000013731074826, guid: a5286f01c87f4214986ad8964da96642,
         type: 2}
