@@ -271,8 +271,8 @@ public class PlayerController : MonoBehaviour
             {
                 _isVibrationInUse = value;
 
-                if (value) GamePad.SetVibration((PlayerIndex)_playerNumber - 1, 1, 1);
-                else GamePad.SetVibration((PlayerIndex)_playerNumber - 1, 0, 0);
+                if (value) GamePad.SetVibration((PlayerIndex)(_playerNumber - 1), 1, 1);
+                else GamePad.SetVibration((PlayerIndex)(_playerNumber - 1), 0, 0);
             }
         }
     }

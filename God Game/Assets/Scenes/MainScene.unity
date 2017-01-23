@@ -2307,6 +2307,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013781665928, guid: 0ca813bbb01a904428d5d1b15343f0c2,
     type: 2}
   m_PrefabInternal: {fileID: 630540398}
+--- !u!198 &144450354 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198919583342167560, guid: 05596685e2f97a847970106d95a14215,
+    type: 2}
+  m_PrefabInternal: {fileID: 1895935368}
 --- !u!1 &145062932 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011141307274, guid: e300fdad7ec2741fb9a9084c9f26b5e2,
@@ -4127,6 +4132,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!198 &238407686 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198919583342167560, guid: 05596685e2f97a847970106d95a14215,
+    type: 2}
+  m_PrefabInternal: {fileID: 1716752183}
 --- !u!1 &238996772 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012742311136, guid: e300fdad7ec2741fb9a9084c9f26b5e2,
@@ -6612,6 +6622,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a05bb8a95516d724ca48dbf496632c66, type: 2}
   m_IsPrefabParent: 0
+--- !u!198 &407088239 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198000013824395008, guid: a73b80f7967b94891aedb8751daa9e1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1147207182}
 --- !u!1001 &410041085
 Prefab:
   m_ObjectHideFlags: 0
@@ -8693,7 +8708,7 @@ MonoBehaviour:
   - {fileID: 1885559202}
   - {fileID: 2100151949}
   - {fileID: 164191702}
-  TutorialEnable: 1
+  TutorialEnable: 0
 --- !u!114 &550028888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25752,6 +25767,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 96e19957b905a4d4a8a3bc22ad40ee8d, type: 2}
+    - target: {fileID: 114000011022886982, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 238407686}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}
   m_IsPrefabParent: 0
@@ -27143,7 +27163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godPride: 200
-  particleSystem: {fileID: 0}
+  particleSystem: {fileID: 407088239}
 --- !u!114 &1804481814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28874,6 +28894,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2aba4bc405941ec4cbaec1f7141c51b4, type: 2}
+    - target: {fileID: 114000011022886982, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 144450354}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}
   m_IsPrefabParent: 0

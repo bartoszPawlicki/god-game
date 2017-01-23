@@ -106,14 +106,14 @@ public class GameController : MonoBehaviour
         if (GameContener.Players.Where(x => x.GetComponent<PlayerController>().HP > 0).ToList().Count <= 0)
         {
             if (OnGameEnd != null)
-                OnGameEnd.Invoke(this, Winner.Players);
+                OnGameEnd.Invoke(this, Winner.God);
             GameEnd();
         }
-
+        
         if (GameContener.GodPride.godPride <= 0)
         {
             if (OnGameEnd != null)
-                OnGameEnd.Invoke(this, Winner.God);
+                OnGameEnd.Invoke(this, Winner.Players);
             GameEnd();
         }
     }

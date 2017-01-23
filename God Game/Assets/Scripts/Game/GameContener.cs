@@ -66,7 +66,7 @@ public static class GameContener
 
         God = GameObject.Find("God");
         GodController = God.GetComponent<GodController>();
-        GodPride = God.GetComponent<GodPride>();
+        GodPride = GameObject.Find("GroundGod").GetComponent<GodPride>();
 
     }
 }
