@@ -26,6 +26,7 @@ public class BloodthirstyFlowerControllerTraining : MonoBehaviour
                 {
                     _hp = 0;
                     enabled = false;
+                    gameObject.SetActive(false);
                 }
             }
         }
