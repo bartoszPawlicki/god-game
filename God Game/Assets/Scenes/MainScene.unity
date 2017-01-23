@@ -4017,7 +4017,7 @@ MonoBehaviour:
   TutorialCamera: {fileID: 1718613171}
   Player1: {fileID: 1572925464}
   Player2: {fileID: 281610004}
-  Distance: 10
+  Distance: 12
 --- !u!81 &257159680
 AudioListener:
   m_ObjectHideFlags: 0

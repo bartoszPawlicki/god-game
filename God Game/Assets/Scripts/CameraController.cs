@@ -35,6 +35,7 @@ public class CameraController : MonoBehaviour
 	void Start ()
     {
         _heavensGatePostion = GameObject.FindGameObjectWithTag("Gate").transform.position;
+        _camera = GetComponent<Camera>();
     }
 	
 	// Update is called once per frame
@@ -42,7 +43,7 @@ public class CameraController : MonoBehaviour
     {
         float distance = (float)(Distance / Math.Sqrt(2));
         distance += (float)Math.Sqrt(Vector3.Distance(Player1.transform.position, Player2.transform.position));
-        _offset = new Vector3(0, distance, -distance * 1.5f);
+        _offset = new Vector3(0, distance, -distance * 1.6f);
         if (Player1.GetComponent<PlayerController>().isActiveAndEnabled && Player2.GetComponent<PlayerController>().isActiveAndEnabled)
             _worldPosition = Vector3.Lerp(Player1.transform.position, Player2.transform.position, 0.5f);
         else if (Player1.GetComponent<PlayerController>().isActiveAndEnabled)
@@ -70,8 +71,7 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            //tutaj
-            //transform.position = CameraPosition(_zeroPoint, _worldPosition, 50, 30);
+            _worldPosition += new Vector3(0, 0, -distance * 0.8f);
             transform.position = _worldPosition + _offset;
             transform.LookAt(_worldPosition);
         }
@@ -98,7 +98,8 @@ public class CameraController : MonoBehaviour
     }
 
     private float _t = 0;
-    
+
+    private Camera _camera;
     private Vector3 _heavensGatePostion;
     private Vector3 _zeroPoint = new Vector3(45, 0, 74);
 }
