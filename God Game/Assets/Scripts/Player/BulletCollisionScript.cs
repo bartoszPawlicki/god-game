@@ -27,7 +27,7 @@ public class BulletCollisionScript : MonoBehaviour {
             dmg.ApplyDamage(damage);
             dmg.ApplySpecialAbility(sa);
             addSa.ApplySpecialAbility(sa);
-            Debug.Log("godGetsDmg");
+            Debug.Log("");
         }
     }
     private int _SA;

@@ -86,7 +86,6 @@ public class BulletControler : MonoBehaviour
             {
                 foreach (var item in bulletsList)
                 {
-                    Debug.Log(_actualBulletAmount);
                     if (_actualBulletAmount > 0)
                     {
                         _slinkShotCD.Use();
@@ -107,7 +106,7 @@ public class BulletControler : MonoBehaviour
                             rb.mass += 10;
                         else
                             rb.mass = 1;
-                        Debug.Log("szczeliłem kulką");
+                        Debug.Log("");
                         StartCoroutine(DestroyBullet(item));
                         break;
                     }

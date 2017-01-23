@@ -9260,6 +9260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592600793}
   - component: {fileID: 592600794}
+  - component: {fileID: 592600795}
   m_Layer: 8
   m_Name: PlayerRespawner
   m_TagString: Untagged
@@ -9292,6 +9293,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.7681556, y: 2.4376054, z: 2.3573873}
   m_Center: {x: -0.26044327, y: -0.23587312, z: -0.068163395}
+--- !u!114 &592600795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 592600792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeba0d6108cb7754da4443355491869d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &595513339 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010240088584, guid: 1d6ac20d933c91f4796c1c961621564d,
@@ -12462,6 +12474,15 @@ Prefab:
     - target: {fileID: 4599873523148014, guid: c6e2d211ecc94ba4498e9b0420db8c3b, type: 2}
       propertyPath: m_LocalScale.x
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 64225009453474496, guid: c6e2d211ecc94ba4498e9b0420db8c3b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885371103630214, guid: c6e2d211ecc94ba4498e9b0420db8c3b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6e2d211ecc94ba4498e9b0420db8c3b, type: 2}

@@ -33,11 +33,10 @@ public class GodPride : MonoBehaviour
         {
             godPride -= dmg;
 
-            particleSystem.Emit(30);
 
             progressBar.SetProgress(godPride / maxPride);
 
-            _groundGodController.VibraionTimer = 0.5f;
+            
         }
         else
         {
@@ -46,9 +45,11 @@ public class GodPride : MonoBehaviour
     }
     public void ApplyDamage(float dmg)
     {
+        _groundGodController.VibraionTimer = 0.5f;
+        particleSystem.Emit(30);
         godPride -= dmg;
         progressBar.SetProgress(godPride / maxPride);
-        Debug.Log(godPride);
+        Debug.Log("");
     }
     public void ApplySpecialAbility(int sa)
     {
