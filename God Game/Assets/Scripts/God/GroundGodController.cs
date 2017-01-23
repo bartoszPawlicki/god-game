@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
-using XInputDotNetPure;
 
 public class GroundGodController : MonoBehaviour {
 
@@ -133,8 +132,8 @@ public class GroundGodController : MonoBehaviour {
             {
                 _isVibrationInUse = value;
 
-                if (value) GamePad.SetVibration((PlayerIndex)2, 1, 1);
-                else GamePad.SetVibration((PlayerIndex)2, 0, 0);
+                //if (value) GamePad.SetVibration((PlayerIndex)2, 1, 1);
+                //else GamePad.SetVibration((PlayerIndex)2, 0, 0);
             }
         }
     }

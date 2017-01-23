@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
 using System;
 using System.Timers;
 using Assets.Scripts;
 using Assets.Scripts.Utils;
-using XInputDotNetPure;
 
 public class PlayerController : MonoBehaviour
 {
@@ -276,8 +273,8 @@ public class PlayerController : MonoBehaviour
             {
                 _isVibrationInUse = value;
 
-                if (value) GamePad.SetVibration((PlayerIndex)(_playerNumber - 1), 1, 1);
-                else GamePad.SetVibration((PlayerIndex)(_playerNumber - 1), 0, 0);
+                //if (value) GamePad.SetVibration((PlayerIndex)(_playerNumber - 1), 1, 1);
+                //else GamePad.SetVibration((PlayerIndex)(_playerNumber - 1), 0, 0);
             }
         }
     }
