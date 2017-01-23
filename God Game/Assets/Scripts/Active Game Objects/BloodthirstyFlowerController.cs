@@ -138,7 +138,7 @@ public class BloodthirstyFlowerController : MonoBehaviour
     public void OnCollider(Collider other)
     {
         _direction = -1;
-        if (other.attachedRigidbody.tag == "Player")
+        if (other.attachedRigidbody != null && other.attachedRigidbody.tag == "Player")
             EatPlayer();
     }
 
