@@ -7,6 +7,7 @@ public class GodPride : MonoBehaviour
     public float godPride = 200;
     private float maxPride = 200;
     private ProgressBar progressBar;
+    public ParticleSystem particleSystem;
 
     // Use this for initialization
     void Start()
@@ -31,6 +32,8 @@ public class GodPride : MonoBehaviour
         if(godPride > 0)
         {
             godPride -= dmg;
+
+            particleSystem.Emit(30);
 
             progressBar.SetProgress(godPride / maxPride);
 

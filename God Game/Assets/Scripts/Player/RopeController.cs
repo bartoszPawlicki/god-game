@@ -45,6 +45,11 @@ public class RopeController : MonoBehaviour
         _ropeAudioSource = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        GetComponent<Renderer>().material.mainTextureScale = new Vector2(1, 3 * transform.localScale.y);
+    }
+
     void FixedUpdate()
     {
         if (!_isPullingPlayer)

@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
             return _sprintCooldown.Loading;
         }
     }
-    
 
+    public ParticleSystem particleSystem;
     public float StartingHp;
     private float _hp;
     public float HP
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
             {
                 _vibraionTimer = 0.5f;
                 StartCoroutine(FlashColour());
+                particleSystem.Emit(20);
                 _hp = value;
                 if (_hp <= 0)
                 {
