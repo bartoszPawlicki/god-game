@@ -25747,6 +25747,11 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 137971442397457800, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 96e19957b905a4d4a8a3bc22ad40ee8d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}
   m_IsPrefabParent: 0
@@ -27138,6 +27143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godPride: 200
+  particleSystem: {fileID: 0}
 --- !u!114 &1804481814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28863,6 +28869,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 137971442397457800, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2aba4bc405941ec4cbaec1f7141c51b4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}
   m_IsPrefabParent: 0
