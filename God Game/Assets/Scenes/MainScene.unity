@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -9612,7 +9612,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Destroying\nchapels will \nmake god\nvulnerable \nfor your \nslingshoot\n\n"
+  m_Text: "Destroy temple \nto make god\nbecome \nvulnerable \nto your \nslingshoot\n\n"
 --- !u!222 &747244792
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15085,17 +15085,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'In the game you
+  m_Text: 'Raising totems
 
-    can capture
+    will enhance
 
-    totems to get
+    your slinghoots.
 
-    bonuses.
+    Bring them up
 
-    Enter the circle
+    by simultaneously
 
-    and hold (X).'
+    holding (X)'
 --- !u!222 &1214972248
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15407,13 +15407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Be aware
-
-    of mushroms !
-
-    They can
-
-    Hurt You !'
+  m_Text: "Be aware\nof mushroms !\nThey can hurt \nyou and slow\nyou down"
 --- !u!222 &1238968280
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16655,13 +16649,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Use catapult
+  m_Text: 'Walk inside the
 
-    in order to
+    catapult in order
 
-    go on another
+    to use it. It will
 
-    island.'
+    propell you to
+
+    another island.'
 --- !u!222 &1322490097
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17172,15 +17168,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Use
-
-    geyser (k2)
-
-    and wind (k3)
-
-    to push the ball
-
-    out of the box.'
+  m_Text: "Choose geyser\nskill (A) and\npress (RT) to\nuse it. It will\nknock-up
+    the\nhumans up\nand deal small \namount of damage."
 --- !u!222 &1377940231
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19418,9 +19407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Kill flowers with your lightning (k1).
-
-'
+  m_Text: "\u0141aj \u0142ud ju kil flo\u0142ers, dej harm plejers.\n"
 --- !u!222 &1532859520
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21916,7 +21903,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Use your
 
-    slingshot (k1)
+    slingshot (RT)
 
     to kill
 
@@ -24460,11 +24447,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cooperate!
-
-    Use push(A) and rope(B)
-
-    to get both players to the other side.'
+  m_Text: Cooperate! Push your teammate on the other side with (A). Let him pull you
+    with rope (B).
 --- !u!222 &1896175750
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26341,8 +26325,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: To activate wind chose it (k3), then press trigger in desired direction
-    and confirm (k4).
+  m_Text: 'Now press (B) to
+
+    choose GlobalWind. It will push humans in the direction you are moving.
+
+    Use it right after the geyser to push them
+
+    off the ledge.'
 --- !u!222 &2074321330
 CanvasRenderer:
   m_ObjectHideFlags: 0
