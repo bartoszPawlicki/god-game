@@ -13,7 +13,7 @@ public class BloodthirstyFlowerHeadController : MonoBehaviour {
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (_parentController.isActiveAndEnabled)
+        if (_parentController != null)
             _parentController.OnCollision(collision);
         else
             _parentControllerTraining.OnCollision(collision);
@@ -21,7 +21,7 @@ public class BloodthirstyFlowerHeadController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (_parentController.isActiveAndEnabled)
+        if (_parentController != null)
             _parentController.OnCollider(other);
         else
             _parentControllerTraining.OnCollider(other);
