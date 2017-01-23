@@ -126,11 +126,13 @@ public class GUIController : MonoBehaviour
     {
         _player1Skills.ThrowCooldown = _player1.ThrowCooldownValue;
         _player1Skills.RopeCooldown = _player1.RopeCooldownValue;
-        _player1Skills.SlingshotCooldown = _player1Bullet.SlinkShootValue;
+        _player1Skills.SlingshotCooldown = _player1Bullet.ReloadValue;
+        _player1Skills.SprintCooldown = _player1.SprintCooldownValue;
 
         _player2Skills.ThrowCooldown = _player2.ThrowCooldownValue;
         _player2Skills.RopeCooldown = _player2.RopeCooldownValue;
-        _player2Skills.SlingshotCooldown = _player2Bullet.SlinkShootValue;
+        _player2Skills.SlingshotCooldown = _player2Bullet.ReloadValue;
+        _player2Skills.SprintCooldown = _player2.SprintCooldownValue;
 
         _godSkills.ThunderCooldown = _god.ThunderCooldownValue;
         _godSkills.WaterGeyserCooldown = _god.WaterGeyserCooldownValue;

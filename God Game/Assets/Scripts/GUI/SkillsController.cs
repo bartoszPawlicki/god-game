@@ -39,14 +39,30 @@ public class SkillsController : MonoBehaviour
                 _slingshotSkill.SetCooldownPercent(0);
         }
     }
+
+    public float SprintCooldown
+    {
+        set
+        {
+            if (value >= 0 && value <= 100)
+                _sprintSkill.SetCooldownPercent(value);
+            else if (value > 100)
+                _sprintSkill.SetCooldownPercent(100);
+            else
+                _sprintSkill.SetCooldownPercent(0);
+        }
+    }
+
     void Start ()
     {
         _throwSkill = transform.FindChild("Throw").GetComponent<SkillIcon>();
         _ropeSkill = transform.FindChild("Rope").GetComponent<SkillIcon>();
         _slingshotSkill = transform.FindChild("Slingshot").GetComponent<SkillIcon>();
+        _sprintSkill = transform.FindChild("Sprint").GetComponent<SkillIcon>();
     }
 
     private SkillIcon _throwSkill;
     private SkillIcon _ropeSkill;
     private SkillIcon _slingshotSkill;
+    private SkillIcon _sprintSkill;
 }

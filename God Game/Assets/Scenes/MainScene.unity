@@ -25928,6 +25928,11 @@ Prefab:
       propertyPath: amountOfBullets
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114005468152904904, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: ReloadCoodown
+      value: 4000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}
   m_IsPrefabParent: 0
@@ -29059,6 +29064,11 @@ Prefab:
         type: 2}
       propertyPath: amountOfBullets
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005468152904904, guid: 05596685e2f97a847970106d95a14215,
+        type: 2}
+      propertyPath: ReloadCoodown
+      value: 4000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05596685e2f97a847970106d95a14215, type: 2}

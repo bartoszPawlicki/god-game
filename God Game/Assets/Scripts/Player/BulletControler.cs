@@ -124,7 +124,7 @@ public class BulletControler : MonoBehaviour
     }
     public IEnumerator DestroyBullet(GameObject item)
     {
-        yield return new WaitForSeconds(8.0f);
+        yield return new WaitForSeconds(16.0f);
         item.SetActive(false);
     }
     //public IEnumerator reloadAmmo()
