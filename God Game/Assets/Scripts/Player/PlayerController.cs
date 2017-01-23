@@ -105,10 +105,17 @@ public class PlayerController : MonoBehaviour
         _playerModel = transform.FindChild("Y_Bot").gameObject;
 
         _celownik = gameObject.transform.FindChild("Celownik").gameObject;
+
+
+        Timer timer = new Timer() { AutoReset = true, Interval = 20 };
+        timer.Elapsed += Timer_Elapsed1;
     }
 
+    private void Timer_Elapsed1(object sender, ElapsedEventArgs e)
+    {
+        PadVibrationOnDamage();
+    }
     
-
     /// <summary>
     /// 
     /// </summary>
@@ -162,8 +169,6 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(_sprintScript.StartSprint());
             }
         }
-
-        PadVibrationOnDamage();
     }
 
     void FixedUpdate()

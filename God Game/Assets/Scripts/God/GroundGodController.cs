@@ -30,6 +30,14 @@ public class GroundGodController : MonoBehaviour {
         _thunderTimer.Elapsed += _thunderTimer_Elapsed;
 
         VibraionTimer = 0f;
+
+        Timer timer = new Timer() { AutoReset = true, Interval = 20 };
+        timer.Elapsed += Timer_Elapsed;
+    }
+
+    private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+    {
+        PadVibrationOnDamage();
     }
 
     private void _thunderTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -55,7 +63,6 @@ public class GroundGodController : MonoBehaviour {
             _thunder.SetActive(false);
         }
 
-        PadVibrationOnDamage();
     }
 
     void FixedUpdate()
