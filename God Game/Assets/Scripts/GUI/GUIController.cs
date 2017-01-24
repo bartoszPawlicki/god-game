@@ -8,12 +8,20 @@ using System;
 public class GUIController : MonoBehaviour
 {
     public ProgressBar progressBar;
+    public GameObject mainMenu;
     public static ProgressBar pBar;
 
     // Use this for initialization
     void Awake()
     {
         pBar = progressBar;
+    }
+    void Update()
+    {
+        if(Input.GetButtonDown("Menu"))
+        {
+            mainMenu.SetActive(!mainMenu.activeSelf);
+        }
     }
     // Use this for initialization
     void Start ()
@@ -59,6 +67,8 @@ public class GUIController : MonoBehaviour
     private void gameController_OnGameEnd(object sender, Winner w)
     {
         _gameEnd.text = w.ToString() + " Win !!!";
+        
+        mainMenu.SetActive(true);
     }
 
     private void _god_OnThunderSkillChosen(object sender, System.EventArgs e)
