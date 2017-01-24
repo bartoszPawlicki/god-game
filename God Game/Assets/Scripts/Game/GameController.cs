@@ -64,6 +64,7 @@ public class GameController : MonoBehaviour
         //_roundManager.enabled = true;
         _respawnTutorialManager.enabled = false;
         _respawnManager.InitRespawnManager();
+        GameObject.Find("GogTutorialPanel").SetActive(false);
     }
 
     private void initTutorial()
@@ -75,6 +76,7 @@ public class GameController : MonoBehaviour
         //_roundManager.enabled = false;
         GameContener.MovePlayersToPosition(StartPosition);
         //here you may disable HP
+        GameObject.Find("GogTutorialPanel").SetActive(true);
     }
 
     private void _respawnTutorialManager_OnPlayerFall(object sender, GameObject player)
