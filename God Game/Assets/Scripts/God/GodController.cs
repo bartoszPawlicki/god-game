@@ -136,14 +136,14 @@ public class GodController : MonoBehaviour
         {
             if (!_globalWindController.isActiveAndEnabled)
             {
-                if (Input.GetAxisRaw("Horizontal_God_Aim") != 0)
+                if (Input.GetAxisRaw("Horizontal_God") != 0)
                 {
-                    _globalWindController.AimHorizontal = Input.GetAxis("Horizontal_God_Aim");
+                    _globalWindController.AimHorizontal = Input.GetAxis("Horizontal_God");
                 }
 
-                if (Input.GetAxisRaw("Vertical_God_Aim") != 0)
+                if (Input.GetAxisRaw("Vertical_God") != 0)
                 {
-                    _globalWindController.AimVertical = Input.GetAxis("Vertical_God_Aim");
+                    _globalWindController.AimVertical = Input.GetAxis("Vertical_God");
                 }
             }
         }
