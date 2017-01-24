@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using Assets.Scripts;
+using System.Timers;
 
 public class GameController : MonoBehaviour
 {
@@ -129,9 +130,8 @@ public class GameController : MonoBehaviour
         _cameraController.gameObject.SetActive(false);
 
         enabled = false;
-
-        //TODO: Game End Logic
     }
+
     //First reandom.Next is always 0 i don't know why
     private Vector3 getRandomSpawn()
     {
