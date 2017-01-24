@@ -46,6 +46,10 @@ public class GameController : MonoBehaviour
 
     private void _portalCollider_OnPlayersPassed(object sender, EventArgs e)
     {
+        GameContener.Player1Controller.HP = GameContener.Player1Controller.StartingHp;
+        GameContener.Player2Controller.HP = GameContener.Player2Controller.StartingHp;
+        GameContener.GodPride.godPride = GameContener.GodPride.godPride;
+
         initGame();
     }
 

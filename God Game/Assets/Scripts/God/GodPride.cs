@@ -5,7 +5,7 @@ using System;
 public class GodPride : MonoBehaviour
 {
     public float godPride = 200;
-    private float maxPride = 200;
+    public float maxPride = 200;
     private ProgressBar progressBar;
     public ParticleSystem particleSystem;
 
